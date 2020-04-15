@@ -1,0 +1,36 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvSubjectDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = Model.EntityName, Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+
+        settings.Settings.ShowFilterRow = true;
+		
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Name";
+            x.FieldName = "Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+        });
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "On" + Model.EntityName + "GridFocusedRowChanged";
+		settings.ClientSideEvents.Init = "resizeGrid";
+
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.Subject;
+    }).GetHtml()

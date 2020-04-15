@@ -1,0 +1,12 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTitleIndex runat="server" BackToTopText="Back to Top" SpriteCssFilePath="{0}/sprite.css" CssPostfix="Material" CssFilePath="{0}/styles.css">
+    <BackToTopImage Url="Web/tiGotoBack.svg" Width="56px" Height="56px" />
+    <IndexPanelStyle HorizontalAlign="Left" />
+    <IndexPanelSeparatorStyle Height="1px" BackColor="#E5E5E5" />
+    <ColumnStyle Paddings-PaddingLeft="3px" Paddings-PaddingRight="3px"></ColumnStyle>
+    <IndexPanel Separator=""/>
+</dx:ASPxTitleIndex>
+
+

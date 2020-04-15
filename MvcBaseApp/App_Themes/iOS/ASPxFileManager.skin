@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxFileManager runat="server" CssFilePath="{0}/styles.css" CssPostfix="iOS">
+    <Styles CssPostfix="iOS" CssFilePath="{0}/styles.css" />
+    <SettingsFolders ShowTreeLines="False" />
+    <Images SpriteCssFilePath="{0}/sprite.css">
+    </Images>
+    <StylesDetailsView>
+        <CommandColumn Width="75px"></CommandColumn>
+    </StylesDetailsView>
+    <SettingsFileList>
+        <DetailsViewSettings ThumbnailSize="24px">
+        </DetailsViewSettings>
+    </SettingsFileList>
+</dx:ASPxFileManager>
+
+

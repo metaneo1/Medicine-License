@@ -1,0 +1,145 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model Document
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddDocumentFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.Document_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.Description, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Document_Description");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Document_Description"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Document_Description;
+ g.Items.Add(m => m.Name, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Document_Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Document_Name"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Document_Name;
+ g.Items.Add(m => m.Filename, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Document_Filename");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Document_Filename"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Document_Filename;
+ g.Items.Add(m => m.PathToFile, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Document_PathToFile");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Document_PathToFile"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Document_PathToFile;
+g.Items.Add(m => m.Id_DocumentFormat, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "Document_Format", Action = "GetAllDocument_FormatListAddDocument" };
+                tb.Name = "Id_Document_Format_AddDocument";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_Document_FormatList_Add_Document_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.Document_Document_Format;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyDocumentButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveDocumentClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelDocumentButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelDocumentClick";
+            });
+        });
+    });
+
+}).GetHtml()

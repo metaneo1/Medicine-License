@@ -1,0 +1,13 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTreeView runat="server">
+     <Styles CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" >
+     </Styles>
+     <SettingsLoadingPanel ImagePosition="Bottom" />
+     <Images SpriteCssFilePath="~/App_Themes/Youthful/{0}/sprite.css">
+        <NodeLoadingPanel Url="~/App_Themes/Youthful/Web/tvNodeLoading.gif">
+        </NodeLoadingPanel>
+     </Images>
+</dx:ASPxTreeView>
+

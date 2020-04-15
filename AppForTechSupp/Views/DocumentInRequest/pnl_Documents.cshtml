@@ -1,0 +1,15 @@
+﻿@using MvcBaseApp.Models
+@{
+    Layout = null;
+    var id = ((int?) ViewBag.DocumentInRequest_Id_Request ?? 0);
+}
+    @Html.DevExpress().CallbackPanel(s =>
+{
+    s.Name = "pnl_Documents";
+    s.CallbackRouteValues = new { Controller = "DocumentInRequest", Action = "pnl_LicenseDocumentsPartial" };
+
+    s.SetContent(() =>
+    {
+        Html.RenderAction("LicenseDocumentsPartial", new { Id_Request = id});
+    });
+}).GetHtml()

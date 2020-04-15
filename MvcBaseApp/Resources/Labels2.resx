@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbroadTrips" xml:space="preserve">
+    <value>Выезды за границу</value>
+  </data>
+  <data name="AbroadTrips_AbroadTripReason_Name" xml:space="preserve">
+    <value>Цель визита</value>
+  </data>
+  <data name="AbroadTrips_ArrivalDate" xml:space="preserve">
+    <value>Дата возвращения</value>
+  </data>
+  <data name="AbroadTrips_btnAddAbroadTrip" xml:space="preserve">
+    <value>Добавить выезд</value>
+  </data>
+  <data name="AbroadTrips_btnCloseAbroadTrip" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AbroadTrips_btnDeleteAbroadTrip" xml:space="preserve">
+    <value>Удалить выезд</value>
+  </data>
+  <data name="AbroadTrips_btnEditAbroadTrip" xml:space="preserve">
+    <value>Редактировать выезд</value>
+  </data>
+  <data name="AbroadTrips_Country_Name" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="AbroadTrips_DepartureDate" xml:space="preserve">
+    <value>Дата выезда</value>
+  </data>
+  <data name="WorkerList_btnAddWorker" xml:space="preserve">
+    <value>Добавить сотрудника</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="WorkerList_btnCloseWorker" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="WorkerList_btnDeleteWorker" xml:space="preserve">
+    <value>Удалить сотрудника</value>
+  </data>
+  <data name="WorkerList_btnEditWorker" xml:space="preserve">
+    <value>Редактировать сотрудника</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="EditWorker" xml:space="preserve">
+    <value>Редактирование сотрудника</value>
+  </data>
+  <data name="EditWorker_AbroadTrips" xml:space="preserve">
+    <value>Поездки</value>
+  </data>
+  <data name="EditWorker_AdditionalData" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="EditWorker_Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="EditWorker_Citizenship" xml:space="preserve">
+    <value>Гражданство</value>
+  </data>
+  <data name="EditWorker_DateBirth" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="EditWorker_FamilyState" xml:space="preserve">
+    <value>Семейное положение</value>
+  </data>
+  <data name="EditWorker_LastChanged" xml:space="preserve">
+    <value>Последнее заполнение</value>
+  </data>
+  <data name="EditWorker_MainInfo" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="EditWorker_Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="EditWorker_Nationality" xml:space="preserve">
+    <value>Национальность</value>
+  </data>
+  <data name="EditWorker_PassportMaker" xml:space="preserve">
+    <value>Орган, выдавший паспорт</value>
+  </data>
+  <data name="EditWorker_Sex" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="EdtiWorker_GosLanguageLevel" xml:space="preserve">
+    <value>Знание гос языка</value>
+  </data>
+  <data name="WorkerGridColumnName" xml:space="preserve">
+    <value>Имя/Название</value>
+  </data>
+  <data name="WorkerList" xml:space="preserve">
+    <value>Сотрудники</value>
+  </data>
+  <data name="AbroadTrip" xml:space="preserve">
+    <value>Поездка №</value>
+  </data>
+  <data name="AbroadTripReason" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbroadTripReasons_btnAddAbroadTripReason" xml:space="preserve">
+    <value>Добавить цель визита</value>
+  </data>
+  <data name="AbroadTripReasons_btnCloseAbroadTripReason" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AbroadTripReasons_btnDeleteAbroadTripReason" xml:space="preserve">
+    <value>Удалить цель поездки</value>
+  </data>
+  <data name="AbroadTripReasons_btnEditAbroadTripReason" xml:space="preserve">
+    <value>Редактировать цель визита</value>
+  </data>
+  <data name="AbroadTripReasons_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="AbroadTripReasons_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="AbroadTripReason_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="AbroadTripReason_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="AbroadTripReason_MainInfo" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="AbroadTripReason_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="AbroadTrip_AbroadTripReason" xml:space="preserve">
+    <value>Цель визита</value>
+  </data>
+  <data name="AbroadTrip_Add" xml:space="preserve">
+    <value>Добавить поездку</value>
+  </data>
+  <data name="AbroadTrip_ArrivalDate" xml:space="preserve">
+    <value>Дата возвращения</value>
+  </data>
+  <data name="AbroadTrip_Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="AbroadTrip_DepartureDate" xml:space="preserve">
+    <value>Дата выезда</value>
+  </data>
+  <data name="AbroadTrip_MainInfo" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="Country_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Country_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Country_MainInfo" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="Country_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="CountyList" xml:space="preserve">
+    <value>Страны</value>
+  </data>
+  <data name="CountyList_btnAddCountry" xml:space="preserve">
+    <value>Добавить страну</value>
+  </data>
+  <data name="CountyList_btnCloseCountry" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="CountyList_btnDeleteCountry" xml:space="preserve">
+    <value>Удалить страну</value>
+  </data>
+  <data name="CountyList_btnEditCountry" xml:space="preserve">
+    <value>Редактировать страну</value>
+  </data>
+  <data name="Ribbon_HRM" xml:space="preserve">
+    <value>Управление человеческими ресурсами</value>
+  </data>
+  <data name="Ribbon_HRM_Charts" xml:space="preserve">
+    <value>Графики</value>
+  </data>
+  <data name="Ribbon_HRM_Database" xml:space="preserve">
+    <value>База данных</value>
+  </data>
+  <data name="Ribbon_HRM_Organizations" xml:space="preserve">
+    <value>Организация и Штатные единицы</value>
+  </data>
+  <data name="Ribbon_HRM_Pivots" xml:space="preserve">
+    <value>Сводные таблицы</value>
+  </data>
+  <data name="Ribbon_HRM_Posts" xml:space="preserve">
+    <value>Должности</value>
+  </data>
+  <data name="Ribbon_HRM_Workers" xml:space="preserve">
+    <value>Сотрудники</value>
+  </data>
+  <data name="Ribbon_USERS" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="Ribbon_USERS_Overseers" xml:space="preserve">
+    <value>Курирование</value>
+  </data>
+  <data name="Ribbon_USERS_Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="Ribbon_USERS_Users" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="Ribbon_USERS_UsersAndRoles" xml:space="preserve">
+    <value>Пользователи и роли</value>
+  </data>
+  <data name="WorkerDocumentList" xml:space="preserve">
+    <value>Документы содтудника</value>
+  </data>
+  <data name="WorkerDocumentList_btnAddWorkerDocument" xml:space="preserve">
+    <value>Добавить документ</value>
+  </data>
+  <data name="WorkerDocumentList_btnCloseWorkerDocument" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="WorkerDocumentList_btnDeleteWorkerDocument" xml:space="preserve">
+    <value>Удалить документ</value>
+  </data>
+  <data name="WorkerDocumentList_btnEditWorkerDocument" xml:space="preserve">
+    <value>Редактировать документ</value>
+  </data>
+  <data name="WorkerDocumentList_DataDocument" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="WorkerDocumentList_DocumentName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WorkerDocumentList_TypeDocumentName" xml:space="preserve">
+    <value>Тип документа</value>
+  </data>
+  <data name="ShureForRemoveEntry" xml:space="preserve">
+    <value>Удалить выбранную запись?</value>
+  </data>
+  <data name="AbroadTrip_btnDelete" xml:space="preserve">
+    <value>Удалить поездку</value>
+  </data>
+  <data name="ErrorNoItemSelected" xml:space="preserve">
+    <value>Не выбрана запись</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="Document_body" xml:space="preserve">
+    <value>Document_body</value>
+  </data>
+  <data name="Document_Description" xml:space="preserve">
+    <value>Document_Description</value>
+  </data>
+  <data name="Document_Id_DocumentType" xml:space="preserve">
+    <value>Document_Id_DocumentType</value>
+  </data>
+  <data name="Document_Name" xml:space="preserve">
+    <value>Document_Name</value>
+  </data>
+  <data name="Penalty_DateEndPenalty" xml:space="preserve">
+    <value>Penalty_DateEndPenalty</value>
+  </data>
+  <data name="Penalty_DatePenalty" xml:space="preserve">
+    <value>Lfnf yfxfkf</value>
+  </data>
+  <data name="Penalty_Description" xml:space="preserve">
+    <value>Penalty_Description</value>
+  </data>
+  <data name="Penalty_Id_TypePenalty" xml:space="preserve">
+    <value>Penalty_Id_TypePenalty</value>
+  </data>
+  <data name="Penalty_MainInfo" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="ErrorNoDb" xml:space="preserve">
+    <value>Проблемы с доступом к базе данных</value>
+  </data>
+  <data name="ErrorWrondPassword" xml:space="preserve">
+    <value>Неверный логин или пароль</value>
+  </data>
+  <data name="EditWorker_Group_PersonLanguageLevel" xml:space="preserve">
+    <value>Владения языком</value>
+  </data>
+  <data name="EditWorker_Group_PersonPhone" xml:space="preserve">
+    <value>Телефон сотрудника</value>
+  </data>
+  <data name="EditWorker_Group_Relative" xml:space="preserve">
+    <value>Родственник</value>
+  </data>
+  <data name="EditWorker_Group_AbroadTrip" xml:space="preserve">
+    <value>Выезд за границу</value>
+  </data>
+  <data name="EditWorker_Group_illness" xml:space="preserve">
+    <value>Больничные</value>
+  </data>
+  <data name="EditWorker_Group_Penalty" xml:space="preserve">
+    <value>Взыскания</value>
+  </data>
+  <data name="EditWorker_Group_PersonEducation" xml:space="preserve">
+    <value>Образование сотрудника</value>
+  </data>
+  <data name="EditWorker_Group_PersonInParty" xml:space="preserve">
+    <value>Участие в партии</value>
+  </data>
+  <data name="EditWorker_Group_PersonQualityUpper" xml:space="preserve">
+    <value>Повышение квалификации</value>
+  </data>
+  <data name="EditWorker_Group_PersonRank" xml:space="preserve">
+    <value>Звания сотрудника</value>
+  </data>
+  <data name="EditWorker_Group_PersonRewards" xml:space="preserve">
+    <value>Награды сотрудника</value>
+  </data>
+  <data name="EditWorker_Group_PersonVacation" xml:space="preserve">
+    <value>Отпуск сотрудника</value>
+  </data>
+  <data name="EditWorker_Group_ScienceThing" xml:space="preserve">
+    <value>Научный труд</value>
+  </data>
+  <data name="EditWorker_Group_WorkExperience" xml:space="preserve">
+    <value>Выполняемая работа и учёба</value>
+  </data>
+  <data name="EditWorker_Education" xml:space="preserve">
+    <value>Образование</value>
+  </data>
+  <data name="EditWorker_Vacation" xml:space="preserve">
+    <value>Отпуск и командировки</value>
+  </data>
+  <data name="ErrorNullFields" xml:space="preserve">
+    <value>Заполните обязательные поля</value>
+  </data>
+  <data name="AbroadTrip_DepartureDate" xml:space="preserve">
+    <value>Дата выезда</value>
+  </data>
+  <data name="AbroadTrip_ArrivalDate" xml:space="preserve">
+    <value>Дата возвращения</value>
+  </data>
+  <data name="AbroadTrip_Country" xml:space="preserve">
+    <value>Id Страны</value>
+  </data>
+  <data name="AbroadTrip_AbroadTripReason" xml:space="preserve">
+    <value>Id Цели пребывания</value>
+  </data>
+  <data name="AbroadTrip_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="AbroadTripReason_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="AbroadTripReason_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="AbroadTripReason_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="AnnualDeclaration_Year" xml:space="preserve">
+    <value>Id_Year</value>
+  </data>
+  <data name="AnnualEstimate_grade" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="AnnualEstimate_Year" xml:space="preserve">
+    <value>Id_Year</value>
+  </data>
+  <data name="Country_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Country_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Country_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Disability_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Disability_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Disability_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Evaluation_Name" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="Evaluation_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="FamilyState_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="FamilyState_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="FamilyState_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="FamilyType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="FamilyType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="FamilyType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="HistoryEmployment_DateStart" xml:space="preserve">
+    <value>Дата начало</value>
+  </data>
+  <data name="HistoryEmployment_DateFinish" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="HistoryEmployment_StateItem" xml:space="preserve">
+    <value>Id_Штатная единица</value>
+  </data>
+  <data name="HistoryEmployment_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="HistoryEmployment_WorkerStatus" xml:space="preserve">
+    <value>Id_WorkerStatus</value>
+  </data>
+  <data name="HistoryEmployment_WorkingType" xml:space="preserve">
+    <value>Id_WorkingType</value>
+  </data>
+  <data name="HistoryEmployment_TypeWorkingHiring" xml:space="preserve">
+    <value>Id_HiringType</value>
+  </data>
+  <data name="Illness_DateStart" xml:space="preserve">
+    <value>Дата начало</value>
+  </data>
+  <data name="Illness_DateFinish" xml:space="preserve">
+    <value>Дата конец</value>
+  </data>
+  <data name="Illness_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="Language_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Language_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Language_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="LanguageLevel_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="LanguageLevel_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="LanguageLevel_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="MentoringHistory_Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="MentoringHistory_Description" xml:space="preserve">
+    <value>Описание работ</value>
+  </data>
+  <data name="MentoringHistory_Notes" xml:space="preserve">
+    <value>Дополнение</value>
+  </data>
+  <data name="MentoringHistory_Subject" xml:space="preserve">
+    <value>Id_Subject</value>
+  </data>
+  <data name="MentoringHistory_Evaluation" xml:space="preserve">
+    <value>Id_Evaluation</value>
+  </data>
+  <data name="MentoringHistory_Recomendation" xml:space="preserve">
+    <value>Id_Recomendation</value>
+  </data>
+  <data name="Mentoring_DateStart" xml:space="preserve">
+    <value>Дата Начало</value>
+  </data>
+  <data name="Mentoring_DateFinish" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="Mentoring_Workers" xml:space="preserve">
+    <value>Id_Mentor</value>
+  </data>
+  <data name="Nationality_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Nationality_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Nationality_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Nationality_Name_F" xml:space="preserve">
+    <value>Имя_Женское</value>
+  </data>
+  <data name="Nationality_Name_M" xml:space="preserve">
+    <value>Имя_Мужское</value>
+  </data>
+  <data name="OrganizationForExperience_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="OrganizationForExperience_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="OrganizationForExperience_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="OrganizationForExperience_Place" xml:space="preserve">
+    <value>Местонахождение</value>
+  </data>
+  <data name="PassportMaker_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="PassportMaker_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="PassportMaker_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Penalty_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Penalty_DatePenalty" xml:space="preserve">
+    <value>Дата взыскания</value>
+  </data>
+  <data name="Penalty_DateEndPenalty" xml:space="preserve">
+    <value>Дата снятия Взыскания</value>
+  </data>
+  <data name="Penalty_TypePenalty" xml:space="preserve">
+    <value>Id_Тип взыскания</value>
+  </data>
+  <data name="Penalty_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PersonEducation_DateFinished" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="PersonEducation_Profession" xml:space="preserve">
+    <value>Id Профессии</value>
+  </data>
+  <data name="PersonEducation_StartDate" xml:space="preserve">
+    <value>Дата поступления</value>
+  </data>
+  <data name="PersonEducation_LastCourseNumber" xml:space="preserve">
+    <value>Ушёл с курса</value>
+  </data>
+  <data name="PersonEducation_University" xml:space="preserve">
+    <value>Id Учебного заведения</value>
+  </data>
+  <data name="PersonEducation_Faculty" xml:space="preserve">
+    <value>Id Факультета</value>
+  </data>
+  <data name="PersonEducation_DocumentNumber" xml:space="preserve">
+    <value>Номер диплома</value>
+  </data>
+  <data name="PersonEducation_StudyType" xml:space="preserve">
+    <value>Id Вида обучения</value>
+  </data>
+  <data name="PersonEducation_Quality" xml:space="preserve">
+    <value>Id Квалификации</value>
+  </data>
+  <data name="PersonEducation_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PersonLanguageLevel_Language" xml:space="preserve">
+    <value>Id Языка</value>
+  </data>
+  <data name="PersonLanguageLevel_LanguageLevel" xml:space="preserve">
+    <value>Id Уровня владения языком</value>
+  </data>
+  <data name="PersonPhone_PhoneNumber" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="PersonPhone_PhoneNumberType" xml:space="preserve">
+    <value>Id Типа номера телефона</value>
+  </data>
+  <data name="PersonQualityUpper_StartDate" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="PersonQualityUpper_DateFinished" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="PersonQualityUpper_Place" xml:space="preserve">
+    <value>Место повышения квалификации</value>
+  </data>
+  <data name="PersonQualityUpper_QualityUpperTyle" xml:space="preserve">
+    <value>Id Вида повышения квалификации</value>
+  </data>
+  <data name="PersonQualityUpper_DocumentNumber" xml:space="preserve">
+    <value>Номер свидетельства</value>
+  </data>
+  <data name="PersonQualityUpper_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PersonRank_SpecialRank" xml:space="preserve">
+    <value>Id Звания</value>
+  </data>
+  <data name="PersonRank_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PersonRank_AcceptedDate" xml:space="preserve">
+    <value>Дата присвоения</value>
+  </data>
+  <data name="PersonRewards_Reward" xml:space="preserve">
+    <value>Id Государственной награды</value>
+  </data>
+  <data name="PersonRewards_AcceptedDate" xml:space="preserve">
+    <value>Дата награждения</value>
+  </data>
+  <data name="PersonRewards_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PersonVacation_DateStart" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="PersonVacation_DateFinished" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="PersonVacation_VacationType" xml:space="preserve">
+    <value>Id Вида отпуска</value>
+  </data>
+  <data name="PersonVacation_PeriodInMonth" xml:space="preserve">
+    <value>За период в месяцах</value>
+  </data>
+  <data name="PersonVacation_Reason" xml:space="preserve">
+    <value>Основание</value>
+  </data>
+  <data name="PersonVacation_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="PhoneNumberType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="PhoneNumberType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="PhoneNumberType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="PostOutOfOrganization_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="PostOutOfOrganization_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="PostOutOfOrganization_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Profession_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Profession_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Profession_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Quality_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Quality_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Quality_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Quality_Place" xml:space="preserve">
+    <value>Местоположение</value>
+  </data>
+  <data name="QualityUpperTyle_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="QualityUpperTyle_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="QualityUpperTyle_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Recomendation_Name" xml:space="preserve">
+    <value>Рекомендации</value>
+  </data>
+  <data name="Relative_Surname" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="Relative_DateBirth" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="Relative_FamilyType" xml:space="preserve">
+    <value>Id Степени родства</value>
+  </data>
+  <data name="Relative_Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="Relative_RelativeStatus" xml:space="preserve">
+    <value>Id_Статус Родственика</value>
+  </data>
+  <data name="RelativeStatus_Name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="RelativeStatus_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="RelativeStatus_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Reward_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Reward_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Reward_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="ScienceDegree_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ScienceDegree_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ScienceDegree_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="ScienceThing_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ScienceThing_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ScienceThing_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="ScienceThing_ScienceThingType" xml:space="preserve">
+    <value>Id Типа научного труда</value>
+  </data>
+  <data name="ScienceThing_Document" xml:space="preserve">
+    <value>Id Документа</value>
+  </data>
+  <data name="ScienceThingType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ScienceThingType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ScienceThingType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Sex_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Sex_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Sex_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="SpecialRank_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="SpecialRank_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="SpecialRank_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="StateItem_Post" xml:space="preserve">
+    <value>Id Должности</value>
+  </data>
+  <data name="StateItem_Quantity" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="StudyType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="StudyType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="StudyType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="StudyType_Place" xml:space="preserve">
+    <value>Местоположение</value>
+  </data>
+  <data name="Subject_Name" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="TypePenalty_Name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="TypePenalty_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="TypePenalty_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="TypeWorkingHiring_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="TypeWorkingHiring_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="TypeWorkingHiring_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="UniversityDegree_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="UniversityDegree_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="UniversityDegree_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="University_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="University_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="University_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="University_Place" xml:space="preserve">
+    <value>Местоположение</value>
+  </data>
+  <data name="VacationType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="VacationType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="VacationType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WarriorCategory_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WarriorCategory_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WarriorCategory_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WarriorDegree_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WarriorDegree_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WarriorDegree_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WarriorGroup_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WarriorGroup_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WarriorGroup_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WarriorReadyType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WarriorReadyType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WarriorReadyType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WarriorSpeciality_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WarriorSpeciality_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WarriorSpeciality_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WorkerStatus_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WorkerStatus_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WorkerStatus_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="WorkExperience_DateStart" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="WorkExperience_DateFinished" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="WorkExperience_PostOutOfOrganization" xml:space="preserve">
+    <value>Id Должности</value>
+  </data>
+  <data name="WorkExperience_OrganizationForExperience" xml:space="preserve">
+    <value>Id Организации</value>
+  </data>
+  <data name="WorkExperience_IsMainWork" xml:space="preserve">
+    <value>Основное место работы</value>
+  </data>
+  <data name="WorkExperience_IsGovermentWork" xml:space="preserve">
+    <value>Является Госслужбой</value>
+  </data>
+  <data name="WorkExperience_IsSpeciality" xml:space="preserve">
+    <value>По специальности</value>
+  </data>
+  <data name="WorkingType_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WorkingType_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="WorkingType_Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Year_Year" xml:space="preserve">
+    <value>Год</value>
+  </data>
+</root>

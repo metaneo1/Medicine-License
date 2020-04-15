@@ -1,0 +1,45 @@
+@using MvcBaseApp.Resources
+@model RequestState
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSaveRequestStateClick(s, e) {
+        var data = $(AddRequestStateFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "RequestState")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelRequestStateClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "RequestState"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

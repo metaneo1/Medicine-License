@@ -1,0 +1,36 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel 
+
+
+<!-- Variables -->
+<script>
+    var current@(Model.EntityName)Id = 0;
+    var current@(Model.EntityName)RowHandle = 0;
+    //var current@(Model.EntityName)Name = '';
+</script>
+
+<!-- Grid Events-->
+<script>
+    function On@(Model.EntityName)GridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'Id', On@(Model.EntityName)GetRowValues);
+    }
+    function On@(Model.EntityName)GetRowValues(values) {
+        current@(Model.EntityName)Id = values;
+        //current@(Model.EntityName)Name = values[1];
+    }
+</script>
+
+<!-- Private Functions -->
+<script>
+    function update@(Model.EntityName)List() {
+        $.get('@Url.Action("IndexPartial", Model.EntityName)' + '?@Html.Raw(Model.AdditionalUrlParamenter)', function (data) {
+            $('#@(Model.EntityName)List').html(data);
+            gv@(Model.EntityName)DataBindingToLinq.SetFocusedRowIndex(current@(Model.EntityName)RowHandle);
+        });
+    }
+</script>
+
+<br />
+<br />
+
+<div id="@(Model.EntityName)List">

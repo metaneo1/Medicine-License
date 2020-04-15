@@ -1,0 +1,60 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model List<DataModel.Message>
+@{
+    Layout = null;
+
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvLicenseRequestDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "Message", Action = "MessageList" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+
+
+
+        settings.Columns.Add(y =>
+        {                y.Name = "MessageText";
+            y.FieldName = "MessageText";
+            y.Caption = Labels.ResourceManager.GetString("Message_MessageText");
+            y.CellStyle.Wrap = DefaultBoolean.True;
+            y.HeaderStyle.Wrap = DefaultBoolean.True;
+            y.Columns.Add(x =>
+            {
+                x.Name = "MessageDate";
+                x.FieldName = "MessageDate";
+                x.Caption = Labels.ResourceManager.GetString("Message_MessageDate");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+            y.Columns.Add(x =>
+            {
+                x.Name = "QuestionType.Name_ru";
+                x.FieldName = "QuestionType.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString("Message_QuestionType_Name");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        });
+
+
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnLicenseRequestGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.Width = Unit.Pixel(400);
+
+        //settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        //{
+        //    MVCxGridView gridView = sender as MVCxGridView;
+        //    Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        //};
+
+    }).Bind(Model).GetHtml()

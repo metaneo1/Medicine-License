@@ -1,0 +1,45 @@
+@using MvcBaseApp.Resources
+@model RequestElementType
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSaveRequestElementTypeClick(s, e) {
+        var data = $(AddRequestElementTypeFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "RequestElementType")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelRequestElementTypeClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "RequestElementType"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

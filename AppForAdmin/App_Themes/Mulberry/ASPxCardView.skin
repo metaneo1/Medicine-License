@@ -1,0 +1,13 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxCardView runat="server">
+    <SettingsPager CurrentPageNumberFormat="{0}" />
+    <SettingsPopup>
+        <HeaderFilter MinWidth="280px" MinHeight="150px" />
+    </SettingsPopup>
+    <Images SpriteCssFilePath="~/App_Themes/Mulberry/{0}/sprite.css" />
+    <Styles CssPostfix="Mulberry" CssFilePath="~/App_Themes/Mulberry/{0}/styles.css" />
+</dx:ASPxCardView>
+
+

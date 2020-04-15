@@ -1,0 +1,67 @@
+﻿@using System.Drawing
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.DataTypeConverters
+@using MvcBaseApp.Resources
+
+@model MvcBaseApp.AspNetRoles
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddStateItemFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.StateItem_MainInfo;
+        g.ColCount = 1;
+        g.Items.Add(m => m.Name, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AspNetRoles_Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "StateItem_Quantity"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = "Название";
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "saveStateItemButton";
+                s.Text = Labels.btnSave;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.ClientSideEvents.Click = "OnSaveStateItemClick";
+            });
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelStateItemButton";
+                s.Text = Labels.btnCancel;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.ClientSideEvents.Click = "OnCancelStateItemClick";
+            });
+        });
+    });
+
+}).GetHtml()

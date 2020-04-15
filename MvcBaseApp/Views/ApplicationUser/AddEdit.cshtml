@@ -1,0 +1,116 @@
+﻿@using DataModel
+@using MvcBaseApp.Resources
+@model DataModel.ApplicationUser
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    Пользователь @*@Labels.ApplicationUser*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+    function OnSaveApplicationUserClick(s, e) {
+        applyApplicationUserButton.SetEnabled(false);
+        if ('@(Model.Id)' == '0') {
+            var formData = new FormData(AddApplicationUserFormLayout.GetParentForm());
+            formData.append('id', '@Model.Id');
+            //var data = $(AddApplicationUserFormLayout.GetParentForm()).serialize();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RegisterViaDesktop", "InPageAutorize")',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    var data = response.split(':');
+                    if(data[0] == 'OK'){
+                        $.alert('Регистрация прошла успешна');
+                        closeLastPage();
+                        return;
+                    }
+                    $.alert(data[1]);
+                    applyApplicationUserButton.SetEnabled(true);
+                },
+                error: function () {
+                    $.alert('@Labels.ErrorNullFields');
+                    applyApplicationUserButton.SetEnabled(true);
+                }
+            });
+            return;
+        }
+        //var data = $(AddApplicationUserFormLayout.GetParentForm()).serialize();
+        var formData = new FormData(AddApplicationUserFormLayout.GetParentForm());
+        formData.append('id', '@Model.Id');
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "ApplicationUser")',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+        @*$.ajax({
+            type: "POST",
+            //contentType: false,
+            //processData: false,
+            url: '@Url.Action("AddEdit", "ApplicationUser")',
+            data: data + '&id=@Model.Id',
+            contentType: false,
+            processData: false,
+            success: function () {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+                applyApplicationUserButton.SetEnabled(true);
+            }
+        });*@
+    }
+
+    function OnCancelApplicationUserClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+@using (Html.BeginForm("AddEdit", "ApplicationUser"))
+{
+    <div style="float:left;">
+        <div id="editableContainer">
+            @Html.Partial("_AddEdit", Model)
+
+        </div>
+    </div>
+    <div style="text-align: center; border-radius: 25px;border: 2px solid #BDBDBD; padding: 10px; float: right;">
+        <img id="blah" style="margin-bottom:5px; border-radius: 25px; width: 250px; height:300px; object-fit: cover;"
+             src="@Url.Action("MyImage", "ApplicationUser", new {id = Model.Id_Document})" />
+        <br />
+        @Html.Partial("_FileTemplate", Model.Document ?? new Document { Id = 0 })
+    </div>
+
+}
+
+@*@using (Html.BeginForm("AddEdit", "ApplicationUser"))
+    {
+        <div id="editableContainer">
+            @Html.Partial("_AddEdit", Model)
+        </div>
+    }*@
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

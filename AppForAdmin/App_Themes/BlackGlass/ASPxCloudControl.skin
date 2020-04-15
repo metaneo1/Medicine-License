@@ -1,0 +1,15 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<dx:ASPxCloudControl runat="server" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass"
+    MinColor="#B5D5EF" MaxColor="#325678" HorizontalAlign="Justify">
+    <RankProperties>
+        <dx:RankProperties ForeColor="#AACFEC" Font-Size="10px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#86B4D8" Font-Size="13px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#4E8CBC" Font-Size="16px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#3E6B96" Font-Size="21px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#325678" Font-Size="25px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#325678" Font-Size="27px"></dx:RankProperties>
+        <dx:RankProperties ForeColor="#325678" Font-Size="28px"></dx:RankProperties>
+    </RankProperties>
+</dx:ASPxCloudControl>

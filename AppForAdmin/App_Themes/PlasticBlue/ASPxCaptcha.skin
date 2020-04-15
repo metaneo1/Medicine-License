@@ -1,0 +1,7 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxCaptcha runat="server" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" CssPostfix="PlasticBlue" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css">
+    <ChallengeImage ForegroundColor="#485C9F" BackgroundColor="WhiteSmoke" BorderColor="#CCCCCC"></ChallengeImage>
+</dx:ASPxCaptcha>
+

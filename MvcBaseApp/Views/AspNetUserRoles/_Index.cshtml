@@ -1,0 +1,46 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+    var id = (string)ViewBag.AspNetUserRoles_Id_User;
+
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvAspNetUserRolesDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "AspNetUserRoles", Action = "IndexPartial", Id_User = id };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        if (Html.HasRoleView(Session, Model.EntityName + "_Role"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "AspNetRoles.Name";
+                x.FieldName = "AspNetRoles.Name";
+                x.Caption = "Роль";
+                x.CellStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnAspNetUserRolesGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+        
+        
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.AspNetUserRoles.Where(x => x.UserId == id);
+
+    }).GetHtml()

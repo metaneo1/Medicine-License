@@ -1,0 +1,38 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxSiteMapControl runat="server" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" SpriteCssFilePath="~/App_Themes/BlackGlass/{0}/sprite.css" CssPostfix="BlackGlass">
+    <LevelProperties>
+        <dx:LevelProperties BulletStyle="None">
+            <ChildNodesPaddings PaddingTop="9px"></ChildNodesPaddings>
+        </dx:LevelProperties>
+        <dx:LevelProperties>
+            <ChildNodesPaddings PaddingTop="7px" PaddingLeft="18px"></ChildNodesPaddings>
+            <NodePaddings PaddingLeft="6px"></NodePaddings>
+			<Image>
+				<SpriteProperties CssClass="dxWeb_smBullet_BlackGlass"></SpriteProperties>				
+			</Image>
+        </dx:LevelProperties>
+        <dx:LevelProperties>
+            <ChildNodesPaddings PaddingTop="7px" PaddingLeft="16px"></ChildNodesPaddings>
+            <NodePaddings PaddingLeft="2px"></NodePaddings>
+			<Image>
+				<SpriteProperties CssClass="dxWeb_smBullet_BlackGlass"></SpriteProperties>				
+			</Image>
+        </dx:LevelProperties>
+        <dx:LevelProperties>
+			<Image>
+				<SpriteProperties CssClass="dxWeb_smBullet_BlackGlass"></SpriteProperties>				
+			</Image>
+        </dx:LevelProperties>
+    </LevelProperties>
+
+    <DefaultLevelProperties BulletStyle="Disc" NodeSpacing="3px">
+        <CurrentNodeStyle BackColor="#d0dae2"></CurrentNodeStyle>
+    </DefaultLevelProperties>
+
+    <ColumnStyle>
+        <Paddings PaddingBottom="10px"></Paddings>
+    </ColumnStyle>
+</dx:ASPxSiteMapControl>
+

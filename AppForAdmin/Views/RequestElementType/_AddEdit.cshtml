@@ -1,0 +1,149 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+@using DataModel;
+@model RequestElementType
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddRequestElementTypeFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.RequestElementType_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestElementType_Name_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestElementType_Name_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestElementType_Name_ru;
+ g.Items.Add(m => m.Name_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestElementType_Name_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestElementType_Name_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestElementType_Name_kg;
+ g.Items.Add(m => m.Description_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestElementType_Description_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestElementType_Description_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestElementType_Description_ru;
+ g.Items.Add(m => m.Description_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestElementType_Description_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestElementType_Description_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestElementType_Description_kg;
+ g.Items.Add(m => m.CODE, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestElementType_CODE");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestElementType_CODE"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestElementType_CODE;
+g.Items.Add(m => m.IsNeedTemplate, i =>
+        {
+            i.NestedExtension().CheckBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElementType_IsNeedTemplate;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyRequestElementTypeButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveRequestElementTypeClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelRequestElementTypeButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelRequestElementTypeClick";
+            });
+        });
+    });
+
+}).GetHtml()

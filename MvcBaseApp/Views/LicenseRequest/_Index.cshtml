@@ -1,0 +1,172 @@
+@using System.Web.UI.WebControls
+@using DataModel.Const
+@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+    var aspuser = User.Identity.GetUserId();
+    var userId = DatabaseProvider.DB.AspNetUsers.FirstOrDefault(x => x.Id == aspuser);
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvLicenseRequestDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "LicenseRequest", Action = "IndexPartial"};
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+
+        if (Html.HasRoleView(Session, Model.EntityName + "_DateCreate"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "DateCreate";
+                x.FieldName = "DateCreate";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_DateCreate");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_ClinicName"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "ClinicName";
+                x.FieldName = "ClinicName";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ClinicName");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Address"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Address";
+                x.FieldName = "Address";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Address");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Phone1"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Phone1";
+                x.FieldName = "Phone1";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Phone1");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        //if (Html.HasRoleView(Session, Model.EntityName + "_Phone2"))
+        //{
+        //    settings.Columns.Add(x =>
+        //    {
+        //        x.Name = "Phone2";
+        //        x.FieldName = "Phone2";
+        //        x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Phone2");
+        //        x.CellStyle.Wrap = DefaultBoolean.True;
+        //        x.HeaderStyle.Wrap = DefaultBoolean.True;
+        //    });
+        //}
+        if (Html.HasRoleView(Session, Model.EntityName + "_Email"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Email";
+                x.FieldName = "Email";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Email");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Organization"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Organization.Name_ru";
+                x.FieldName = "Organization.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Organization");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_AdminUnits"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "AdminUnits.Name_ru";
+                x.FieldName = "AdminUnits.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_AdminUnits");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_RequestType"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "RequestType.Name_ru";
+                x.FieldName = "RequestType.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestType");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        settings.Columns.Add(x =>
+        {
+            x.Name = "Id_CurrentState";
+            x.FieldName = "Id_CurrentState";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestState"); ;
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+            x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.SetDataItemTemplateContent(c =>
+            {
+                var id =(int?) DataBinder.Eval(c.DataItem, "Id_CurrentState");
+                var icon = "";
+                if (id== Const.RequestStateId.Finished)
+                    icon = "Content/icons/add_32x32.png";
+                else if (id== Const.RequestStateId.Reopen)
+                    icon = "Content/icons/delete_32x32.png";
+                else if (id== Const.RequestStateId.InProgress)
+                    icon = "Content/icons/customer_32x32.png";
+                else //if (id== Const.RequestStateId.Unassigned)
+                    icon = "Content/icons/Faculty_32x32.png";
+                if (icon!="")
+                    ViewContext.Writer.Write("<img style='vertical-align: middle;' src='"+icon+"' width=32 height=32/>");
+            });
+        });
+        //if (Html.HasRoleView(Session, Model.EntityName + "_ApplicationUser"))
+        //{
+        //    settings.Columns.Add(x =>
+        //    {
+        //        x.Name = "ApplicationUser.FullName";
+        //        x.FieldName = "ApplicationUser.FullName";
+        //        x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ApplicationUser");
+        //        x.CellStyle.Wrap = DefaultBoolean.True;
+        //        x.HeaderStyle.Wrap = DefaultBoolean.True;
+        //    });
+        //}
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnLicenseRequestGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.LicenseRequest.Where(x=>x.Id_User == userId.Id_ApplicationUser && !x.IsDraft);
+
+    }).GetHtml()

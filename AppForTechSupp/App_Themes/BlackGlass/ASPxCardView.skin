@@ -1,0 +1,15 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxCardView runat="server" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass">
+    <Images SpriteCssFilePath="~/App_Themes/BlackGlass/{0}/sprite.css">
+    </Images>
+    <Styles CssPostfix="BlackGlass" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css">
+        <Header SortingImageSpacing="5px" ImageSpacing="5px" />
+    </Styles>
+    <SettingsPager CurrentPageNumberFormat="{0}">
+        <FirstPageButton Visible="True" />
+        <LastPageButton Visible="True" />
+    </SettingsPager>
+</dx:ASPxCardView>
+

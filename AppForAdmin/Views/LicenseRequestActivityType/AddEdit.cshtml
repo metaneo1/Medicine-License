@@ -1,0 +1,52 @@
+@using MvcBaseApp.Resources
+@model LicenseRequestActivityType
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @(Model.Id == 0 ? Labels.LicenseRequestActivityType_Add : Labels.LicenseRequestActivityType + Model.Id)
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveLicenseRequestActivityTypeClick(s, e) {
+        var data = $(AddLicenseRequestActivityTypeFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "LicenseRequestActivityType")',
+            data: data + '&id=@Model.Id&Id_Request=@Model.Id_Request',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelLicenseRequestActivityTypeClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "LicenseRequestActivityType"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

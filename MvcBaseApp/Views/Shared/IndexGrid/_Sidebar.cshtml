@@ -1,0 +1,17 @@
+﻿@using MvcBaseApp.Resources
+
+@model MvcBaseApp.Models.IndexGridModel
+
+
+<script>
+    function OnNavbar@(Model.EntityName)ItemClick(s, e) {
+        if (current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) {
+            $.alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+        loadNewPage(routes@(Model.EntityName)[e.item.name] + current@(Model.EntityName)Id);
+    }
+</script>
+
+@Html.Partial("_Sidebar", Model)
+

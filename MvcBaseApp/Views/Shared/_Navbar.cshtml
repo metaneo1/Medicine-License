@@ -1,0 +1,71 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+
+<script>
+    var currentItem = null;
+    var lastUrl = '';
+    function restoreItemText() {
+        currentItem.SetNavigateUrl(lastUrl);
+    }
+
+    function anbItemClick(s, e) {
+        var curNavigateUrl = e.item.GetNavigateUrl();
+        //alert(curNavigateUrl);
+        e.item.SetNavigateUrl('javascript:void(0)');
+        currentItem = e.item;
+        lastUrl = curNavigateUrl;
+        loadNewPage(curNavigateUrl, restoreItemText);
+        //navigateItemAjax(curNavigateUrl, e.item);
+    }
+</script>
+
+
+@Html.DevExpress().NavBar(s =>
+{
+    s.Name = "nbAdmin";
+
+    s.AllowExpanding = true;
+    s.AllowSelectItem = true;
+    s.AutoCollapse = true;
+    s.EnableHotTrack = false;
+    s.EnableAnimation = true;
+    s.Width = Unit.Percentage(100);
+
+
+    s.Groups.Add(group =>
+    {
+        group.Text = "Заявки";
+        group.Items.Add(i =>
+        {
+            i.Text = Labels.Ribbon_HRM_Workers;
+            i.NavigateUrl = Url.Action("Index", "LicenseRequest");
+            i.Image.Url = Url.Content("~/Content/icons/FormatDocument_32x32.png");
+        });
+        group.Items.Add(i =>
+        {
+            i.Text = "Сообщения";
+            i.NavigateUrl = Url.Action("AllMessages", "Message");
+            i.Image.Url = Url.Content("~/Content/icons/PhoneNumberType_32x32.png");
+        });
+    });
+
+    s.Groups.Add(group =>
+    {
+        group.Text = Labels.Ribbon_MyInfo;
+        group.Items.Add(i =>
+        {
+            i.Text = Labels.Ribbon_MyInfo;
+            i.NavigateUrl = Url.Action("AddEdit", "ApplicationUser");
+            i.Image.Url = Url.Content("~/Content/icons/customer_32x32.png");
+        });
+        group.Items.Add(i =>
+        {
+            i.Text = "Пароль";
+            i.NavigateUrl = Url.Action("Manage", "Account");
+            i.Image.Url = Url.Content("~/Content/icons/ide_32x32.png");
+        });
+    });
+
+    s.ClientSideEvents.ItemClick = "anbItemClick";
+}).GetHtml()

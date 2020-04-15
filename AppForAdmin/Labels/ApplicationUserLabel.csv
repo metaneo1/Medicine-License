@@ -1,0 +1,8 @@
+Labels.ApplicationUser_FullName,ФИО
+Labels.ApplicationUser_phone1,Телефон 1
+Labels.ApplicationUser_phone2,Телефон 2
+Labels.ApplicationUser_email,email
+Labels.ApplicationUser_DOB,Дата Рождения
+Labels.ApplicationUser_DOB,Дата Рождения
+Labels.ApplicationUser_Sex,Id_Пол
+Labels.ApplicationUser_IsActive,Активен

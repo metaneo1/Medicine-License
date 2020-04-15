@@ -1,0 +1,131 @@
+﻿@using DataModel
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Controllers.MyMessageModel
+
+@{
+    Layout = null;//"~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Сообщения по заявкам</h2>
+<script>
+    function btnCloseClick() {
+        var needStop = false;
+        if (typeof OnBtnCloseClick !== "undefined") {
+            if (OnBtnCloseClick != null) {
+                needStop = OnBtnCloseClick();
+            }
+            if (needStop)
+                return;
+        }
+        closeLastPage();
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnClose";
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnCloseClick";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/out.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnClose;
+}).GetHtml()
+<script>
+    var requestId = null;
+    var messageId = null;
+    function OnLicenseRequestGridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'Id_Request', OnLicenseRequestGetRowValues);
+    }
+
+    function OnMessageGridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'Id', OnMessageGetRowValues);
+    }
+
+    function OnMessageGetRowValues(values) {
+        messageId = values;
+
+    }
+    function OnLicenseRequestGetRowValues(values) {
+        requestId = values;
+
+        if (requestId > 0) {
+            if (!pnl_Request.InCallback())
+                pnl_Request.PerformCallback({ FilterId: requestId });
+            if (!pnl_Messages.InCallback()) {
+                pnl_Messages.PerformCallback({ Id_Request: requestId });
+            }
+            if (!pnl_RequestStateHistory.InCallback()) {
+                pnl_RequestStateHistory.PerformCallback({ Id_Request: requestId });
+            }
+            if (!pnl_Documents.InCallback()) {
+                pnl_Documents.PerformCallback({ Id_Request: requestId });
+            }
+        }
+
+    }
+
+    function OnMessageGridFocusedRowChanged(s, e) {
+
+    }
+
+    function OnRequestStateHistoryGridFocusedRowChanged(s, e) {
+
+    }
+
+    function OnBeginCallbackList(s, e) {
+        e.customArgs["FilterId"] = requestId;
+        requestId = null;
+    }
+    function OnEndCallbackList(s, e) {
+        if (requestId != null)
+            pnl_Request.PerformCallback();
+    }
+</script>
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Action("MessageList")
+        </div>
+        <div class="col-md-7">
+            <div class="row">
+                @Html.Action("LicenseRequestPartial", new { FilterId = 2 })
+            </div>
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#description">Сообщения</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#characteristics">Документы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#opinion">История статусов</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="description">
+                        @Html.Action("GetLicenseMessagesPartial")
+                    </div>
+                    <div class="tab-pane fade" id="characteristics">
+                        @Html.Action("GetLicenseDocumentsPartial", "DocumentInRequest")
+                    </div>
+                    <div class="tab-pane fade" id="opinion">
+                        @Html.Action("GetLicenseStatusesPartial")
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    hideBigLoader();
+</script>

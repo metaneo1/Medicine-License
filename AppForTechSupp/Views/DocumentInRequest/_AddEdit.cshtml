@@ -1,0 +1,144 @@
+@using System.Drawing
+@using System.Web.UI.WebControls
+@using DataModel
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+
+@model DataModel.DocumentInRequest
+
+@{
+    var datamodel = (DocumentInRequestAddEditModel)ViewBag.MODEL;
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddDocumentInRequestFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.DocumentInRequest_MainInfo;
+        g.ColCount = 1;
+       
+        g.Items.Add(m => m.Id_DocumentState, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Id_DocumentState");
+            i.SetNestedContent(Html.Action("GetLookUp", "DocumentState", new { JsElementName = "Id_DocumentState_AddDocumentInRequest", CallerConrtoller = "AddDocumentInRequest", CurrentValue = Model.Id_DocumentState }).ToString());
+        }).Caption = Labels.DocumentInRequest_DocumentState;
+       
+        g.Items.Add(m => m.Description, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Description");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocumentInRequest_Description"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocumentInRequest_Description;
+
+        //TODO добавить Id_RequestElement
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.Document;
+        g.ColCount = 1;
+        g.Items.Add(m => m.Document.Id_DocumentFormat, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Document.Id_DocumentType");
+            i.SetNestedContent(Html.Action("GetLookUp", "Document_Format",
+                new
+                {
+                    JsElementName = "Document.Id_DocumentFormat",
+                    CallerConrtoller = "AddDocumentInRequest",
+                    CurrentValue = Model.Document.Id_DocumentFormat,
+                    buttons = LookUpReloadButton.None
+
+                }).ToString());
+        }).Caption = Labels.Document_Id_DocumentType;
+
+        g.Items.Add(m => m.Document.Name, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Document.Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocumentInRequest_Document.Name"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+
+
+        }).Caption = Labels.Document_Name;
+        g.Items.Add(m => m.Document.Description, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Document.Description");
+            i.NestedExtension().Memo(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocumentInRequest_Document.Description"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Document_Description;
+
+        g.Items.Add(m => m.Document.Filename, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocumentInRequest_Id_Document");
+            i.SetNestedContent(Html.Partial("_FileTemplate", Model.Document??new Document{Id=0}).ToString());
+        }).Caption = Labels.Document_body;
+
+    });
+
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "saveDocumentInRequestButton";
+                s.Text = Labels.btnSave;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.ClientSideEvents.Click = "OnSaveDocumentInRequestClick";
+            });
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelDocumentInRequestButton";
+                s.Text = Labels.btnCancel;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.ClientSideEvents.Click = "OnCancelDocumentInRequestClick";
+            });
+        });
+    });
+
+}).GetHtml()

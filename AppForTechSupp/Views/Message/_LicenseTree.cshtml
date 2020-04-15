@@ -1,0 +1,77 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model List<DataModel.LicenseRequest>
+@{
+    Layout = null;
+
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvLicenseRequestDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "Message", Action = "LicenseTree" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+
+        settings.Columns.Add(x =>
+        {
+            x.Name = "DateCreate";
+            x.FieldName = "DateCreate";
+            //x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_DateCreate");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+
+        settings.Columns.Add(x =>
+        {
+            x.Name = "ClinicName";
+            x.FieldName = "ClinicName";
+            //x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ClinicName");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        
+        settings.Columns.Add(x =>
+        {
+            x.Name = "Organization.Name_ru";
+            x.FieldName = "Organization.Name_ru";
+            // x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Organization");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+
+        settings.Columns.Add(x =>
+        {
+            x.Name = "AdminUnits.Name_ru";
+            x.FieldName = "AdminUnits.Name_ru";
+            //x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_AdminUnits");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+
+        settings.Columns.Add(x =>
+        {
+            x.Name = "RequestType.Name_ru";
+            x.FieldName = "RequestType.Name_ru";
+            // x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestType");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnLicenseRequestGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.Width = Unit.Pixel(400);
+
+        //settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        //{
+        //    MVCxGridView gridView = sender as MVCxGridView;
+        //    Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        //};
+
+    }).Bind(Model).GetHtml()

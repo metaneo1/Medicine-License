@@ -1,0 +1,5 @@
+Labels.AbroadTrip_DepartureDate,Дата выезда
+Labels.AbroadTrip_ArrivalDate,Дата возвращения
+Labels.AbroadTrip_Country,Id Страны
+Labels.AbroadTrip_AbroadTripReason,Id Цели пребывания
+Labels.AbroadTrip_Document,Id Документа

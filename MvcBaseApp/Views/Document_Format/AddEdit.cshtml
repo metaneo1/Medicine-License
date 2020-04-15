@@ -1,0 +1,45 @@
+@using MvcBaseApp.Resources
+@model DataModel.Document_Format
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSaveDocument_FormatClick(s, e) {
+        var data = $(AddDocument_FormatFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Document_Format")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelDocument_FormatClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "Document_Format"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

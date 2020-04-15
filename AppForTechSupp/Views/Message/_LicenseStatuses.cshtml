@@ -1,0 +1,58 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel<List<DataModel.RequestStateHistory>>
+@{
+    Layout = null;
+    var id = (int?)ViewBag.Message_Id_Request;
+
+}
+
+@Html.DevExpress().GridView(
+            settings =>
+            {
+                settings.Name = "gvRequestStateHistoryDataBindingToLinq";
+                settings.CallbackRouteValues = new { Controller = "Message", Action = "LicenseStatusesPartial", Id_Request = id };
+                settings.KeyFieldName = "Id";
+                settings.Width = Unit.Percentage(100);
+                settings.EnableRowsCache = true;
+                settings.Settings.ShowFilterRow = true;
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "DateStatusChange";
+                    x.FieldName = "DateStatusChange";
+                    x.Caption = Labels.ResourceManager.GetString("RequestStateHistory_DateStatusChange");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "ApplicationUser.FullName";
+                    x.FieldName = "ApplicationUser.FullName";
+                    x.Caption = Labels.ResourceManager.GetString("RequestStateHistory_ApplicationUser_FullName");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "RequestState.Name_kg";
+                    x.FieldName = "RequestState.Name_kg";
+                    x.Caption = Labels.ResourceManager.GetString("RequestStateHistory_RequestState_Name");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.ClientSideEvents.FocusedRowChanged = "OnRequestStateHistoryGridFocusedRowChanged";
+                //settings.ClientSideEvents.Init = "resizeGrid";
+
+                //settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+                //{
+                //    MVCxGridView gridView = sender as MVCxGridView;
+                //    Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+                //};
+
+            }).Bind(Model.Entity).GetHtml()

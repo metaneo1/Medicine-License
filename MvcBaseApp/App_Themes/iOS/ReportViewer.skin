@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v16.1.Web, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dx:ReportViewer runat="server" SpriteCssFilePath="{0}/sprite.css" CssPostfix="iOS" CssFilePath="{0}/styles.css">
+    <LoadingPanelImage Url="XtraReports/Loading.gif" />
+    <LoadingPanelStyle BackColor="#FFFFFF" Font-Names="Segoe UI" Font-Size="14px" ForeColor="#000000">
+        <Paddings PaddingLeft="14px" PaddingTop="10px" PaddingRight="14px" PaddingBottom="10px" />
+        <Border BorderColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" />
+    </LoadingPanelStyle>
+</dx:ReportViewer>
+
+

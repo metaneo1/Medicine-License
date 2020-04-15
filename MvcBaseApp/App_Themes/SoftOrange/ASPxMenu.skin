@@ -1,0 +1,25 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxMenu runat="server"
+    SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange"
+    BorderBetweenItemAndSubMenu="HideRootOnly"  AutoSeparators="RootOnly" ShowPopOutImages="True">
+    <ItemStyle PopOutImageSpacing="10px" DropDownButtonSpacing="8px" ToolbarPopOutImageSpacing="5px" ToolbarDropDownButtonSpacing="5px"></ItemStyle>
+</dx:ASPxMenu>
+
+<dx:ASPxMenu runat="server" SkinID="MenuToolBar" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"  ShowPopOutImages="True"
+    CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" SeparatorHeight="100%"
+    AutoSeparators="None" Width="100%" ItemAutoWidth="False">
+    <RootItemSubMenuOffset FirstItemX="-1" X="-1" FirstItemY="-1" Y="-1"/>
+    <ItemStyle DropDownButtonSpacing="8px"></ItemStyle>
+</dx:ASPxMenu>
+<dx:ASPxMenu runat="server" SkinID="MenuButtons" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" 
+	AutoSeparators="None" ItemSpacing="5px" ShowPopOutImages="True" CssPostfix="SoftOrange" CssClass="menuButtons menuButtons_SoftOrange" SeparatorHeight="0px">
+    <Border BorderWidth="0px"/>
+    <RootItemSubMenuOffset X="-1" LastItemX="-1" FirstItemX="-1"></RootItemSubMenuOffset>
+    <SubMenuItemStyle Wrap="False"></SubMenuItemStyle>
+</dx:ASPxMenu>
+<dx:ASPxMenu runat="server" SkinID="MenuLinks" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" ShowPopOutImages="True" 
+    CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" 
+    CssClass="menuLinks_SoftOrange">
+</dx:ASPxMenu>

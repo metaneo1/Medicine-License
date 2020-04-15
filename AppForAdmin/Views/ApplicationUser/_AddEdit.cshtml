@@ -1,0 +1,180 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model ApplicationUser
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddApplicationUserFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.ApplicationUser_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.FullName, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "ApplicationUser_FullName");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "ApplicationUser_FullName"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.ApplicationUser_FullName;
+ g.Items.Add(m => m.phone1, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "ApplicationUser_phone1");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "ApplicationUser_phone1"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.ApplicationUser_phone1;
+ g.Items.Add(m => m.phone2, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "ApplicationUser_phone2");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "ApplicationUser_phone2"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.ApplicationUser_phone2;
+ g.Items.Add(m => m.email, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "ApplicationUser_email");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "ApplicationUser_email"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.ApplicationUser_email;
+g.Items.Add(m => m.DOB, i =>
+        {
+            i.NestedExtension().DateEdit(tb =>
+            {
+                tb.Properties.UseMaskBehavior = true;
+                tb.Properties.EditFormat = EditFormat.Custom;
+                tb.Properties.EditFormatString = DataTypeFormatter.DateFormat;
+                tb.Properties.TimeSectionProperties.Visible = false;
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.ApplicationUser_DOB;
+g.Items.Add(m => m.DOB, i =>
+        {
+            i.NestedExtension().DateEdit(tb =>
+            {
+                tb.Properties.UseMaskBehavior = true;
+                tb.Properties.EditFormat = EditFormat.Custom;
+                tb.Properties.EditFormatString = DataTypeFormatter.DateFormat;
+                tb.Properties.TimeSectionProperties.Visible = false;
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.ApplicationUser_DOB;
+g.Items.Add(m => m.Id_Sex, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "Sex", Action = "GetAllSexListAddApplicationUser" };
+                tb.Name = "Id_Sex_AddApplicationUser";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_SexList_Add_ApplicationUser_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.ApplicationUser_Sex;
+g.Items.Add(m => m.IsActive, i =>
+        {
+            i.NestedExtension().CheckBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.ApplicationUser_IsActive;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyApplicationUserButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveApplicationUserClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelApplicationUserButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelApplicationUserClick";
+            });
+        });
+    });
+
+}).GetHtml()

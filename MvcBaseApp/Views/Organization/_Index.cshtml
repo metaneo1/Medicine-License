@@ -1,0 +1,106 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvOrganizationDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = Model.EntityName, Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+
+        settings.Settings.ShowFilterRow = true;
+		
+if (Html.HasRoleView(Session, Model.EntityName + "_Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Name_ru";
+            x.FieldName = "Name_ru";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_TIN"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "TIN";
+            x.FieldName = "TIN";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_TIN");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_NSCCode"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "NSCCode";
+            x.FieldName = "NSCCode";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_NSCCode");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_RegistrationNumber"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "RegistrationNumber";
+            x.FieldName = "RegistrationNumber";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RegistrationNumber");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_OrganizationType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "OrganizationType.Name_ru";
+            x.FieldName = "OrganizationType.Name_ru";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_OrganizationType");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_Address"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Address";
+            x.FieldName = "Address";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Address");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_AdminUnits.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "AdminUnits.Name_ru";
+            x.FieldName = "AdminUnits.Name_ru";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_AdminUnits");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "On" + Model.EntityName + "GridFocusedRowChanged";
+		settings.ClientSideEvents.Init = "resizeGrid";
+
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.Organization;
+    }).GetHtml()

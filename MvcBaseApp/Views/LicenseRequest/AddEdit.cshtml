@@ -1,0 +1,123 @@
+@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model DataModel.LicenseRequest
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    var aspuser = User.Identity.GetUserId();
+    var user = DatabaseProvider.DB.AspNetUsers.FirstOrDefault(x => x.Id == aspuser);
+    var adminUnit = DatabaseProvider.DB.AdminUnits.FirstOrDefault(x => x.Id == Model.Id_AdminUnit);
+    var adminUnitName = adminUnit == null ? "" : adminUnit.Name_ru;
+    //ViewData["Id_AdminUnit"] = Model.Id_AdminUnit;
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @*@(Model.Id == 0 ? Labels.LicenseRequest_Add : Labels.LicenseRequest + Model.Id)*@
+</h4>
+
+<!-- Button Click Events-->
+<script>
+    var currentSearchTextLicense = '';
+    var currentLocalGovernmentIdLicense = 0;
+    var initialAdminUnitIdLicense = 0;
+    @if (Model.Id_AdminUnit != 0 && Model.Id_AdminUnit != null)
+    {
+        @: initialAdminUnitIdLicense = @Model.Id_AdminUnit;
+    }
+
+
+
+    function TreeInitLicense(s, e) {
+        ddeLicense.SetText('@adminUnitName');
+    }
+
+    function onTreeListBeginCallbackLicense(s, e) {
+        e.customArgs['SearchText'] = currentSearchTextLicense;
+        //if (beginCallBackCountLicense==1)
+        //    e.customArgs['Id_AdminUnit'] = initialAdminUnitIdLicense;
+    }
+    function onSearchButtonClickLicense(s, e) {
+        currentSearchTextLicense = SearchTextLicense.GetValue();
+        //treeListGroupsLicense.CollapseAll();
+        treeListGroupsLicense.PerformCallback({ isNewSearch: true });
+    }
+
+    function OnNodeClickHandlerLicense(s, e) {
+        //var focusedKey = treeListGroupsLicense.GetFocusedNodeKey();
+        var focusedKey = e.nodeKey;
+
+        //$("#ID").val(focusedKey);
+        treeListGroupsLicense.GetNodeValues(focusedKey, "Name", function (values) {
+
+            ddeLicense.SetText(values);
+            ddeLicense.HideDropDown();
+            currentLocalGovernmentIdLicense = treeListGroupsLicense.GetFocusedNodeKey();
+
+
+            @*$.get('@Url.Action("IndexPartial", Model.EntityName)' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_LocalGovernment='+currentLocalGovernmentIdLicense, function (data) {
+                $('#AddLicenseRequestActivityTypeList').html(data);
+            });*@
+
+            //gvReportDataBindingToLinq.PerformCallback({ Id_LocalGovernment : currentLocalGovernmentIdLicense});
+        });
+    }
+
+    function OnDropDownLicense(s, e) {
+        treeListGroupsLicense.SetVerticalScrollPosition(initialAdminUnitIdLicense);
+
+        //var id = $("#ID").val();
+        //if (id == 0 || id == null) id = currentLocalGovernmentIdLicense;
+        //treeListGroupsLicense.SetFocusedNodeKey(id);
+    }
+
+
+    function OnSaveLicenseRequestClick(s, e) {
+        if (currentLocalGovernmentIdLicense == 0 || currentLocalGovernmentIdLicense == null) currentLocalGovernmentIdLicense=initialAdminUnitIdLicense;
+        var data = $(AddLicenseRequestFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "LicenseRequest")',
+            data: data + '&Id=@Model.Id&Id_User=@user.Id_ApplicationUser&Id_AdminUnit='+currentLocalGovernmentIdLicense,
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelLicenseRequestClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+    <div class="row">
+        <div class="col-md-7">
+            @using (Html.BeginForm("AddEdit", "LicenseRequest"))
+            {
+                <div id="editableContainer">
+                    @Html.Partial("_AddEdit", Model)
+                </div>
+            }
+        </div>
+        @*<div class="col-md-5">
+            @Html.Action("Index", "LicenseRequestActivityType", new {Id_Request = Model.Id})
+        </div>*@
+    </div>
+
+
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+
+
+</script>

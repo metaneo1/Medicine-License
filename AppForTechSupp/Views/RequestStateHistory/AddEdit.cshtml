@@ -1,0 +1,52 @@
+@using MvcBaseApp.Resources
+@model DataModel.RequestStateHistory
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @*@(Model.Id == 0 ? Labels.RequestStateHistory_Add : Labels.RequestStateHistory + Model.Id)*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveRequestStateHistoryClick(s, e) {
+        var data = $(AddRequestStateHistoryFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "RequestStateHistory")',
+            data: data + '&id=@Model.Id&Id_Request=@Model.Id_Request&Id_User=@Model.Id_User',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelRequestStateHistoryClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "RequestStateHistory"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

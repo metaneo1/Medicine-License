@@ -1,0 +1,30 @@
+﻿@using System.Web.UI.WebControls
+
+@model List<DataModel.LicenseRequest>
+@(Html
+      .DevExpress()
+      .GridView(s =>
+      {
+          int pageSize = 2;
+          s.Name = "PatientListGrid";
+          s.SkinID = "ClearGrid";
+          s.CallbackRouteValues = new { Controller = "LicenseRequest", Action = "LicensePreviewPartial" };
+          s.SettingsLoadingPanel.Mode = GridViewLoadingPanelMode.Disabled;
+          s.KeyFieldName = "Id";
+          s.ClientSideEvents.RowClick = "OnGridClick";
+          s.Columns.Add("Id");
+          s.Settings.ShowColumnHeaders = false;
+
+          s.SettingsPager.PageSize = pageSize;
+          s.SettingsPager.ShowNumericButtons = true;
+          s.SettingsPager.NumericButtonCount = 4;
+
+          s.Width = Unit.Percentage(100);
+          s.SetDataItemTemplateContent(c =>
+          {
+              ViewContext.Writer.Write(
+                  @Html.Partial("_SmallPreview", c.DataItem)
+              );
+          });
+      }
+      ).Bind(Model).GetHtml())

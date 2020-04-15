@@ -1,0 +1,21 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraPivotGrid" TagPrefix="dx" %>
+<dx:ASPxPivotGrid runat="server">
+	<Images SpriteCssFilePath="~/App_Themes/Office2010Black/{0}/sprite.css">
+        <CustomizationFieldsBackground Url="~/App_Themes/Office2010Black/PivotGrid/pcHBack.png" />
+        <TreeViewNodeLoadingPanel Url="~/App_Themes/Office2010Black/PivotGrid/tvNodeLoading.gif" />
+	</Images>
+	<OptionsPager CurrentPageNumberFormat="{0}" />
+	<OptionsCustomization FilterPopupWindowMinWidth="200" />
+    <Styles CssFilePath="~/App_Themes/Office2010Black/{0}/styles.css" CssPostfix="Office2010Black">
+        <LoadingPanel ImageSpacing="5" />
+    </Styles>
+	<StylesPager>
+        <CurrentPageNumber ForeColor="Black" />
+        <PageNumber ForeColor="White" />
+        <Summary ForeColor="White" />
+        <Ellipsis ForeColor="White" />
+        <PageSizeItem ForeColor="White"></PageSizeItem>
+    </StylesPager>
+</dx:ASPxPivotGrid>

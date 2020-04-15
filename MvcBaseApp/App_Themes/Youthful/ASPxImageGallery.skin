@@ -1,0 +1,10 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxImageGallery runat="server" ItemSpacing="1" PagerPanelSpacing="0">
+    <Images SpriteCssFilePath="~/App_Themes/Youthful/{0}/sprite.css"></Images>
+    <Styles CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css">
+        <LoadingPanel ImageSpacing="3px" />
+    </Styles>
+    <SettingsLoadingPanel ImagePosition="Bottom" />
+</dx:ASPxImageGallery>

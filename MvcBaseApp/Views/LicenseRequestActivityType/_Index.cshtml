@@ -1,0 +1,47 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+var id = (int) ViewBag.LicenseRequestActivityType_Id_Request;
+    
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+settings.Name = "gvLicenseRequestActivityTypeDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "LicenseRequestActivityType", Action = "IndexPartial", Id_Request = id};
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+        
+if (Html.HasRoleView(Session, Model.EntityName + "_ActivityType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "ActivityType.Name_ru";
+            x.FieldName = "ActivityType.Name_ru";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ActivityType");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnLicenseRequestActivityTypeGridFocusedRowChanged";
+		settings.ClientSideEvents.Init = "resizeGrid";
+        
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+e.QueryableSource = DatabaseProvider.DB.LicenseRequestActivityType.Where(x => x.Id_Request == id);
+        
+    }).GetHtml()

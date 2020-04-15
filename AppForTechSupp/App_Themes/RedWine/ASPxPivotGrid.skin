@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.PivotGrid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraPivotGrid" TagPrefix="dx" %>
+<dx:ASPxPivotGrid runat="server">
+    <Images SpriteCssFilePath="~/App_Themes/RedWine/{0}/sprite.css">
+        <CustomizationFieldsBackground Url="~/App_Themes/RedWine/PivotGrid/pcHeaderBack.gif" />
+        <TreeViewNodeLoadingPanel Url="~/App_Themes/RedWine/PivotGrid/tvNodeLoading.gif" />
+	</Images>
+	<Styles CssFilePath="~/App_Themes/RedWine/{0}/styles.css" CssPostfix="RedWine">
+    </Styles>
+    <OptionsLoadingPanel ImagePosition="Top" />
+    <OptionsPager CurrentPageNumberFormat="{0}">
+    </OptionsPager>
+</dx:ASPxPivotGrid>

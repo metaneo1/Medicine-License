@@ -1,0 +1,179 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model DataModel.Organization
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddOrganizationFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.Organization_MainInfo;
+        g.ColCount = 1;
+        g.Items.Add(m => m.Id_AdminUnit, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_Id_AdminUnit");
+            i.NestedExtension().DropDownEdit(ds =>
+            {
+                ds.Name = "dde";
+                ds.Properties.NullText = "(Не выбрано)";
+                ds.ReadOnly = true;
+                ds.Properties.ClientSideEvents.DropDown = "OnDropDown";
+                ds.Width = System.Web.UI.WebControls.Unit.Pixel(300);
+                ds.SetDropDownWindowTemplateContent(c =>
+                {
+                    Html.DevExpress().TextBox(settingsTB =>
+                    {
+                        settingsTB.Name = "SearchText";
+                        settingsTB.Properties.NullText = "Поиск...";
+                        settingsTB.Width = Unit.Pixel(200);
+                        settingsTB.ControlStyle.CssClass = "inline-editor";
+                    }).Render();
+                    Html.DevExpress().Button(settingsBtn =>
+                    {
+                        settingsBtn.Name = "SearchButton";
+                        settingsBtn.Text = "Поиск";
+                        settingsBtn.Width = Unit.Pixel(50);
+                        settingsBtn.ControlStyle.CssClass = "inline-editor";
+                        settingsBtn.ClientSideEvents.Click = "onSearchButtonClick";
+                    }).Render();
+                    Html.RenderAction("TreeListPartial");
+                });
+            });
+        }).Caption = Labels.Organization_AdminUnits;
+        g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Organization_Name"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Organization_Name;
+        g.Items.Add(m => m.TIN, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_TIN");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Organization_TIN"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Organization_TIN;
+        g.Items.Add(m => m.NSCCode, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_NSCCode");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Organization_NSCCode"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Organization_NSCCode;
+        g.Items.Add(m => m.RegistrationNumber, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_RegistrationNumber");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Organization_RegistrationNumber"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Organization_RegistrationNumber;
+
+        g.Items.Add(m => m.Id_Type, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_Id_Type");
+            i.SetNestedContent(Html.Action("GetLookUp", "OrganizationType", new { JsElementName = "Id_Type_AddOrganization", CallerConrtoller = "AddOrganization", CurrentValue = Model.Id_Type }).ToString());
+        }).Caption = Labels.Organization_Id_TypeOrganization;
+       
+        g.Items.Add(m => m.Address, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_Address");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Organization_Address"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Organization_Address;
+
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyOrganizationButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveOrganizationClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelOrganizationButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelOrganizationClick";
+            });
+        });
+    });
+
+}).GetHtml()

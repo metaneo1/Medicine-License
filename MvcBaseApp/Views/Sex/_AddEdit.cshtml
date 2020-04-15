@@ -1,0 +1,123 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model DataModel.Sex
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddSexFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.Sex_MainInfo;
+        g.ColCount = 1;
+        g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Sex_Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Sex_Name"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Sex_Name;
+        g.Items.Add(m => m.Name_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Sex_Name");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Sex_Name"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Sex_Name;
+        g.Items.Add(m => m.Description, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Sex_Description");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Sex_Description"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Sex_Description;
+        g.Items.Add(m => m.Code, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Sex_Code");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "Sex_Code"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.Sex_Code;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applySexButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveSexClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelSexButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelSexClick";
+            });
+        });
+    });
+
+}).GetHtml()

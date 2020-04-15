@@ -1,0 +1,16 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %> 
+
+<dx:ASPxGridView runat="server" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful">
+    <Images SpriteCssFilePath="~/App_Themes/Youthful/{0}/sprite.css" >
+    </Images>
+    <ImagesEditors>
+    </ImagesEditors>  
+    <SettingsLoadingPanel Text="" />
+    <SettingsPager CurrentPageNumberFormat="{0}">
+    </SettingsPager>
+    <Styles>
+        <Header SortingImageSpacing="5px"></Header>
+		<LoadingPanel ImageSpacing="10px" />
+    </Styles>	
+</dx:ASPxGridView>

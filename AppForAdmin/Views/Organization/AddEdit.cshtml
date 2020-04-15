@@ -1,0 +1,45 @@
+@using MvcBaseApp.Resources
+@model Organization
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSaveOrganizationClick(s, e) {
+        var data = $(AddOrganizationFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Organization")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelOrganizationClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "Organization"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

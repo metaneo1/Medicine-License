@@ -1,0 +1,33 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+<script>
+    function btnEdit@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnEdit@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnEdit@(Model.EntityName)Click != null) {
+                needStop = OnBtnEdit@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+
+        if (current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) {
+            $.alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+        current@(Model.EntityName)RowHandle = gv@(Model.EntityName)DataBindingToLinq.GetFocusedRowIndex();
+        loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=' + current@(Model.EntityName)Id + '&@Html.Raw(Model.AdditionalUrlParamenter)', update@(Model.EntityName)List);
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnEdit" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnEdit" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/edit_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnEditData;
+}).GetHtml()

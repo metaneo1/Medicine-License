@@ -1,0 +1,62 @@
+﻿@using System.Drawing
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+<!-- NavBar Items Click Events-->
+<script>
+        @*function OnNavbar@(Model.EntityName)ItemClick(s, e) {
+        if (current@(Model.EntityName)Id == 0 || typeof currentLocalGovernmentId == "undefined") {
+                return;
+            }
+            loadNewPage(routes@(Model.EntityName)[e.item.name] + current@(Model.EntityName)Id);
+    }*@
+
+    var routesLicenseRequest  = [];
+    routesLicenseRequest['DocumentInRequest'] = '@Url.Action("Index", "DocumentInRequest")?Id_Request=';
+    routesLicenseRequest['Message'] = '@Url.Action("Index", "Message")?Id_Request=';
+    routesLicenseRequest['LicenseRequestActivityType'] = '@Url.Action("Index", "LicenseRequestActivityType")?Id_Request=';
+
+</script>
+
+@Html.DevExpress().NavBar(settings =>
+{
+    settings.Width = Unit.Percentage(90);
+    settings.ControlStyle.Border.BorderColor = Color.FromArgb(0xBEBEBE);
+    settings.ControlStyle.Border.BorderStyle = BorderStyle.Solid;
+    settings.ControlStyle.Border.BorderWidth = 1;
+    settings.ControlStyle.GroupSpacing = 1;
+    settings.ControlStyle.Paddings.Padding = 1;
+    settings.Styles.GroupContent.BackColor = Color.FromArgb(0xEBF4FC);
+    settings.Styles.GroupContent.ForeColor = Color.FromArgb(0x303030);
+    settings.Styles.GroupContent.Border.BorderStyle = BorderStyle.None;
+    settings.Styles.GroupContent.BorderTop.BorderColor = Color.White;
+    settings.Styles.GroupContent.BorderTop.BorderStyle = BorderStyle.Solid;
+    settings.Styles.GroupContent.BorderTop.BorderWidth = 1;
+    //settings.Styles.GroupContent.Paddings.Padding = 11;
+    settings.Styles.GroupContent.Font.Name = "Tahoma";
+    settings.Styles.GroupContent.Font.Size = 9;
+    settings.Styles.GroupHeaderCollapsed.BackColor = Color.FromArgb(0xF1F1F1);
+    settings.Styles.GroupHeaderCollapsed.ForeColor = Color.Gray;
+    settings.Styles.GroupHeaderCollapsed.HoverStyle.BackColor = Color.FromArgb(0xDAEBFD);
+    settings.Styles.GroupHeader.BackColor = Color.FromArgb(0xC7DEF7);
+    settings.Styles.GroupHeader.Font.Name = "Tahoma";
+    settings.Styles.GroupHeader.Font.Size = 9;
+    settings.Styles.GroupHeader.Font.Bold = true;
+    settings.Styles.GroupHeader.Border.BorderStyle = BorderStyle.None;
+    //settings.Styles.GroupHeader.Paddings.Padding = 4;
+    //settings.Styles.GroupHeader.Paddings.PaddingLeft = 11;
+
+    settings.Width = Unit.Percentage(100);
+
+    settings.Name = "nb" + Model.EntityName + "Overview";
+    settings.Groups.Add(group =>
+    {
+        group.ItemStyle.Wrap = DefaultBoolean.True;
+        group.Text = "Формы";
+        group.Items.Add("Прикрепление документов", "DocumentInRequest", "~/Content/icons/project_32x32.png");
+        group.Items.Add("Сообщения", "Message", "~/Content/icons/PhoneNumberType_32x32.png");
+        //group.Items.Add("Вид деятельности", "LicenseRequestActivityType", "~/Content/icons/Стаж.png");
+    });
+    settings.ClientSideEvents.ItemClick = "OnNavbar" + Model.EntityName + "ItemClick";
+}).GetHtml()

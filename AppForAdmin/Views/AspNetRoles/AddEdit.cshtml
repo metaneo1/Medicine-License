@@ -1,0 +1,52 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.AspNetRoles
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @(Model.Id == "0" ? Labels.StateItem_Add : Labels.StateItem+": " + Model.Name)
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+    function OnSaveStateItemClick(s, e) {
+        var data = $(AddStateItemFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "AspNetRoles")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelStateItemClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "AspNetRoles"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

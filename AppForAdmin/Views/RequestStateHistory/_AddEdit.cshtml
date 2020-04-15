@@ -1,0 +1,98 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.DataTypeConverters
+@using MvcBaseApp.Resources
+
+@model RequestStateHistory
+
+@{
+    var datamodel = (RequestStateHistoryAddEditModel)ViewBag.MODEL;
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddRequestStateHistoryFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.RequestStateHistory_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.Id_State, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "RequestStateHistory_Id_State");
+            i.SetNestedContent(Html.Action("GetLookUp", "RequestState", new { JsElementName = "Id_State_AddRequestStateHistory", CallerConrtoller = "AddRequestStateHistory", CurrentValue = Model.Id_State }).ToString());
+        }).Caption = Labels.RequestStateHistory_RequestState;
+g.Items.Add(m => m.DateStatusChange, i =>
+        {
+               i.ClientVisible = Html.HasRoleView(Session, "RequestStateHistory_DateStatusChange");           
+               i.NestedExtension().DateEdit(tb =>
+            {
+                tb.Properties.UseMaskBehavior = true;
+                tb.Properties.EditFormat = EditFormat.Custom;
+                tb.Properties.EditFormatString = DataTypeFormatter.DateFormat;
+                tb.Properties.TimeSectionProperties.Visible = false;
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestStateHistory_DateStatusChange"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestStateHistory_DateStatusChange;
+g.Items.Add(m => m.DateStatusChange, i =>
+        {
+               i.ClientVisible = Html.HasRoleView(Session, "RequestStateHistory_DateStatusChange");           
+               i.NestedExtension().DateEdit(tb =>
+            {
+                tb.Properties.UseMaskBehavior = true;
+                tb.Properties.EditFormat = EditFormat.Custom;
+                tb.Properties.EditFormatString = DataTypeFormatter.DateFormat;
+                tb.Properties.TimeSectionProperties.Visible = false;
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "RequestStateHistory_DateStatusChange"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.RequestStateHistory_DateStatusChange;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "saveRequestStateHistoryButton";
+                s.Text = Labels.btnSave;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.ClientSideEvents.Click = "OnSaveRequestStateHistoryClick";
+            });
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelRequestStateHistoryButton";
+                s.Text = Labels.btnCancel;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.ClientSideEvents.Click = "OnCancelRequestStateHistoryClick";
+            });
+        });
+    });
+
+}).GetHtml()

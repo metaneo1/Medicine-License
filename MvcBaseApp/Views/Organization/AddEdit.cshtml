@@ -1,0 +1,111 @@
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model DataModel.Organization
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    var adminUnit = DatabaseProvider.DB.AdminUnits.FirstOrDefault(x => x.Id == Model.Id_AdminUnit);
+    var adminUnitName = adminUnit == null ? "" : adminUnit.Name_ru;
+}
+
+@section scripts{
+    <style>
+        .highlight {
+            background-color: #99FF66;
+        }
+    </style>
+}
+
+<script>
+    var currentSearchText = '';
+    var currentLocalGovernmentId = 0;
+    var initialAdminUnitId = 0;
+    @if (Model.Id_AdminUnit != 0)
+    {
+        @: initialAdminUnitId = @Model.Id_AdminUnit;
+    }
+
+    function TreeInit(s, e) {
+        
+        dde.SetText('@adminUnitName');
+    }
+
+
+    function onTreeListBeginCallback(s, e) {
+        e.customArgs['SearchText'] = currentSearchText;
+    }
+    function onSearchButtonClick(s, e) {
+        currentSearchText = SearchText.GetValue();
+        //treeListGroups.CollapseAll();
+        treeListGroups.PerformCallback({ isNewSearch: true });
+    }
+
+    function OnNodeClickHandler(s, e) {
+        //var focusedKey = treeListGroups.GetFocusedNodeKey();
+        var focusedKey = e.nodeKey;
+
+        //$("#ID").val(focusedKey);
+        treeListGroups.GetNodeValues(focusedKey, "Name", function (values) {
+
+            dde.SetText(values);
+            dde.HideDropDown();
+            currentLocalGovernmentId = treeListGroups.GetFocusedNodeKey();
+
+
+            @*$.get('@Url.Action("IndexPartial", Model.EntityName)' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_LocalGovernment='+currentLocalGovernmentId, function (data) {
+                $('#@(Model.EntityName)List').html(data);
+            });*@
+
+            //gvReportDataBindingToLinq.PerformCallback({ Id_LocalGovernment : currentLocalGovernmentId});
+        });
+    }
+    function OnDropDown(s, e) {
+        treeListGroups.SetVerticalScrollPosition(initialAdminUnitId);
+    }
+
+    function OnSaveOrganizationClick(s, e) {
+        var data = $(AddOrganizationFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Organization")',
+            data: data + '&Id=@Model.Id&Id_AdminUnit='+currentLocalGovernmentId,
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelOrganizationClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+
+<!-- Button Click Events -->
+<script>
+
+
+
+</script>
+
+<div id="editableContainer">
+
+    @using (Html.BeginForm("AddEdit", "Organization"))
+    {
+
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

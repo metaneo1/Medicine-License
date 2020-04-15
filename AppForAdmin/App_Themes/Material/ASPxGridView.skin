@@ -1,0 +1,29 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridView runat="server" CssFilePath="{0}/styles.css" CssPostfix="Material">
+    <SettingsPager CurrentPageNumberFormat="{0}">
+        <PageSizeItemSettings ShowPopupShadow="True">
+        </PageSizeItemSettings>
+    </SettingsPager>
+    <Images SpriteCssFilePath="{0}/sprite.css">
+    </Images>
+    <Styles CssPostfix="Material" CssFilePath="{0}/styles.css" />
+    <StylesPager>
+        <Pager ItemSpacing="0px" Spacing="0px" />
+    </StylesPager>
+    <StylesEditors>
+        <Calendar>
+            <Border BorderColor="Silver" BorderStyle="Solid" BorderWidth="1px" />
+        </Calendar>
+    </StylesEditors>
+    <SettingsPopup>
+        <HeaderFilter MinWidth="230px" MinHeight="150px"></HeaderFilter>
+    </SettingsPopup>
+    <StylesPopup>
+        <HeaderFilter Footer-CssClass="headerFilterPopupFooter">
+        </HeaderFilter>
+    </StylesPopup>
+</dx:ASPxGridView>
+
+

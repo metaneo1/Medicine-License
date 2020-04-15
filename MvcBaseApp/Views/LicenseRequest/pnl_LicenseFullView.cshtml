@@ -1,0 +1,15 @@
+﻿@using MvcBaseApp.Models
+@{
+    Layout = null;
+    var id = ((int?) ViewBag.Message_Id_Request ?? 0);
+}
+    @Html.DevExpress().CallbackPanel(s =>
+{
+    s.Name = "pnl_LicenseFullView";
+    s.CallbackRouteValues = new { Controller = "LicenseRequest", Action = "pnl_LicenseFullView" };
+
+    s.SetContent(() =>
+    {
+        Html.RenderAction("LicenseFullViewPartial" , new { stateId = id});
+    });
+}).GetHtml()

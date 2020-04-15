@@ -1,0 +1,15 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxSiteMapControl runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+    <LevelProperties>
+        <dx:LevelProperties BulletStyle="None">
+            <ChildNodesPaddings PaddingTop="7px" PaddingBottom="5px" PaddingLeft="22px"></ChildNodesPaddings>
+        </dx:LevelProperties>
+        <dx:LevelProperties BulletStyle="None" NodeSpacing="7px">
+            <ChildNodesPaddings PaddingLeft="19px"></ChildNodesPaddings>
+        </dx:LevelProperties>
+        <dx:LevelProperties NodeSpacing="4px"></dx:LevelProperties>
+    </LevelProperties>
+</dx:ASPxSiteMapControl>
+

@@ -1,0 +1,45 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+@if (
+Html.HasRoleView(Session, Model.EntityName + "_Id")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_SentDocument")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_Message")||
+    )
+{
+    @Html.Partial("_IndexHeader", Model)
+
+@Html.Partial("IndexGrid/_ButtonAdd", Model)
+@Html.Partial("IndexGrid/_ButtonEdit", Model)
+@Html.Partial("IndexGrid/_ButtonDelete", Model)
+@Html.Partial("IndexGrid/_ButtonRefresh", Model)
+@Html.Partial("IndexGrid/_ButtonPrint", Model)
+@Html.Partial("IndexGrid/_ButtonClose", Model)
+
+@Html.Partial("IndexGrid/_Header", Model)
+
+@Html.Partial("_Index")
+
+    @Html.Partial("IndexGrid/_Footer", Model)
+}
+else
+{
+    <!-- Additional Binding -->
+    <script>
+
+        hideBigLoader();
+
+        function bind@(Model.EntityName)List() {
+        }
+
+        bindings.push(bind@(Model.EntityName)List);
+
+
+        $.alert('@Labels.NotAccessRights');
+        closeLastPage();
+    </script>
+}

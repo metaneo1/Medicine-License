@@ -1,0 +1,26 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="dx" %>
+
+<dx:ASPxScheduler runat="server">
+    <Styles SelectionColor="#e0edf8" CssPostfix="XafTheme" CssFilePath="{0}/styles.css">
+        <ResourceNavigator ButtonSpacing="4px">
+        </ResourceNavigator>
+
+        <ViewSelector ButtonSpacing="1px"></ViewSelector>
+        <ViewNavigator ButtonSpacing="1px"></ViewNavigator>
+    </Styles>
+    <Images SpriteCssFilePath="{0}/sprite.css">
+    </Images>
+    <ResourceColorSchemas>
+        <dx:SchedulerColorSchema 
+            Cell="247,247,247"
+            CellBorder="234,234,234"
+            CellBorderDark="210,210,210"
+            CellLight="255,255,255"
+            CellLightBorder="242,242,242"
+            CellLightBorderDark="217,217,217"/>
+    </ResourceColorSchemas>
+</dx:ASPxScheduler>
+
+

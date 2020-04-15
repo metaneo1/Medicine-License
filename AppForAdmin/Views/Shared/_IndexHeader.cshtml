@@ -1,0 +1,13 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel 
+
+<h4>
+    @try
+    {
+        @: @Model.IndexPrefix @Labels.ResourceManager.GetString(Model.EntityName + "List") @Labels.ResourceManager.GetString(Model.EntityName + "s")
+    } catch (Exception e)
+    {
+
+    }
+
+</h4>

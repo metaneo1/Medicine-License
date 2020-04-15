@@ -1,0 +1,19 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.LookUpReloadModel<MvcBaseApp.Controllers.IEntityWithId>
+
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().DropDownEdit(tb =>
+{
+    tb.Name = Model.JsElementName + Model.HOLDER;
+    tb.Width = Unit.Pixel(250);
+    tb.SetDropDownWindowTemplateContent(c =>
+    {
+        Html.RenderAction(Model.ControllerName, Model.ActionName + Model.INNER, new { Model.JsElementName, Model.CurrentValue, Model.CallerConrtoller});
+    });
+}).GetHtml();
+
+

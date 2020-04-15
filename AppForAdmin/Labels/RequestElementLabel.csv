@@ -1,0 +1,11 @@
+Labels.RequestElement_RequestElement,Id_Parent
+Labels.RequestElement_IsActive,Используется
+Labels.RequestElement_OrderNumber,Порядковый номер
+
+
+              
+Labels.RequestElement_RequestElementType,Id_Тип элемента заявки
+Labels.RequestElement_DocTemplForReqElemType,Id_Шаблон документа
+Labels.RequestElement_RequestType,Id_ТипЗаявки
+Labels.RequestElement_RequestElemStructureType,Id Вида структуры
+Labels.RequestElement_IsRequired,Обязателен

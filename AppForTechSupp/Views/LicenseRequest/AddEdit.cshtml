@@ -1,0 +1,52 @@
+@using MvcBaseApp.Resources
+@model DataModel.LicenseRequest
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @*@(Model.Id == 0 ? Labels.LicenseRequest_Add : Labels.LicenseRequest + Model.Id)*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveLicenseRequestClick(s, e) {
+        var data = $(AddLicenseRequestFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "LicenseRequest")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelLicenseRequestClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "LicenseRequest"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

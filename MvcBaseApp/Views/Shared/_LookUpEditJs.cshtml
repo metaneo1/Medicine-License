@@ -1,0 +1,146 @@
+﻿@using MvcBaseApp.Resources
+
+
+<script>
+
+    var senders = [];
+
+    function getLastSender() {
+        return senders[senders.length - 1];
+    }
+
+    var storedHash = '';
+    function pushHistoryState(uri, text) {
+        if (window.history.pushState) {
+            window.history.pushState({ path: uri, title: text }, text, uri);
+        }
+        else {
+            storedHash = uri;
+            location.hash = uri;
+        }
+
+    }
+
+
+    function loadNewPage(url, callback, sender) {
+        showBigLoader();
+        $.get(url, function (data) {
+            $('#loader_background').show();
+            var preloader = getLatPreloader();
+            preloader.hide();
+
+            preloaderIds.push(preloaderIds.length);
+
+            var newId = 'preloaded_' + preloaderIds.length;
+            preloader.after('<div id="' + newId + '">' + data + '</div>');
+            callbacks.push(callback);
+            senders.push(sender);
+        });
+    }
+
+    function closeLastPage(response) {
+        getLatPreloader().remove();
+        preloaderIds = preloaderIds.splice(0, preloaderIds.length - 1);
+
+        bindings = bindings.splice(0, bindings.length - 1);
+
+        if (getLastCallbacks() != null) {
+            getLastCallbacks()(response, getLastSender());
+        }
+
+        callbacks = callbacks.splice(0, callbacks.length - 1);
+
+        senders = senders.splice(0, senders.length - 1);
+
+        getLatPreloader().show();
+
+        if (preloaderIds.length == 0) {
+            $('#loader_background').hide();
+        }
+
+    }
+
+    function On_LookUpEdit_ButtonClick(s, e) {
+        Check_LookUpEdit_ButtonClick(s, e);
+    }
+
+    function Check_LookUpEdit_ButtonClick(s, e) {
+        var controllerName = s.cp_Controller;
+        var actionName = s.cp_Action;
+        var idValue = window[s.cp_Key].GetValue();
+        var sender = window[s.cp_Key];
+        var custom = s.cp_Custom;
+
+        switch (3 - s.buttonCount + e.buttonIndex) {
+            case 0:
+                if (idValue == null || idValue == 0) {
+                    $.alert('@Labels.ErrorLookUpNoValue');
+                    return;
+                }
+                Edit_LookUpEdit(controllerName, actionName, idValue, sender, makeCustomEditAction(custom));
+                break;
+            case 1:
+                Add_New_LookUpEdit(controllerName, actionName, 0, sender, makeCustomAddAction(custom));
+                break;
+            case 2:
+                Clear_LookUpEdit(sender, makeCustomDeleteAction(custom));
+                break;
+        }
+    }
+
+    function Add_New_LookUpEdit(controllerName, actionName, idValue, sender, custom) {
+        var needStop = false;
+        if (typeof custom !== "undefined") {
+            if (custom != null) {
+                needStop = custom();
+            }
+            if (needStop)
+                return;
+        }
+        loadNewPage('/' + controllerName + '/' + actionName + '?id=' + idValue, Refresh_LookUpEdit_Callback, sender);
+    }
+
+    function Edit_LookUpEdit(controllerName, actionName, idValue, sender) {
+        var needStop = false;
+        if (typeof custom !== "undefined") {
+            if (custom != null) {
+                needStop = custom();
+            }
+            if (needStop)
+                return;
+        }
+        loadNewPage('/' + controllerName + '/' + actionName + '?id=' + idValue, Refresh_LookUpEdit_Callback, sender);
+    }
+
+    function Clear_LookUpEdit(sender) {
+        var needStop = false;
+        if (typeof custom !== "undefined") {
+            if (custom != null) {
+                needStop = custom();
+            }
+            if (needStop)
+                return;
+        }
+        sender.SetValue(null);
+    }
+
+    function makeCustomEditAction(custom) {
+        return window['On' + custom + 'LookUpEdit'];
+    }
+
+    function makeCustomAddAction(custom) {
+        return window['On' + custom + 'LookUpAdd'];
+    }
+
+    function makeCustomDeleteAction(custom) {
+        return window['On' + custom + 'LookUpDelete'];
+    }
+
+    function Refresh_LookUpEdit_Callback(lastId, sender) {
+        if (lastId == null || lastId == 0) {
+            return;
+        }
+        sender.PerformCallback();
+        sender.SetValue(lastId);
+    }
+</script>

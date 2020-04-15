@@ -1,0 +1,22 @@
+﻿@model MvcBaseApp.Models.IndexGridModel
+
+</div>
+
+@if (Model.IsCallBackPanel)
+{
+
+}
+else
+{
+
+    <!-- Additional Binding -->
+    <script>
+
+        hideBigLoader();
+
+        bindings.push(bind@(Model.EntityName)List);
+
+        function bind@(Model.EntityName)List() {
+        }
+    </script>
+}

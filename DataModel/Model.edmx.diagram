@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0aba388a6d040c7b4c22610465cd7ae" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="MedlicenseModel.ActivityType" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.AdminUnits" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.ApplicationUser" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.AspNetUsers" Width="1.5" PointX="8" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.DocTemplForReqElemType" Width="1.5" PointX="3.75" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.Document" Width="1.5" PointX="6" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.Document_Format" Width="1.5" PointX="3.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.DocumentInRequest" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.DocumentState" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.LicenseRequest" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.LicenseRequestActivityType" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.LocalGoverment2" Width="1.5" PointX="11" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.Message" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.MessageForSentDocument" Width="1.5" PointX="10.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.Organization" Width="1.5" PointX="0.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.OrganizationType" Width="1.5" PointX="1.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.QuestionType" Width="1.5" PointX="3" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestElement" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestElementType" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestElemStructureType" Width="1.5" PointX="3.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestState" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestStateHistory" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestStep" Width="1.5" PointX="10.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.RequestType" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.SettlementType" Width="1.5" PointX="8.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.Sex" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedlicenseModel.TypeAdminUnits" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="MedlicenseModel.R_180" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_11" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_12" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_186" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_187" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_AspNetUsers_ApplicationUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_RequestStateHistory_ApplicationUser" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_179" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_192" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_206" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_173" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_202" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_212" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_195" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_211" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_193" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_197" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_199" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_204" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_181" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_182" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_185" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_188" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_189" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_LocalGoverment2_SettlementType" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.FK_Parent_Child" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_191" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_198" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_207" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_184" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_190" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_200" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_201" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_203" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_210" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_183" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.R_213" ManuallyRouted="false" />
+        <AssociationConnector Association="MedlicenseModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

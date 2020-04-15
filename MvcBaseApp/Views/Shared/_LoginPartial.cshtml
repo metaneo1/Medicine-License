@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+
+
+@if (User.Identity.IsAuthenticated)
+{
+
+    var aspuser = User.Identity.GetUserId();
+    var user = DatabaseProvider.DB.AspNetUsers.FirstOrDefault(x => x.Id == aspuser).ApplicationUser;
+
+
+    <div id="LoginMenu">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <span>Вы вошли как @user.FullName</span>
+            </li>
+            <li><a href="javascript://" onclick="logOff()">Выйти</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function manageAccount() {
+            loadNewPage('@Url.Action("Manage", "Account")');
+        }
+        function logOff() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LogOff", "Account")',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    //closeLastPage();
+                    location.reload();
+                }
+            });
+        }
+    </script>
+}

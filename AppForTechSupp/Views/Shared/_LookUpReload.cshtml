@@ -1,0 +1,65 @@
+﻿@using System.Drawing
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@model MvcBaseApp.Models.LookUpReloadModel<DataModel.Interfaces.IEntityWithId>
+
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = Model.JsElementName;
+    settings.CallbackRouteValues = new { Controller = Model.ControllerName, Action = Model.ActionName, JsElementName = Model.JsElementName, CallerConrtoller = Model.CallerConrtoller, AdditionalParameter = Model.AdditionalParameter };
+    settings.Properties.ValueField = "Id";
+    settings.Width = Unit.Pixel(250);
+    settings.Properties.CallbackPageSize = int.MaxValue;
+    //settings.Properties.Columns.Add("Name", "Имя");
+    //settings.Properties.Columns.Add("Description", "Описание");
+    //settings.Properties.Columns.Add("Code", "Код");
+    settings.Properties.TextField = "Name_kg";
+
+    if (Html.HasRoleEnable(Session, Model.ControllerName))
+    {
+        if (Model.Buttons.HasFlag(LookUpReloadButton.Edit))
+        {
+            settings.Properties.Buttons.Add(new EditButton() {Index = 0, Visible = true, Image = {Url = "~/Content/edit_16x161.png"}});
+        }
+        if (Model.Buttons.HasFlag(LookUpReloadButton.Add))
+        {
+            settings.Properties.Buttons.Add(new EditButton() {Index = 1, Visible = true, Image = {Url = "~/Content/add_16x16.png"}});
+        }
+    }
+    if (Model.Buttons.HasFlag(LookUpReloadButton.Edit))
+    {
+        settings.Properties.Buttons.Add(new EditButton() { Index = 2, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" } });
+    }
+
+
+
+    settings.Enabled = !Model.Disabled;
+
+    if (!Html.HasRoleEnable(Session, Model.ControllerName + "_Id"))
+    {
+        settings.Enabled = false;
+        settings.Properties.Style.BackColor = Color.LightGray;
+        settings.Properties.Style.ForeColor = Color.Black;
+    }
+
+    settings.CustomJSProperties += (s, e) =>
+    {
+        e.Properties["cp_Key"] = Model.JsElementName;
+        e.Properties["cp_Controller"] = Model.ControllerName;
+        e.Properties["cp_Action"] = "AddEdit";
+        e.Properties["cp_Custom"] = Model.JsElementName;
+    };
+
+
+    settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { if (typeof bind" + Model.JsElementName + " !== 'undefined') { bind" + Model.JsElementName + "(s,e);} }";
+    
+    settings.SelectedIndex = Model.List.FindIndex(x=>x.Id == Model.CurrentValue);
+    
+    settings.Properties.ClientSideEvents.ButtonClick = "On_LookUpEdit_ButtonClick";
+    settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+    //settings.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) { combo.PerformCallback(); }";
+}).BindList(Model.List).GetHtml()

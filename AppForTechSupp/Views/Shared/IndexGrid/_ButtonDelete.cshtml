@@ -1,0 +1,55 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+<script>
+    function btnDelete@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnDelete@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnDelete@(Model.EntityName)Click != null) {
+                needStop = OnBtnDelete@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+
+        if (current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) {
+            $.alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+        $.get('@Url.Action("GetDeleteText", Model.EntityName)' + '?id=' + current@(Model.EntityName)Id,
+            function (data) {
+                $.confirm({
+                    title: data,
+                    content: '',
+                    buttons: {
+                        confirm: {
+                            text: '@Labels.btnDelete',
+                            action: function () {
+                                $.get('@Url.Action("Delete", Model.EntityName)' + '?id=' + current@(Model.EntityName)Id, function (data) {
+                                    $.get('@Url.Action("IndexPartial", Model.EntityName)', function () {
+                                        update@(Model.EntityName)List(data); //$('#@(Model.EntityName)List').html(data);
+                                    });
+                                });
+                            }
+                        },
+                        cancel: {
+                            text: '@Labels.btnCancel',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                            }
+                        }
+                    }
+                });
+            });
+    }
+</script>
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnDelete" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnDelete" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/delete_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnDeleteData;
+}).GetHtml()

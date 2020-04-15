@@ -1,0 +1,28 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+<script>
+    function btnAdd@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnAdd@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnAdd@(Model.EntityName)Click != null) {
+                needStop = OnBtnAdd@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+        current@(Model.EntityName)RowHandle = gv@(Model.EntityName)DataBindingToLinq.GetFocusedRowIndex();
+        loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=0' + '&@Html.Raw(Model.AdditionalUrlParamenter)', update@(Model.EntityName)List);
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnAdd" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnAdd" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/add_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnAddData;
+}).GetHtml()

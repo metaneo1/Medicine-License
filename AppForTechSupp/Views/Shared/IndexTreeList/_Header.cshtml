@@ -1,0 +1,47 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+
+<!-- Variables -->
+<script>
+    var current@(Model.EntityName)Id = 0;
+    //var current@(Model.EntityName)Name = '';
+</script>
+
+<!-- Grid Events-->
+<script>
+    function On@(Model.EntityName)GridNodeClick(s, e) {
+        s.SelectNode(e.nodeKey);
+    }
+
+    function On@(Model.EntityName)GridFocusedRowChanged(s, e) {
+        e.processOnServer = true;
+        var keys = s.GetVisibleSelectedNodeKeys();
+        if (keys.length == 1) {
+            s.GetSelectedNodeValues('Id', On@(Model.EntityName)GetRowValues);
+            return;
+        } else{
+            s.SelectNode(s.cp_lastKey, false);
+        }
+
+        s.GetSelectedNodeValues('Id', On@(Model.EntityName)GetRowValues);
+    }
+    function On@(Model.EntityName)GetRowValues(values) {
+        current@(Model.EntityName)Id = values[0];
+        //current@(Model.EntityName)Name = values[1];
+    }
+</script>
+
+<!-- Private Functions -->
+<script>
+    function update@(Model.EntityName)List() {
+        $.get('@Url.Action("IndexPartial", Model.EntityName)', function (data) {
+            $('#@(Model.EntityName)List').html(data);
+        });
+    }
+</script>
+
+<br />
+<br />
+
+<div id="@(Model.EntityName)List">

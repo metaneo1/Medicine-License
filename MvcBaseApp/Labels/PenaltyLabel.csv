@@ -1,0 +1,5 @@
+Labels.Penalty_Description,Описание
+Labels.Penalty_DatePenalty,Дата взыскания
+Labels.Penalty_DateEndPenalty,Дата снятия Взыскания
+Labels.Penalty_TypePenalty,Id_Тип взыскания
+Labels.Penalty_Document,Id Документа

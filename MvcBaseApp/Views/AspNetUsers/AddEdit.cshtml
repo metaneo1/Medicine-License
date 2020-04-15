@@ -1,0 +1,78 @@
+﻿@using MvcBaseApp.Resources
+@model DataModel.AspNetUsers
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    Пользователь @*@Labels.AspNetUsers*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+    function OnSaveAspNetUsersClick(s, e) {
+
+        if ('@(Model.Id)' == '0') {
+            var data = $(AddAspNetUsersFormLayout.GetParentForm()).serialize();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RegisterViaDesktop", "InPageAutorize")',
+                data: data + '&id=@Model.Id',
+                success: function (response) {
+                    var data = response.split(':');
+                    if(data[0] == 'OK'){
+                        closeLastPage();
+                        return;
+                    }
+                    $.alert(data[1]);
+                },
+                error: function () {
+                    $.alert('@Labels.ErrorNullFields');
+                }
+            });
+            return;
+        }
+        var data = $(AddAspNetUsersFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateViaDesktop", "InPageAutorize")',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                var result = response.split(':');
+                if (result[0] == 'OK'){
+                    closeLastPage();
+                    return;
+                }
+                $.alert(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelAspNetUsersClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "AspNetUsers"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

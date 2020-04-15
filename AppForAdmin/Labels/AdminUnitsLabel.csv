@@ -1,0 +1,13 @@
+Labels.AdminUnits_AdminUnits,ParentId
+Labels.AdminUnits_Name,Наименование
+Labels.AdminUnits_TypeAdminUnits,Id Тип Административного деления
+Labels.AdminUnits_Latitude,Широта
+
+
+              
+Labels.AdminUnits_Longitude,Долгота
+
+
+              
+Labels.AdminUnits_Comment,Коментарий
+Labels.AdminUnits_IsRayonCenter,Районный центр?

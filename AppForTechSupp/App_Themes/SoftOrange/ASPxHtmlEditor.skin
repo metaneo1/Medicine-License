@@ -1,0 +1,15 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dx" %>
+
+<dx:ASPxHtmlEditor runat="server" Width="735px">
+	<Styles CssPostfix="SoftOrange" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css">
+        <ViewArea Border-BorderColor="#D3D3D3" Border-BorderWidth="3px" />
+	</Styles>
+	<Images SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" MenuIconSet="Colored">
+	</Images>
+    <SettingsLoadingPanel ImagePosition="Top" />
+    <ImagesFileManager>
+        <FolderContainerNodeLoadingPanel Url="~/App_Themes/SoftOrange/Web/tvNodeLoading.gif"></FolderContainerNodeLoadingPanel>
+    </ImagesFileManager>
+</dx:ASPxHtmlEditor>
+

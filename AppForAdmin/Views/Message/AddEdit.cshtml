@@ -1,0 +1,52 @@
+@using MvcBaseApp.Resources
+@model Message
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @(Model.Id == 0 ? Labels.Message_Add : Labels.Message + Model.Id)
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveMessageClick(s, e) {
+        var data = $(AddMessageFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Message")',
+            data: data + '&id=@Model.Id&Id_Request=@Model.Id_Request',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelMessageClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "Message"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

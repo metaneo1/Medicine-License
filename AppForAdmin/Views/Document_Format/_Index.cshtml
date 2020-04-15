@@ -1,0 +1,84 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvDocument_FormatDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = Model.EntityName, Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+
+        settings.Settings.ShowFilterRow = true;
+
+        if (Html.HasRoleView(Session, Model.EntityName + "_Name_ru"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Name_ru";
+                x.FieldName = "Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Name_ru");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Name_kg"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Name_kg";
+                x.FieldName = "Name_kg";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Name_kg");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Description_ru"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Description_ru";
+                x.FieldName = "Description_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Description_ru");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Description_kg"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Description_kg";
+                x.FieldName = "Description_kg";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Description_kg");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_CODE"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "CODE";
+                x.FieldName = "CODE";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_CODE");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "On" + Model.EntityName + "GridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.Document_Format;
+    }).GetHtml()

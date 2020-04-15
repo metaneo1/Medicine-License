@@ -1,0 +1,8 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxHeadline runat="server" DateVerticalPosition="Header" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
+    CssPostfix="PlasticBlue" TailPosition="KeepWithLastWord" >
+    <DateStyle Spacing="0px"></DateStyle>
+    <HeaderStyle Spacing="7px"></HeaderStyle>
+</dx:ASPxHeadline>

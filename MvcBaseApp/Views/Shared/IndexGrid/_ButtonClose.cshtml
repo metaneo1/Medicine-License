@@ -1,0 +1,27 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+<script>
+    function btnClose@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnClose@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnClose@(Model.EntityName)Click != null) {
+                needStop = OnBtnClose@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+        closeLastPage();
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnClose" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnClose" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/out.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnClose;
+}).GetHtml()

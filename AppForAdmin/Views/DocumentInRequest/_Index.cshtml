@@ -1,0 +1,80 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+var id = (int) ViewBag.DocumentInRequest_Id_Request;
+    
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+settings.Name = "gvDocumentInRequestDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "DocumentInRequest", Action = "IndexPartial", Id_Request = id};
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+        
+if (Html.HasRoleView(Session, Model.EntityName + "_Document.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Document.Name";
+            x.FieldName = "Document.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Document.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_DocumentState.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "DocumentState.Name";
+            x.FieldName = "DocumentState.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_DocumentState.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_Id_RequestElement"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Id_RequestElement";
+            x.FieldName = "Id_RequestElement";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Id_RequestElement");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_Description"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Description";
+            x.FieldName = "Description";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Description");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnDocumentInRequestGridFocusedRowChanged";
+		settings.ClientSideEvents.Init = "resizeGrid";
+        
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+e.QueryableSource = DatabaseProvider.DB.DocumentInRequest.Where(x => x.Id_Request == id);
+        
+    }).GetHtml()

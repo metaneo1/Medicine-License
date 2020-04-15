@@ -1,0 +1,10 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxPager runat="server" CurrentPageNumberFormat="{0}" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
+    ShowDefaultImages="False" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" CssPostfix="PlasticBlue">
+    <AllButton Text="All"></AllButton>
+    <NextPageButton ShowDefaultText="True" TextFormatString="{0} &amp;gt;"></NextPageButton>
+    <PrevPageButton ShowDefaultText="True" TextFormatString="&amp;lt; {0}"></PrevPageButton>
+</dx:ASPxPager>
+

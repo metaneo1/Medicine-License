@@ -1,0 +1,57 @@
+@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model DataModel.Message
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+    var aspuser = User.Identity.GetUserId();
+    //var userId = DatabaseProvider.DB.ApplicationUser.FirstOrDefault(x => x.AspUserId == aspuser);
+    var user = DatabaseProvider.DB.AspNetUsers.FirstOrDefault(x => x.Id == aspuser);
+}
+
+<h4>
+    @(Model.Id == 0 ? Labels.Message_Add : Labels.Message + Model.LicenseRequest.ClinicName)
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveMessageClick(s, e) {
+        var data = $(AddMessageFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Message")',
+            data: data + '&Id=@Model.Id&Id_Request=@Model.Id_Request&Id_AnswerWriter=@user.Id_ApplicationUser&Id_Document=@ViewBag.DocumentId',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelMessageClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "Message"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

@@ -1,0 +1,11 @@
+Labels.PersonVacation_DateStart,Дата начала
+Labels.PersonVacation_DateFinished,Дата окончания
+Labels.PersonVacation_VacationType,Id Вида отпуска
+Labels.PersonVacation_PeriodInMonth,За период в месяцах
+
+
+              
+Labels.PersonVacation_Reason,Основание
+Labels.PersonVacation_Document,Id Документа
+Labels.PersonVacation_DateStartFrom,За период С
+Labels.PersonVacation_DateFinishTo,За период ПО

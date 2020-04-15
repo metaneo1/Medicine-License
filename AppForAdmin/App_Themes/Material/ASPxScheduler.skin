@@ -1,0 +1,56 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="dx" %>
+
+<dx:ASPxScheduler runat="server">
+    <Styles SelectionColor="#009688" CssPostfix="Material" CssFilePath="{0}/styles.css" />
+    <Images SpriteCssFilePath="{0}/sprite.css">
+    </Images>
+    <ResourceColorSchemas>
+        <dx:SchedulerColorSchema 
+            Cell="229,229,229"
+            CellBorder="204,204,204"
+            CellBorderDark="165,165,165"
+            CellLight="255,255,255"
+            CellLightBorder="216,216,216"
+            CellLightBorderDark="178,178,178"/>
+        <dx:SchedulerColorSchema 
+            Cell="229,215,177"
+            CellBorder="204,191,157"
+            CellBorderDark="165,155,128"
+            CellLight="255,239,197"
+            CellLightBorder="216,203,167"
+            CellLightBorderDark="178,167,137"/>
+        <dx:SchedulerColorSchema 
+            Cell="229,207,189"
+            CellBorder="204,184,168"
+            CellBorderDark="165,149,137"
+            CellLight="255,230,211"
+            CellLightBorder="216,195,179"
+            CellLightBorderDark="178,161,147"/>
+        <dx:SchedulerColorSchema 
+            Cell="207,207,207"
+            CellBorder="184,184,184"
+            CellBorderDark="149,149,149"
+            CellLight="230,230,230"
+            CellLightBorder="195,195,195"
+            CellLightBorderDark="161,161,161"/>
+        <dx:SchedulerColorSchema 
+            Cell="189,213,216"
+            CellBorder="168,189,192"
+            CellBorderDark="136,154,156"
+            CellLight="210,237,241"
+            CellLightBorder="178,201,204"
+            CellLightBorderDark="147,165,168"/>
+        <dx:SchedulerColorSchema 
+            Cell="200,218,168"
+            CellBorder="178,194,149"
+            CellBorderDark="144,157,121"
+            CellLight="223,243,187"
+            CellLightBorder="189,206,158"
+            CellLightBorderDark="156,170,130"/>
+    </ResourceColorSchemas>
+
+</dx:ASPxScheduler>
+
+

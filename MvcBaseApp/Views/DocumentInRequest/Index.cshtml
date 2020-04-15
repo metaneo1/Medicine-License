@@ -1,0 +1,318 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+
+}
+
+@using DataModel
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+@if (
+Html.HasRoleView(Session, Model.EntityName + "_Id")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_Request")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_Document")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_DocumentState")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_RequestElement")||
+Html.HasRoleView(Session, Model.EntityName + "_Description")
+    )
+{
+
+    <script>
+        function ShowRequestElementTypeDescription(desc) {
+            $.confirm({
+                useBootstrap: false, title: false,
+                columnClass: 'col-md-4 col-md-offset-4',
+                content: '' + desc,
+                typeAnimated: false,
+                buttons: {ok: function(){}},
+                animationSpeed: 100
+            });
+        }
+    </script>
+    @Html.Partial("_IndexHeader", Model)
+
+    <script>
+        function btnAddClick(currentId, requestTypeId, hasDocument, isActive) {
+            current@(Model.EntityName)Id = parseInt(currentId);
+            currentRequestTypeId = requestTypeId.toString().split('_')[0];
+            btnAdd@(Model.EntityName)Click();
+        }
+
+        function btnEditClick(currentId, requestTypeId, _hasDocument, _isActive) {
+            current@(Model.EntityName)Id = parseInt(currentId);
+            hasDocument = _hasDocument.toString().toLowerCase() == 'true';
+            isActive = _isActive.toString().toLowerCase() == 'true';
+            currentRequestTypeId = parseInt(requestTypeId.toString().split('_')[0]);
+            btnEdit@(Model.EntityName)Click();
+        }
+
+        function btnDeleteClick(currentId, currentRequestTypeId, _hasDocument, isActive) {
+            current@(Model.EntityName)Id = parseInt(currentId);
+            hasDocument = _hasDocument.toString().toLowerCase() == 'true';
+            btnDelete@(Model.EntityName)Click();
+        }
+
+        function btnViewClick(currentId, requestTypeId, _hasDocument, _isActive) {
+            current@(Model.EntityName)Id = parseInt(currentId);
+            hasDocument = _hasDocument.toString().toLowerCase() == 'true';
+            isActive = _isActive.toString().toLowerCase() == 'true';
+            currentRequestTypeId = parseInt(requestTypeId.toString().split('_')[0]);
+            btnView@(Model.EntityName)Click();
+        }
+
+        function btnMessageClick(currentId, requestTypeId, _hasDocument, _isActive) {
+            current@(Model.EntityName)Id = parseInt(currentId);
+            hasDocument = _hasDocument.toString().toLowerCase() == 'true';
+            isActive = _isActive.toString().toLowerCase() == 'true';
+            currentRequestTypeId = parseInt(requestTypeId.toString().split('_')[0]);
+            btnMessage@(Model.EntityName)Click();
+        }
+
+        function btnMessage@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnMessage@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnMessage@(Model.EntityName)Click != null) {
+                    needStop = OnBtnMessage@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+            if (isActive == false) {
+                $.alert('Нельзя добавить документ на группу');
+                return;
+            }            
+            if (hasDocument == false) {
+                $.alert('Документ не прикреплен');
+                return;
+            }
+            loadNewPage('@Url.Action("IndexForDocument", "Message")?Id_Document=' + current@(Model.EntityName)Id + '&Id_Request=' + @ViewBag.DocumentInRequest_Id_Request, update@(Model.EntityName)List);
+        }
+
+        function btnAdd@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnAdd@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnAdd@(Model.EntityName)Click != null) {
+                    needStop = OnBtnAdd@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+            if (isActive == false) {
+                $.alert('Нельзя добавить документ на группу');
+                return;
+            }
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=0' + '&@Html.Raw(Model.AdditionalUrlParamenter)&Id_RequestElement=' + currentRequestTypeId, update@(Model.EntityName)List);
+        }
+
+        function btnEdit@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnEdit@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnEdit@(Model.EntityName)Click != null) {
+                    needStop = OnBtnEdit@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+
+            if ((current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) && currentRequestTypeId==0) {
+                $.alert('@Labels.ErrorNoItemSelected');
+                return;
+            }
+            if (isActive == false) {
+                $.alert('Нельзя изменить документ группы');
+                return;
+            }
+            if (hasDocument == false) {
+                $.alert('Документ не прикреплен');
+                return;
+            }
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=' + current@(Model.EntityName)Id + '&@Html.Raw(Model.AdditionalUrlParamenter)&Id_RequestElement=' + currentRequestTypeId, update@(Model.EntityName)List);
+        }
+
+        function btnView@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnView@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnView@(Model.EntityName)Click != null) {
+                    needStop = OnBtnView@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+            if ((current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) && currentRequestTypeId==0) {
+                $.alert('@Labels.ErrorNoItemSelected');
+                return;
+            }
+            if (isActive == false) {
+                return;
+            }
+            if (hasDocument == false) {
+                $.alert('Документ не прикреплен');
+                return;
+            }
+            $.ajax({
+                url: '@Url.Action("IsDocumentEmpty")'+ '?Id=' + current@(Model.EntityName)Id,
+                type: "POST",
+                success: function(data) {
+                    if (data === false) {
+                        var win = window.open('@Url.Action("ShowDocument")' + '?Id=' + current@(Model.EntityName)Id,
+                            '_blank');
+                        win.focus();
+                    } else {
+                        alert('Документ не прикреплен');
+                    }
+                },
+                error: function() {
+                    alert("Error: ");
+                }
+            });
+
+        }
+
+        function btnDelete@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnDelete@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnDelete@(Model.EntityName)Click != null) {
+                needStop = OnBtnDelete@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+            if (hasDocument == false) {
+                $.alert('Документ не прикреплен');
+            return;
+        }
+        if (current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) {
+            $.alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+        $.get('@Url.Action("GetDeleteText", Model.EntityName)' + '?id=' + current@(Model.EntityName)Id,
+            function (data) {
+                $.confirm({
+                    title: data,
+                    content: '',
+                    buttons: {
+                        confirm: {
+                            text: '@Labels.btnDelete',
+                            action: function () {
+                                $.get('@Url.Action("Delete", Model.EntityName)' + '?id=' + current@(Model.EntityName)Id, function (data) {
+                                    $.get('@Url.Action("IndexPartial", Model.EntityName)', function () {
+                                        update@(Model.EntityName)List(data); //$('#@(Model.EntityName)List').html(data);
+                                    }).fail(function() {
+                                        alert('@Labels.ErrorNoDb'); // or whatever
+                                    });
+                                }).fail(function() {
+                                    alert('@Labels.ErrorNoDb'); // or whatever
+                                });
+                            }
+                        },
+                        cancel: {
+                            text: '@Labels.btnCancel',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                            }
+                        }
+                    }
+                });
+            });
+    }
+    </script>
+
+@Html.Partial("IndexGrid/_ButtonRefresh", Model)
+@Html.Partial("IndexGrid/_ButtonPrint", Model)
+@Html.Partial("IndexGrid/_ButtonClose", Model)
+
+
+    <!-- Variables -->
+    <script>
+        var current@(Model.EntityName)Id = 0;
+        var currentRequestTypeId = @ViewBag.DocumentInRequest_Id_Request;
+        var hasDocument = false;
+        var isActive = false;
+        //var current@(Model.EntityName)Name = '';
+    </script>
+
+    <!-- Grid Events-->
+    <script>
+        function On@(Model.EntityName)GridFocusedRowChanged(s, e) {
+            s.GetRowValues(s.GetFocusedRowIndex(), 'Id;Id_RequestElement;HasDocument;IsActive', On@(Model.EntityName)GetRowValues);
+        }
+        function On@(Model.EntityName)GetRowValues(values) {
+            current@(Model.EntityName)Id = values[0];
+            currentRequestTypeId = values[1];
+            hasDocument = values[2];
+            isActive = values[3];
+            //current@(Model.EntityName)Name = values[1];
+        }
+    </script>
+
+    <!-- Private Functions -->
+    <script>
+        function update@(Model.EntityName)List() {
+            @*hasDocument = false;
+            isActive = false;
+            current@(Model.EntityName)Id = 0;*@
+            //treeList.PerformCallback({Id_Request: currentRequestTypeId.toString().split("_")[0]});
+            $.get('@Url.Action("DataBindingPartial")' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_Request='+currentRequestTypeId.toString().split("_")[0],
+                function(data) {
+                    $('#@(Model.EntityName)List').html(data);
+                    treeList.SetFocusedNodeKey(currentRequestTypeId.toString());
+                    treeList.ExpandAll();
+                    var selectelement = treeList.GetNodeHtmlElement(treeList.GetFocusedNodeKey());
+                    if (selectelement != null) {
+                        selectelement.scrollIntoView(true);
+                    }
+                });
+        }
+
+        function OnGetNodeValues(values) {
+            current@(Model.EntityName)Id = values[0];
+            currentRequestTypeId = values[1];
+            hasDocument = values[2];
+            isActive = values[3];
+        }
+
+        function OnFocusedNodeChangedDocument(s, e) {
+
+        }
+        function OnNodeClickHandlerDocument(s, e) {
+            treeList.GetNodeValues(e.nodeKey, 'Id;Id_RequestElement;HasDocument;IsActive', OnGetNodeValues);
+        }
+    </script>
+
+    <br />
+    <br />
+
+    <div id="@(Model.EntityName)List">
+
+@Html.Partial("_TreeList", (List<GetDocumentAndRequestElements_Result>)ViewBag.TreeListData)
+@*@Html.Partial("_Index")*@
+    </div>
+
+    <!-- Additional Binding -->
+    <script>
+
+        hideBigLoader();
+
+        bindings.push(bind@(Model.EntityName)List);
+
+        function bind@(Model.EntityName)List() {
+        }
+    </script>
+}
+else
+{
+    <!-- Additional Binding -->
+    <script>
+
+        hideBigLoader();
+
+        function bind@(Model.EntityName)List() {
+        }
+
+        bindings.push(bind@(Model.EntityName)List);
+
+
+        $.alert('@Labels.NotAccessRights');
+        closeLastPage();
+    </script>
+}

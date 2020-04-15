@@ -1,0 +1,27 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTitleIndex runat="server" ImageFolder="~/App_Themes/Office2003Blue/{0}/"
+    SpriteCssFilePath="~/App_Themes/Office2003Blue/{0}/sprite.css"
+    CssFilePath="~/App_Themes/Office2003Blue/{0}/styles.css" CssPostfix="Office2003Blue" FilterBoxSpacing="34px" GroupSpacing="35px">
+    <filterbox caption="Filter:&amp;nbsp;&amp;nbsp;" horizontalposition="Left"></filterbox>
+    <IndexPanelSeparatorStyle Height="1px" BackColor="#4F93E3"></IndexPanelSeparatorStyle>
+	<BackToTopImage>
+		<SpriteProperties CssClass="dxWeb_tiBackToTop_Office2003Blue" />
+	</BackToTopImage>
+    <backtotopstyle imagespacing="5px" />
+    <ColumnStyle>
+        <Paddings PaddingLeft="0px"></Paddings>
+    </ColumnStyle>
+    <itemstyle>
+        <Paddings PaddingLeft="8px"></Paddings>
+    </itemstyle>
+    <groupcontentstyle itemspacing="8px">
+        <Paddings PaddingTop="8px" PaddingBottom="12px"></Paddings>
+    </groupcontentstyle>
+    <Columns>
+		<dx:TitleIndexColumn />    
+		<dx:TitleIndexColumn />
+    </Columns>
+</dx:ASPxTitleIndex>
+

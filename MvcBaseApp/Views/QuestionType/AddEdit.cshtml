@@ -1,0 +1,46 @@
+@using MvcBaseApp.Resources
+@model DataModel.QuestionType
+
+@{
+    Html.EnableClientValidation();
+    var id = Model.Id;
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSaveQuestionTypeClick(s, e) {
+        var data = $(AddQuestionTypeFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "QuestionType")',
+            data: data + '&Id=@Model.Id&ParentId=' + currentLocalGovernmentIdLicense,
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelQuestionTypeClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "QuestionType"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

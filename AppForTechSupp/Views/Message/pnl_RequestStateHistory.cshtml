@@ -1,0 +1,15 @@
+﻿@using MvcBaseApp.Models
+@{
+    Layout = null;
+    var id = ((int?) ViewBag.Message_Id_Request ?? 0);
+}
+    @Html.DevExpress().CallbackPanel(s =>
+{
+    s.Name = "pnl_RequestStateHistory";
+    s.CallbackRouteValues = new { Controller = "Message", Action = "pnl_RequestStateHistoryPartial" };
+
+    s.SetContent(() =>
+    {
+        Html.RenderAction("LicenseStatusesPartial", new { Id_Request = id});
+    });
+}).GetHtml()

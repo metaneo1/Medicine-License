@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxTreeList" Assembly="DevExpress.Web.ASPxTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTreeList runat="server">
+    <Styles CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass">
+        <CustomizationWindowContent VerticalAlign="Top" />
+    </Styles>
+    <Images SpriteCssFilePath="~/App_Themes/BlackGlass/{0}/sprite.css">
+    </Images>
+    <SettingsPager CurrentPageNumberFormat="{0}">
+        <FirstPageButton Visible="True"></FirstPageButton>
+        <LastPageButton Visible="True"></LastPageButton>
+    </SettingsPager>
+</dx:ASPxTreeList>

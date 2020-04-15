@@ -1,0 +1,13 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %> 
+
+<dx:ASPxVerticalGrid runat="server" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange">
+    <SettingsPager CurrentPageNumberFormat="{0}" />
+    <SettingsLoadingPanel ImagePosition="Top" />
+    <Images SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" />
+    <Styles CssPostfix="SoftOrange" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css">
+        <Header SortingImageSpacing="5px" ImageSpacing="5px" />
+    </Styles>
+    <Paddings Padding="1px" />
+</dx:ASPxVerticalGrid>
+

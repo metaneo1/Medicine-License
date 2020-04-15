@@ -1,0 +1,213 @@
+@using System.Web.UI.WebControls;
+@using MvcBaseApp.Controllers;
+@using MvcBaseApp.Resources;
+@using System.Drawing;
+@using DataModel;
+@model AdminUnits
+
+@{
+}
+
+@*@{
+    var datamodel = ViewBag.MODEL;
+}*@
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddAdminUnitsFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.AdminUnits_AdminUnits;
+        g.Caption = Labels.AdminUnits_MainInfo;
+        g.ColCount = 1;
+
+
+        g.Items.Add(m => m.IdTypeadm, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AdminUnits_IdTypeadm");
+            i.SetNestedContent(Html.Action("GetLookUp", "TypeAdminUnits", new { JsElementName = "IdTypeadm_AdminUnits", CallerConrtoller = "AddAdminUnits", CurrentValue = Model.IdTypeadm }).ToString());
+        }).Caption = Labels.IdTypeadm;
+
+
+        g.Items.Add(m => m.ParentId, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AdminUnits_ParentId");
+            i.NestedExtension().DropDownEdit(ds =>
+            {
+                ds.Name = "ddeLicense";
+                ds.Properties.NullText = "(Не выбрано)";
+                ds.ReadOnly = true;
+                ds.Properties.ClientSideEvents.DropDown = "OnDropDownLicense";
+                ds.Width = System.Web.UI.WebControls.Unit.Pixel(250);
+                ds.SetDropDownWindowTemplateContent(c =>
+                {
+                    Html.DevExpress().TextBox(settingsTB =>
+                    {
+                        settingsTB.Name = "SearchTextLicense";
+                        settingsTB.Properties.NullText = "Поиск...";
+                        settingsTB.Width = Unit.Pixel(140);
+                        settingsTB.ControlStyle.CssClass = "inline-editor";
+                    }).Render();
+                    Html.DevExpress().Button(settingsBtn =>
+                    {
+                        settingsBtn.Name = "SearchButtonLicense";
+                        settingsBtn.Text = "Поиск";
+                        settingsBtn.Width = Unit.Pixel(30);
+                        settingsBtn.ControlStyle.CssClass = "inline-editor";
+                        settingsBtn.ClientSideEvents.Click = "onSearchButtonClickLicense";
+                    }).Render();
+                    Html.RenderAction("TreeListPartial", "AdminUnits", new { Id_AdminUnit = Model.ParentId });
+                });
+            });
+        }).Caption = Labels.AdminUnits_AdminUnits;
+
+
+
+
+
+
+        g.Items.Add(m => m.Name_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AdminUnits_Name_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "AdminUnits_Name_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.AdminUnits_Name_kg;
+        g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AdminUnits_Name_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "AdminUnits_Name_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.AdminUnits_Name_ru;
+        //g.Items.Add(m => m.IdTypeadm, i =>
+        //{
+        //    i.NestedExtension().ComboBox(tb =>
+        //    {
+        //        //Comes from lookup control _LookUpReload
+        //        tb.CallbackRouteValues = new { Controller = "TypeAdminUnits", Action = "GetAllTypeAdminUnitsListAddAdminUnits" };
+        //        tb.Name = "Id_TypeAdminUnits_AddAdminUnits";
+
+
+        //        tb.Width = Unit.Pixel(250);
+        //        tb.ShowModelErrors = true;
+        //        tb.Properties.ValidationSettings.Display = Display.Dynamic;
+        //        //  tb.Properties.DataSource = datamodel.CountryList;
+        //        tb.Properties.ValueField = "Id";
+        //        tb.Properties.TextField = "Name";
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+        //        tb.Properties.ClientSideEvents.ButtonClick = "On_TypeAdminUnitsList_Add_AdminUnits_ButtonClick";
+        //        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+        //    });
+        //}).Caption = Labels.AdminUnits_TypeAdminUnits;
+        g.Items.Add(m => m.Latitude, i =>
+        {
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.AdminUnits_Latitude;
+
+
+
+        g.Items.Add(m => m.Longitude, i =>
+        {
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.AdminUnits_Longitude;
+
+
+
+        g.Items.Add(m => m.Comment, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "AdminUnits_Comment");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "AdminUnits_Comment"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.AdminUnits_Comment;
+        g.Items.Add(m => m.IsRayonCenter, i =>
+        {
+            i.NestedExtension().CheckBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.AdminUnits_IsRayonCenter;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyAdminUnitsButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveAdminUnitsClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelAdminUnitsButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelAdminUnitsClick";
+            });
+        });
+    });
+
+}).GetHtml()

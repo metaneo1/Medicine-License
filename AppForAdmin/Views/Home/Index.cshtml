@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        Html.RenderAction("Login", "InPageAutorize");
+        @*<script>
+                function hideLoginForm() {
+
+                }
+                loadNewPage('@Url.Action("Login","InPageAutorize")', hideLoginForm);
+            </script>*@
+    }
+    @*else
+        {
+            if (User.Identity.Name == "guest")
+            {
+                @: <script>loadNewPage('@Url.Action("Index","members")', null);</script>
+            }
+        }*@
+}

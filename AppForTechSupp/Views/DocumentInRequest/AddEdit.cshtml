@@ -1,0 +1,61 @@
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model DataModel.DocumentInRequest
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+    var re = DatabaseProvider.DB.RequestElement.FirstOrDefault(x => x.Id == Model.Id_RequestElement);
+    var title = re == null ? "" : re.RequestElementType.Name_ru;
+}
+
+<h4>
+   @(Model.Id == 0 ? Labels.DocumentInRequest_Add : "Редактировать"). @title @*Labels.DocumentInRequest + Model.Id)*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+    function OnSaveDocumentInRequestClick(s, e) {
+        var formData = new FormData(AddDocumentInRequestFormLayout.GetParentForm());
+        formData.append('id', '@Model.Id');
+        formData.append('Id_Request', '@Model.Id_Request');
+        formData.append('Id_RequestElement', '@Model.Id_RequestElement');
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "DocumentInRequest")',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+
+    function OnCancelDocumentInRequestClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "DocumentInRequest"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

@@ -1,0 +1,110 @@
+@using MvcBaseApp.Resources
+@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+@model DataModel.QuestionType
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    var aspuser = User.Identity.GetUserId();
+    var user = DatabaseProvider.DB.AspNetUsers.FirstOrDefault(x => x.Id == aspuser);
+    var QuestionType = DatabaseProvider.DB.QuestionType.FirstOrDefault(x => x.Id == Model.Id_Parent);
+    var QuestionTypeName = QuestionType == null ? "" : QuestionType.Name_ru;
+    ViewData["Id_QuestionType"] = Model.Id_Parent;
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Button Click Events -->
+<script>
+    var currentSearchTextLicense = '';
+    var currentLocalGovernmentIdLicense = 0;
+    var initialQuestionTypeIdLicense = 0;
+    var beginCallBackCountLicense = 0;
+    @if (Model.Id_Parent != 0 && Model.Id_Parent != null)
+    {
+        @: initialQuestionTypeIdLicense = @Model.Id_Parent;
+    }
+
+    function TreeInitLicense(s, e) {
+
+        ddeLicense.SetText('@QuestionTypeName');
+    }
+
+    function onTreeListBeginCallbackLicense(s, e) {
+        beginCallBackCountLicense++;
+        e.customArgs['SearchText'] = currentSearchTextLicense;
+        if (beginCallBackCountLicense==1)
+            e.customArgs['Id_QuestionType'] = initialQuestionTypeIdLicense;
+    }
+    function onSearchButtonClickLicense(s, e) {
+        currentSearchTextLicense = SearchTextLicense.GetValue();
+        //treeListGroupsLicense.CollapseAll();
+        treeListGroupsLicense.PerformCallback({ isNewSearch: true });
+    }
+
+    function OnNodeClickHandlerLicense(s, e) {
+        //var focusedKey = treeListGroupsLicense.GetFocusedNodeKey();
+        var focusedKey = e.nodeKey;
+
+        //$("#ID").val(focusedKey);
+        treeListGroupsLicense.GetNodeValues(focusedKey, "Name", function (values) {
+
+            ddeLicense.SetText(values);
+            ddeLicense.HideDropDown();
+            currentLocalGovernmentIdLicense = treeListGroupsLicense.GetFocusedNodeKey();
+
+
+            @*$.get('@Url.Action("IndexPartial", Model.EntityName)' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_LocalGovernment='+currentLocalGovernmentIdLicense, function (data) {
+                $('#AddLicenseRequestActivityTypeList').html(data);
+            });*@
+
+            //gvReportDataBindingToLinq.PerformCallback({ Id_LocalGovernment : currentLocalGovernmentIdLicense});
+            });
+    }
+    function OnDropDownLicense(s, e) {
+        //var id = $("#ID").val();
+        //if (id == 0 || id == null) id = currentLocalGovernmentIdLicense;
+        //treeListGroupsLicense.SetFocusedNodeKey(id);
+    }
+
+
+
+
+
+
+
+
+    function OnSaveQuestionTypeClick(s, e) {
+        var data = $(AddQuestionTypeFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "QuestionType")',
+            data: data + '&id=@Model.Id&Id_Parent='+currentLocalGovernmentIdLicense,
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelQuestionTypeClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", "QuestionType"))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

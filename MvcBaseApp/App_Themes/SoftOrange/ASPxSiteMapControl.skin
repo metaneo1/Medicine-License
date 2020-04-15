@@ -1,0 +1,19 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxSiteMapControl runat="server" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange">
+    <LevelProperties>
+        <dx:LevelProperties>
+            <ChildNodesPaddings PaddingTop="11px"></ChildNodesPaddings>
+        </dx:LevelProperties>
+        <dx:LevelProperties NodeSpacing="1px">
+            <ChildNodesPaddings PaddingTop="1px" PaddingLeft="28px"></ChildNodesPaddings>
+        </dx:LevelProperties>
+        <dx:LevelProperties NodeSpacing="2px">
+        </dx:LevelProperties>
+    </LevelProperties>
+    <DefaultLevelProperties BulletStyle="None">
+        <CurrentNodeStyle BackColor="#F15E34" ForeColor="White"></CurrentNodeStyle>
+    </DefaultLevelProperties>
+</dx:ASPxSiteMapControl>
+

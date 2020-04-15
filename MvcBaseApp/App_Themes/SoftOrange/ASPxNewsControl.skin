@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxNewsControl runat="server" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange">
+    <ItemRightPanelStyle Spacing="10px" />
+    <ItemLeftPanelStyle Spacing="10px" />
+    <ItemDateStyle Spacing="9px" />
+    <ItemHeaderStyle Spacing="14px" />
+
+	<BackToTopImage>
+		<SpriteProperties CssClass="dxWeb_BackToTop_SoftOrange"></SpriteProperties>
+	</BackToTopImage>
+        
+    <PagerSettings CurrentPageNumberFormat="{0}"></PagerSettings>
+
+    <SettingsLoadingPanel ImagePosition="Top" />
+</dx:ASPxNewsControl>
+

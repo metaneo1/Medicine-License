@@ -1,0 +1,7 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxRichEdit" Assembly="DevExpress.Web.ASPxRichEdit.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxRichEdit runat="server" CssPostfix="Office2003Olive" CssFilePath="~/App_Themes/Office2003Olive/{0}/styles.css">
+    <Images SpriteCssFilePath="~/App_Themes/Office2003Olive/{0}/sprite.css" MenuIconSet="Colored"></Images>
+</dx:ASPxRichEdit>
+

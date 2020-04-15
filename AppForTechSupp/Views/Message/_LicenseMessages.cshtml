@@ -1,0 +1,71 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel<List<DataModel.Message>>
+@{
+    Layout = null;
+var id = (int?) ViewBag.Message_Id_Request;
+    
+}
+
+
+        @Html.DevExpress().GridView(
+            settings =>
+            {
+                settings.Name = "gvMessageDataBindingToLinq";
+                settings.CallbackRouteValues = new {Controller = "Message", Action = "LicenseMessagesPartial", Id_Request = id};
+                settings.KeyFieldName = "Id";
+                settings.Width = Unit.Percentage(100);
+                settings.EnableRowsCache = true;
+                settings.Settings.ShowFilterRow = true;
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "MessageText";
+                    x.FieldName = "MessageText";
+                    x.Caption = Labels.ResourceManager.GetString("Message_MessageText");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "MessageDate";
+                    x.FieldName = "MessageDate";
+                    x.Caption = Labels.ResourceManager.GetString("Message_MessageDate");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "QuestionType.Name_kg";
+                    x.FieldName = "QuestionType.Name_kg";
+                    x.Caption = Labels.ResourceManager.GetString("Message_QuestionType_Name");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+                settings.Columns.Add(x =>
+                {
+                    x.Name = "Id_AnswerWriter";
+                    x.FieldName = "ApplicationUser.FullName";
+                    x.Caption = Labels.ResourceManager.GetString("Message_Id_AnswerWriter");
+                    x.CellStyle.Wrap = DefaultBoolean.True;
+                    x.HeaderStyle.Wrap = DefaultBoolean.True;
+                });
+
+
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.ClientSideEvents.FocusedRowChanged = "OnMessageGridFocusedRowChanged";
+                //settings.ClientSideEvents.Init = "resizeGrid";
+
+                //settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+                //{
+                //    MVCxGridView gridView = sender as MVCxGridView;
+                //    Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+                //};
+
+            }).Bind(Model.Entity).GetHtml()
+
+    

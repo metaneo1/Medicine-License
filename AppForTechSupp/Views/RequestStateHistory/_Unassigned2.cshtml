@@ -1,0 +1,141 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel<List<DataModel.RequestStateHistory>>
+@{
+    Layout = null;
+    
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvLicenseRequestDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "LicenseRequest", Action = "UnassignedPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+
+        if (Html.HasRoleView(Session, Model.EntityName + "_DateCreate"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "DateCreate";
+                x.FieldName = "DateCreate";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_DateCreate");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_ClinicName"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "ClinicName";
+                x.FieldName = "ClinicName";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ClinicName");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Address"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Address";
+                x.FieldName = "Address";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Address");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Phone1"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Phone1";
+                x.FieldName = "Phone1";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Phone1");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Phone2"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Phone2";
+                x.FieldName = "Phone2";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Phone2");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Email"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Email";
+                x.FieldName = "Email";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Email");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Organization.Name"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Organization.Name";
+                x.FieldName = "Organization.Name";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Organization.Name");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_AdminUnits.Name"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "AdminUnits.Name";
+                x.FieldName = "AdminUnits.Name";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_AdminUnits.Name");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_RequestType.Name_ru"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "RequestType.Name_ru";
+                x.FieldName = "AdminUnits.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestType.Name_ru");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_AdminUnits.FullName"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "ApplicationUser.FullName";
+                x.FieldName = "ApplicationUser.FullName";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ApplicationUser.FullName");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnLicenseRequestGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+
+    }).Bind(Model.Entity).GetHtml()

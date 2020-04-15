@@ -1,0 +1,196 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лицензирование медицинских и фармацевтических услуг</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href='@Url.Content("~/Content/jqonfirm.css")'>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src='@Url.Content("~/Scripts/jquery-confirm.js")'></script>
+
+    @RenderSection("scripts", required: false)
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, AccessibilityCompliant = true },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout }
+        )
+
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.GridView }
+        )
+
+
+
+
+
+</head>
+<body style="padding: 0">
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Chart, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Report, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList, Theme = Startup.THEME }
+    )
+
+
+
+
+
+
+    <style>
+        * {
+            font-size: 14px !important;
+        }
+        body, html {
+            height: 100%;
+        }
+    </style>
+    @Html.Partial("_Ribbon")
+
+    <script>
+        var preloaderIds = [];
+
+        var bindings = [];
+
+        var callbacks = [];
+
+        function getLastBinding() {
+            return bindings[bindings.length - 1];
+        }
+
+        function getLastCallbacks() {
+            return callbacks[callbacks.length - 1];
+        }
+
+        function getLatPreloader() {
+            return $('#preloaded_' + preloaderIds.length);
+        }
+
+
+
+        function showLeftPane() {
+            var pane = splOverview.GetPaneByName("WorkerPreview");
+            pane.Expand();
+        }
+
+        function hideLeftPane() {
+            //var pane = splOverview.GetPaneByName("WorkerPreview");
+            //pane.Collapse(pane);
+        }
+
+        function bindLast() {
+            var bind = bindings[bindings.length - 1];
+            if (bind != null) {
+                bind();
+            }
+        }
+    </script>
+@Html.Partial("_LookUpEditJs")
+    
+<script>
+    function resizeGrid(s, e) {
+        s.SetHeight(splOverview.GetHeight() - 165);
+    }
+</script>
+
+
+<script>
+    var isEdited = false;
+    $(document).ready(function () {
+        if (isEdited)
+            return;
+        isEdited = true;
+        var winHeight = window.innerHeight;
+        var ribbonHeight = $('#ribbon').height();
+
+        var neededHeight = winHeight - ribbonHeight - 50;
+        var innerHeight = neededHeight - 15;
+
+        $("#splOverview").css("height", neededHeight);
+        $("#splOverview_0").css("height", neededHeight);
+        $("#splOverview_1").css("height", neededHeight);
+        $("#splOverview_1_CC").css("height", innerHeight);
+        $("#splOverview_0_CC").css("height", innerHeight);
+    });
+
+    function resizePane() {
+        var winHeight = window.innerHeight;
+        var ribbonHeight = $('#ribbon').height();
+
+        var neededHeight = winHeight - ribbonHeight - 50;
+        var innerHeight = neededHeight - 15;
+
+        $("#splOverview").css("height", neededHeight);
+        $("#splOverview_0").css("height", neededHeight);
+        $("#splOverview_1").css("height", neededHeight);
+        $("#splOverview_1_CC").css("height", innerHeight);
+        $("#splOverview_0_CC").css("height", innerHeight);
+    }
+
+    //window.onbeforeunload = function () { return "Your work will be lost."; };
+
+</script>
+<div class="container-fluid body-content" style="z-index: 9999; padding: 30px 45px 0 45px; background-color: #c8ccd1; border-right: 1px solid #c8ccd1; border-bottom: 1px solid #c8ccd1;">
+    <div class="row" style="z-index: 9999;">
+
+        @Html.DevExpress().Splitter(settings =>
+        {
+            settings.Panes.Add(pane =>
+            {
+                pane.Name = "WorkerPreview";
+                pane.MaxSize = Unit.Pixel(2);
+                pane.Collapsed = false;
+                pane.ShowCollapseBackwardButton = DefaultBoolean.False;
+                pane.SetContent(() =>
+                {
+                    ViewContext.Writer.Write(
+                        "            <div id=\"totalPreview\" style=\"z-index: 9999\"></div>"
+                        );
+                });
+            });
+            
+            settings.Height = Unit.Percentage(100);
+            settings.Width = Unit.Percentage(100);
+            settings.ShowSeparatorImage = false;
+            settings.ClientSideEvents.PaneResized = "resizePane";
+            settings.AllowResize = false;
+            settings.Name = "splOverview";
+            settings.Panes.Add(pane =>
+            {
+                pane.ScrollBars = ScrollBars.Auto;
+                pane.MinSize = 100;
+                pane.SetContent(() =>
+                {
+                    ViewContext.Writer.Write(
+                        "<div id=\"root\" class=\"col-md-12\" style=\"background-color: #fff\"><div id=\"preloaded_0\">" + RenderBody() + "</div></div>"
+                        );
+                });
+            });
+
+        }).GetHtml()
+    </div>
+</div>
+    
+
+</body>
+</html>

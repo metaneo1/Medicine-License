@@ -1,0 +1,52 @@
+﻿@using MvcBaseApp.Resources
+@model AspNetUserRoles
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    Роли пользователя
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveAspNetUserRolesClick(s, e) {
+        var data = $(AddAspNetUserRolesFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "AspNetUserRoles")',
+            data: data + '&id=@Model.Id&Id_User=@Model.UserId',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelAspNetUserRolesClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "AspNetUserRoles"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

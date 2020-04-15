@@ -1,0 +1,77 @@
+﻿@using MvcBaseApp.Resources
+@model DataModel.ApplicationUser
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    Пользователь @*@Labels.ApplicationUser*@
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+    function OnSaveApplicationUserClick(s, e) {
+        applyApplicationUserButton.SetEnabled(false);
+        if ('@(Model.Id)' == '0') {
+            var data = $(AddApplicationUserFormLayout.GetParentForm()).serialize();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RegisterViaDesktop", "InPageAutorize")',
+                data: data + '&id=@Model.Id',
+                success: function (response) {
+                    var data = response.split(':');
+                    if(data[0] == 'OK'){
+                        $.alert('Регистрация прошла успешна');
+                        closeLastPage();
+                        return;
+                    }
+                    $.alert(data[1]);
+                    applyApplicationUserButton.SetEnabled(true);
+                },
+                error: function () {
+                    $.alert('@Labels.ErrorNullFields');
+                    applyApplicationUserButton.SetEnabled(true);
+                }
+            });
+            return;
+        }
+        var data = $(AddApplicationUserFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "ApplicationUser")',
+            data: data + '&id=@Model.Id',
+            success: function () {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+                applyApplicationUserButton.SetEnabled(true);
+            }
+        });
+    }
+
+    function OnCancelApplicationUserClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "ApplicationUser"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

@@ -1,0 +1,57 @@
+﻿
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Controllers.IEntityWithId
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+    var type = Model.GetType().Name;
+    var parentType = Model.GetType().BaseType == null ? "" : Model.GetType().BaseType.Name;
+    var typeParts = type.Split('_');
+
+    if (typeParts.Length > 1)
+    {
+        if (typeParts[0] == parentType || parentType.StartsWith(typeParts[0]))
+        {
+            type = parentType;
+        }
+    }
+}
+
+<!-- Button Click Events -->
+<script>
+    function OnSave@(type)Click(s, e) {
+        var data = $(Add@(type)FormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", type)',
+            data: data + '&id=@Model.Id',
+            success: function (response) {
+                closeLastPage(response);
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancel@(type)Click(s, e) {
+        closeLastPage();
+    }
+</script>
+
+<div id="editableContainer">
+    @using (Html.BeginForm("AddEdit", type))
+    {
+        @Html.Partial("_AddEdit", Model)
+    }
+</div>
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

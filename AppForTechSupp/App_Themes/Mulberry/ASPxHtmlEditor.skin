@@ -1,0 +1,25 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dx" %>
+
+<dx:ASPxHtmlEditor runat="server" Width="800px">
+    <Styles CssPostfix="Mulberry" CssFilePath="~/App_Themes/Mulberry/{0}/styles.css">
+    </Styles>
+
+    <StylesStatusBar>
+        <StatusBar TabSpacing="0px"></StatusBar>
+    </StylesStatusBar>
+
+    <StylesFileManager>
+        <Toolbar Height="46px"></Toolbar>
+        <UploadPanel Height="50px"></UploadPanel>
+    </StylesFileManager>
+
+    <Images SpriteCssFilePath="~/App_Themes/Mulberry/{0}/sprite.css" MenuIconSet="GrayScaled">
+    </Images>
+
+    <ImagesFileManager>
+        <FolderContainerNodeLoadingPanel Url="Web/tvNodeLoading.gif"></FolderContainerNodeLoadingPanel>
+    </ImagesFileManager>
+</dx:ASPxHtmlEditor>
+
+

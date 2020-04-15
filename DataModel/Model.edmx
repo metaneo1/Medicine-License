@@ -1,0 +1,2575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedlicenseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AdminUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="IdTypeadm" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="Longitude" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="IsRayonCenter" Type="bit" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="phone1" Type="nvarchar(max)" />
+          <Property Name="phone2" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Id_Sex" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id_ApplicationUser" Type="int" />
+        </EntityType>
+        <EntityType Name="DocTemplForReqElemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+          <Property Name="Id_Document" Type="int" Nullable="false" />
+          <Property Name="Id_RequestElementType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Filename" Type="nvarchar(max)" />
+          <Property Name="PathToFile" Type="nvarchar(max)" />
+          <Property Name="Id_DocumentFormat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document_Format">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DocumentInRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Request" Type="int" Nullable="false" />
+          <Property Name="Id_Document" Type="int" Nullable="false" />
+          <Property Name="Id_DocumentState" Type="int" Nullable="false" />
+          <Property Name="Id_RequestElement" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DocumentState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LicenseRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="ClinicName" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Phone1" Type="nvarchar(max)" />
+          <Property Name="Phone2" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Id_Company" Type="int" />
+          <Property Name="Id_AdminUnit" Type="int" />
+          <Property Name="Id_RequestType" Type="int" />
+          <Property Name="Id_User" Type="int" Nullable="false" />
+          <Property Name="IsDraft" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseRequestActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Type" Type="int" Nullable="false" />
+          <Property Name="Id_Request" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocalGoverment2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Parent" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SOATE" Type="nvarchar(max)" />
+          <Property Name="Id_SettlementType" Type="int" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Parent" Type="int" />
+          <Property Name="MessageText" Type="nvarchar(max)" />
+          <Property Name="MessageDate" Type="datetime" />
+          <Property Name="Id_Request" Type="int" Nullable="false" />
+          <Property Name="Id_QuestionType" Type="int" />
+          <Property Name="Id_AnswerWriter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageForSentDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_SentDocument" Type="int" Nullable="false" />
+          <Property Name="Id_Message" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIN" Type="nvarchar(max)" />
+          <Property Name="NSCCode" Type="nvarchar(max)" />
+          <Property Name="RegistrationNumber" Type="nvarchar(max)" />
+          <Property Name="Id_Type" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Id_AdminUnit" Type="int" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrganizationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Parent" Type="int" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RequestElement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Parent" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="Id_RequestElemType" Type="int" Nullable="false" />
+          <Property Name="Id_TemplateDocument" Type="int" />
+          <Property Name="Id_RequestType" Type="int" Nullable="false" />
+          <Property Name="Id_StructureType" Type="int" Nullable="false" />
+          <Property Name="IsRequired" Type="bit" />
+        </EntityType>
+        <EntityType Name="RequestElementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+          <Property Name="IsNeedTemplate" Type="bit" />
+        </EntityType>
+        <EntityType Name="RequestElemStructureType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RequestState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RequestStateHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Request" Type="int" Nullable="false" />
+          <Property Name="Id_State" Type="int" Nullable="false" />
+          <Property Name="DateStatusChange" Type="datetime" />
+          <Property Name="Id_User" Type="int" />
+        </EntityType>
+        <EntityType Name="RequestStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Parent" Type="int" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="ActiveImageUrl" Type="nvarchar(max)" />
+          <Property Name="DiabledImageUrl" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RequestType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+          <Property Name="PrintTemplate_ru" Type="nvarchar(max)" />
+          <Property Name="PrintTemplate_kg" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SettlementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Level" Type="int" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Code" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeAdminUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_kg" Type="nvarchar(max)" />
+          <Property Name="Description_kg" Type="nvarchar(max)" />
+          <Property Name="Name_ru" Type="nvarchar(max)" />
+          <Property Name="Description_ru" Type="nvarchar(max)" />
+          <Property Name="CODE" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_AspNetUsers_ApplicationUser">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="Id_ApplicationUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalGoverment2_SettlementType">
+          <End Role="SettlementType" Type="Self.SettlementType" Multiplicity="0..1" />
+          <End Role="LocalGoverment2" Type="Self.LocalGoverment2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettlementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalGoverment2">
+              <PropertyRef Name="Id_SettlementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Child">
+          <End Role="LocalGoverment2" Type="Self.LocalGoverment2" Multiplicity="0..1" />
+          <End Role="LocalGoverment21" Type="Self.LocalGoverment2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalGoverment2">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalGoverment21">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestStateHistory_ApplicationUser">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="0..1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="0..1" />
+          <End Role="AdminUnits1" Type="Self.AdminUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUnits1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="TypeAdminUnits" Type="Self.TypeAdminUnits" Multiplicity="1" />
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUnits">
+              <PropertyRef Name="IdTypeadm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_173">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id_Document" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_179">
+          <End Role="Sex" Type="Self.Sex" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="Id_Sex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_180">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="LicenseRequestActivityType" Type="Self.LicenseRequestActivityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequestActivityType">
+              <PropertyRef Name="Id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_181">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="LicenseRequestActivityType" Type="Self.LicenseRequestActivityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequestActivityType">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_182">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_183">
+          <End Role="RequestState" Type="Self.RequestState" Multiplicity="1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_184">
+          <End Role="OrganizationType" Type="Self.OrganizationType" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="Id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_185">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_186">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="Id_AdminUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_187">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_AdminUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_188">
+          <End Role="RequestType" Type="Self.RequestType" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_RequestType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_189">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_190">
+          <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+          <End Role="QuestionType1" Type="Self.QuestionType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionType1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_191">
+          <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_QuestionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_192">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_193">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_195">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_Document" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_197">
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="1" />
+          <End Role="MessageForSentDocument" Type="Self.MessageForSentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentInRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageForSentDocument">
+              <PropertyRef Name="Id_SentDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_198">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
+          <End Role="MessageForSentDocument" Type="Self.MessageForSentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageForSentDocument">
+              <PropertyRef Name="Id_Message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_199">
+          <End Role="DocumentState" Type="Self.DocumentState" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_DocumentState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_200">
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="0..1" />
+          <End Role="RequestElement1" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_201">
+          <End Role="RequestElementType" Type="Self.RequestElementType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_RequestElemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_202">
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="0..1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_TemplateDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_203">
+          <End Role="RequestType" Type="Self.RequestType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_RequestType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_204">
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="0..1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_RequestElement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_206">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_AnswerWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_207">
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="Message1" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_210">
+          <End Role="RequestElemStructureType" Type="Self.RequestElemStructureType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElemStructureType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_StructureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_211">
+          <End Role="Document_Format" Type="Self.Document_Format" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Format">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="Id_DocumentFormat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_212">
+          <End Role="RequestElementType" Type="Self.RequestElementType" Multiplicity="1" />
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id_RequestElementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_213">
+          <End Role="RequestStep" Type="Self.RequestStep" Multiplicity="0..1" />
+          <End Role="RequestStep1" Type="Self.RequestStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStep">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStep1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedlicenseModelStoreContainer">
+          <EntitySet Name="ActivityType" EntityType="Self.ActivityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminUnits" EntityType="Self.AdminUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocTemplForReqElemType" EntityType="Self.DocTemplForReqElemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document_Format" EntityType="Self.Document_Format" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentInRequest" EntityType="Self.DocumentInRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentState" EntityType="Self.DocumentState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LicenseRequest" EntityType="Self.LicenseRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LicenseRequestActivityType" EntityType="Self.LicenseRequestActivityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalGoverment2" EntityType="Self.LocalGoverment2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageForSentDocument" EntityType="Self.MessageForSentDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrganizationType" EntityType="Self.OrganizationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestElement" EntityType="Self.RequestElement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestElementType" EntityType="Self.RequestElementType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestElemStructureType" EntityType="Self.RequestElemStructureType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestState" EntityType="Self.RequestState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStateHistory" EntityType="Self.RequestStateHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStep" EntityType="Self.RequestStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestType" EntityType="Self.RequestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettlementType" EntityType="Self.SettlementType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeAdminUnits" EntityType="Self.TypeAdminUnits" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AspNetUsers_ApplicationUser" Association="Self.FK_AspNetUsers_ApplicationUser">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalGoverment2_SettlementType" Association="Self.FK_LocalGoverment2_SettlementType">
+            <End Role="SettlementType" EntitySet="SettlementType" />
+            <End Role="LocalGoverment2" EntitySet="LocalGoverment2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Child" Association="Self.FK_Parent_Child">
+            <End Role="LocalGoverment2" EntitySet="LocalGoverment2" />
+            <End Role="LocalGoverment21" EntitySet="LocalGoverment2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestStateHistory_ApplicationUser" Association="Self.FK_RequestStateHistory_ApplicationUser">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="AdminUnits1" EntitySet="AdminUnits" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="TypeAdminUnits" EntitySet="TypeAdminUnits" />
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+          </AssociationSet>
+          <AssociationSet Name="R_173" Association="Self.R_173">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+          </AssociationSet>
+          <AssociationSet Name="R_179" Association="Self.R_179">
+            <End Role="Sex" EntitySet="Sex" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="R_180" Association="Self.R_180">
+            <End Role="ActivityType" EntitySet="ActivityType" />
+            <End Role="LicenseRequestActivityType" EntitySet="LicenseRequestActivityType" />
+          </AssociationSet>
+          <AssociationSet Name="R_181" Association="Self.R_181">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="LicenseRequestActivityType" EntitySet="LicenseRequestActivityType" />
+          </AssociationSet>
+          <AssociationSet Name="R_182" Association="Self.R_182">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_183" Association="Self.R_183">
+            <End Role="RequestState" EntitySet="RequestState" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_184" Association="Self.R_184">
+            <End Role="OrganizationType" EntitySet="OrganizationType" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="R_185" Association="Self.R_185">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_186" Association="Self.R_186">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="R_187" Association="Self.R_187">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_188" Association="Self.R_188">
+            <End Role="RequestType" EntitySet="RequestType" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_189" Association="Self.R_189">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_190" Association="Self.R_190">
+            <End Role="QuestionType" EntitySet="QuestionType" />
+            <End Role="QuestionType1" EntitySet="QuestionType" />
+          </AssociationSet>
+          <AssociationSet Name="R_191" Association="Self.R_191">
+            <End Role="QuestionType" EntitySet="QuestionType" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_192" Association="Self.R_192">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_193" Association="Self.R_193">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_195" Association="Self.R_195">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_197" Association="Self.R_197">
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+            <End Role="MessageForSentDocument" EntitySet="MessageForSentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="R_198" Association="Self.R_198">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessageForSentDocument" EntitySet="MessageForSentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="R_199" Association="Self.R_199">
+            <End Role="DocumentState" EntitySet="DocumentState" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_200" Association="Self.R_200">
+            <End Role="RequestElement" EntitySet="RequestElement" />
+            <End Role="RequestElement1" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_201" Association="Self.R_201">
+            <End Role="RequestElementType" EntitySet="RequestElementType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_202" Association="Self.R_202">
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_203" Association="Self.R_203">
+            <End Role="RequestType" EntitySet="RequestType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_204" Association="Self.R_204">
+            <End Role="RequestElement" EntitySet="RequestElement" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_206" Association="Self.R_206">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_207" Association="Self.R_207">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="Message1" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_210" Association="Self.R_210">
+            <End Role="RequestElemStructureType" EntitySet="RequestElemStructureType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_211" Association="Self.R_211">
+            <End Role="Document_Format" EntitySet="Document_Format" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="R_212" Association="Self.R_212">
+            <End Role="RequestElementType" EntitySet="RequestElementType" />
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+          </AssociationSet>
+          <AssociationSet Name="R_213" Association="Self.R_213">
+            <End Role="RequestStep" EntitySet="RequestStep" />
+            <End Role="RequestStep1" EntitySet="RequestStep" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedlicenseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LicenseRequestActivityType" Relationship="Self.R_180" FromRole="ActivityType" ToRole="LicenseRequestActivityType" />
+        </EntityType>
+        <EntityType Name="AdminUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="IdTypeadm" Type="Int32" Nullable="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="Longitude" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRayonCenter" Type="Boolean" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminUnits1" Relationship="Self.R_11" FromRole="AdminUnits" ToRole="AdminUnits1" />
+          <NavigationProperty Name="AdminUnits2" Relationship="Self.R_11" FromRole="AdminUnits1" ToRole="AdminUnits" />
+          <NavigationProperty Name="TypeAdminUnits" Relationship="Self.R_12" FromRole="AdminUnits" ToRole="TypeAdminUnits" />
+          <NavigationProperty Name="Organization" Relationship="Self.R_186" FromRole="AdminUnits" ToRole="Organization" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_187" FromRole="AdminUnits" ToRole="LicenseRequest" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Id_Sex" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_ApplicationUser" FromRole="ApplicationUser" ToRole="AspNetUsers" />
+          <NavigationProperty Name="RequestStateHistory" Relationship="Self.FK_RequestStateHistory_ApplicationUser" FromRole="ApplicationUser" ToRole="RequestStateHistory" />
+          <NavigationProperty Name="Sex" Relationship="Self.R_179" FromRole="ApplicationUser" ToRole="Sex" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_192" FromRole="ApplicationUser" ToRole="LicenseRequest" />
+          <NavigationProperty Name="Message" Relationship="Self.R_206" FromRole="ApplicationUser" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_ApplicationUser" Type="Int32" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_AspNetUsers_ApplicationUser" FromRole="AspNetUsers" ToRole="ApplicationUser" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="DocTemplForReqElemType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Document" Type="Int32" Nullable="false" />
+          <Property Name="Id_RequestElementType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Self.R_173" FromRole="DocTemplForReqElemType" ToRole="Document" />
+          <NavigationProperty Name="RequestElement" Relationship="Self.R_202" FromRole="DocTemplForReqElemType" ToRole="RequestElement" />
+          <NavigationProperty Name="RequestElementType" Relationship="Self.R_212" FromRole="DocTemplForReqElemType" ToRole="RequestElementType" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PathToFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_DocumentFormat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DocTemplForReqElemType" Relationship="Self.R_173" FromRole="Document" ToRole="DocTemplForReqElemType" />
+          <NavigationProperty Name="DocumentInRequest" Relationship="Self.R_195" FromRole="Document" ToRole="DocumentInRequest" />
+          <NavigationProperty Name="Document_Format" Relationship="Self.R_211" FromRole="Document" ToRole="Document_Format" />
+        </EntityType>
+        <EntityType Name="Document_Format">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Document" Relationship="Self.R_211" FromRole="Document_Format" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="DocumentInRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Request" Type="Int32" Nullable="false" />
+          <Property Name="Id_Document" Type="Int32" Nullable="false" />
+          <Property Name="Id_DocumentState" Type="Int32" Nullable="false" />
+          <Property Name="Id_RequestElement" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Document" Relationship="Self.R_195" FromRole="DocumentInRequest" ToRole="Document" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_193" FromRole="DocumentInRequest" ToRole="LicenseRequest" />
+          <NavigationProperty Name="MessageForSentDocument" Relationship="Self.R_197" FromRole="DocumentInRequest" ToRole="MessageForSentDocument" />
+          <NavigationProperty Name="DocumentState" Relationship="Self.R_199" FromRole="DocumentInRequest" ToRole="DocumentState" />
+          <NavigationProperty Name="RequestElement" Relationship="Self.R_204" FromRole="DocumentInRequest" ToRole="RequestElement" />
+        </EntityType>
+        <EntityType Name="DocumentState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DocumentInRequest" Relationship="Self.R_199" FromRole="DocumentState" ToRole="DocumentInRequest" />
+        </EntityType>
+        <EntityType Name="LicenseRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="ClinicName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Company" Type="Int32" />
+          <Property Name="Id_AdminUnit" Type="Int32" />
+          <Property Name="Id_RequestType" Type="Int32" />
+          <Property Name="Id_User" Type="Int32" Nullable="false" />
+          <Property Name="IsDraft" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AdminUnits" Relationship="Self.R_187" FromRole="LicenseRequest" ToRole="AdminUnits" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.R_192" FromRole="LicenseRequest" ToRole="ApplicationUser" />
+          <NavigationProperty Name="DocumentInRequest" Relationship="Self.R_193" FromRole="LicenseRequest" ToRole="DocumentInRequest" />
+          <NavigationProperty Name="LicenseRequestActivityType" Relationship="Self.R_181" FromRole="LicenseRequest" ToRole="LicenseRequestActivityType" />
+          <NavigationProperty Name="RequestStateHistory" Relationship="Self.R_182" FromRole="LicenseRequest" ToRole="RequestStateHistory" />
+          <NavigationProperty Name="Organization" Relationship="Self.R_185" FromRole="LicenseRequest" ToRole="Organization" />
+          <NavigationProperty Name="RequestType" Relationship="Self.R_188" FromRole="LicenseRequest" ToRole="RequestType" />
+          <NavigationProperty Name="Message" Relationship="Self.R_189" FromRole="LicenseRequest" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="LicenseRequestActivityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Type" Type="Int32" Nullable="false" />
+          <Property Name="Id_Request" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActivityType" Relationship="Self.R_180" FromRole="LicenseRequestActivityType" ToRole="ActivityType" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_181" FromRole="LicenseRequestActivityType" ToRole="LicenseRequest" />
+        </EntityType>
+        <EntityType Name="LocalGoverment2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Parent" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOATE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_SettlementType" Type="Int32" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <NavigationProperty Name="SettlementType" Relationship="Self.FK_LocalGoverment2_SettlementType" FromRole="LocalGoverment2" ToRole="SettlementType" />
+          <NavigationProperty Name="LocalGoverment21" Relationship="Self.FK_Parent_Child" FromRole="LocalGoverment2" ToRole="LocalGoverment21" />
+          <NavigationProperty Name="LocalGoverment22" Relationship="Self.FK_Parent_Child" FromRole="LocalGoverment21" ToRole="LocalGoverment2" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Parent" Type="Int32" />
+          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDate" Type="DateTime" Precision="3" />
+          <Property Name="Id_Request" Type="Int32" Nullable="false" />
+          <Property Name="Id_QuestionType" Type="Int32" />
+          <Property Name="Id_AnswerWriter" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.R_206" FromRole="Message" ToRole="ApplicationUser" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_189" FromRole="Message" ToRole="LicenseRequest" />
+          <NavigationProperty Name="QuestionType" Relationship="Self.R_191" FromRole="Message" ToRole="QuestionType" />
+          <NavigationProperty Name="MessageForSentDocument" Relationship="Self.R_198" FromRole="Message" ToRole="MessageForSentDocument" />
+          <NavigationProperty Name="Message1" Relationship="Self.R_207" FromRole="Message" ToRole="Message1" />
+          <NavigationProperty Name="Message2" Relationship="Self.R_207" FromRole="Message1" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="MessageForSentDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_SentDocument" Type="Int32" Nullable="false" />
+          <Property Name="Id_Message" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DocumentInRequest" Relationship="Self.R_197" FromRole="MessageForSentDocument" ToRole="DocumentInRequest" />
+          <NavigationProperty Name="Message" Relationship="Self.R_198" FromRole="MessageForSentDocument" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NSCCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Type" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_AdminUnit" Type="Int32" Nullable="false" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminUnits" Relationship="Self.R_186" FromRole="Organization" ToRole="AdminUnits" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_185" FromRole="Organization" ToRole="LicenseRequest" />
+          <NavigationProperty Name="OrganizationType" Relationship="Self.R_184" FromRole="Organization" ToRole="OrganizationType" />
+        </EntityType>
+        <EntityType Name="OrganizationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Organization" Relationship="Self.R_184" FromRole="OrganizationType" ToRole="Organization" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Parent" Type="Int32" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Message" Relationship="Self.R_191" FromRole="QuestionType" ToRole="Message" />
+          <NavigationProperty Name="QuestionType1" Relationship="Self.R_190" FromRole="QuestionType" ToRole="QuestionType1" />
+          <NavigationProperty Name="QuestionType2" Relationship="Self.R_190" FromRole="QuestionType1" ToRole="QuestionType" />
+        </EntityType>
+        <EntityType Name="RequestElement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Parent" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="Id_RequestElemType" Type="Int32" Nullable="false" />
+          <Property Name="Id_TemplateDocument" Type="Int32" />
+          <Property Name="Id_RequestType" Type="Int32" Nullable="false" />
+          <Property Name="Id_StructureType" Type="Int32" Nullable="false" />
+          <Property Name="IsRequired" Type="Boolean" />
+          <NavigationProperty Name="DocTemplForReqElemType" Relationship="Self.R_202" FromRole="RequestElement" ToRole="DocTemplForReqElemType" />
+          <NavigationProperty Name="DocumentInRequest" Relationship="Self.R_204" FromRole="RequestElement" ToRole="DocumentInRequest" />
+          <NavigationProperty Name="RequestElement1" Relationship="Self.R_200" FromRole="RequestElement" ToRole="RequestElement1" />
+          <NavigationProperty Name="RequestElement2" Relationship="Self.R_200" FromRole="RequestElement1" ToRole="RequestElement" />
+          <NavigationProperty Name="RequestElementType" Relationship="Self.R_201" FromRole="RequestElement" ToRole="RequestElementType" />
+          <NavigationProperty Name="RequestType" Relationship="Self.R_203" FromRole="RequestElement" ToRole="RequestType" />
+          <NavigationProperty Name="RequestElemStructureType" Relationship="Self.R_210" FromRole="RequestElement" ToRole="RequestElemStructureType" />
+        </EntityType>
+        <EntityType Name="RequestElementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsNeedTemplate" Type="Boolean" />
+          <NavigationProperty Name="DocTemplForReqElemType" Relationship="Self.R_212" FromRole="RequestElementType" ToRole="DocTemplForReqElemType" />
+          <NavigationProperty Name="RequestElement" Relationship="Self.R_201" FromRole="RequestElementType" ToRole="RequestElement" />
+        </EntityType>
+        <EntityType Name="RequestElemStructureType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RequestElement" Relationship="Self.R_210" FromRole="RequestElemStructureType" ToRole="RequestElement" />
+        </EntityType>
+        <EntityType Name="RequestState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RequestStateHistory" Relationship="Self.R_183" FromRole="RequestState" ToRole="RequestStateHistory" />
+        </EntityType>
+        <EntityType Name="RequestStateHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Request" Type="Int32" Nullable="false" />
+          <Property Name="Id_State" Type="Int32" Nullable="false" />
+          <Property Name="DateStatusChange" Type="DateTime" Precision="3" />
+          <Property Name="Id_User" Type="Int32" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_RequestStateHistory_ApplicationUser" FromRole="RequestStateHistory" ToRole="ApplicationUser" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_182" FromRole="RequestStateHistory" ToRole="LicenseRequest" />
+          <NavigationProperty Name="RequestState" Relationship="Self.R_183" FromRole="RequestStateHistory" ToRole="RequestState" />
+        </EntityType>
+        <EntityType Name="RequestStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Parent" Type="Int32" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiabledImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RequestStep1" Relationship="Self.R_213" FromRole="RequestStep" ToRole="RequestStep1" />
+          <NavigationProperty Name="RequestStep2" Relationship="Self.R_213" FromRole="RequestStep1" ToRole="RequestStep" />
+        </EntityType>
+        <EntityType Name="RequestType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintTemplate_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintTemplate_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LicenseRequest" Relationship="Self.R_188" FromRole="RequestType" ToRole="LicenseRequest" />
+          <NavigationProperty Name="RequestElement" Relationship="Self.R_203" FromRole="RequestType" ToRole="RequestElement" />
+        </EntityType>
+        <EntityType Name="SettlementType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" />
+          <NavigationProperty Name="LocalGoverment2" Relationship="Self.FK_LocalGoverment2_SettlementType" FromRole="SettlementType" ToRole="LocalGoverment2" />
+        </EntityType>
+        <EntityType Name="Sex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.R_179" FromRole="Sex" ToRole="ApplicationUser" />
+        </EntityType>
+        <EntityType Name="TypeAdminUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_kg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description_ru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminUnits" Relationship="Self.R_12" FromRole="TypeAdminUnits" ToRole="AdminUnits" />
+        </EntityType>
+        <Association Name="R_180">
+          <End Role="ActivityType" Type="Self.ActivityType" Multiplicity="1" />
+          <End Role="LicenseRequestActivityType" Type="Self.LicenseRequestActivityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequestActivityType">
+              <PropertyRef Name="Id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="0..1" />
+          <End Role="AdminUnits1" Type="Self.AdminUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUnits1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="TypeAdminUnits" Type="Self.TypeAdminUnits" Multiplicity="1" />
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUnits">
+              <PropertyRef Name="IdTypeadm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_186">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="Id_AdminUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_187">
+          <End Role="AdminUnits" Type="Self.AdminUnits" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_AdminUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_ApplicationUser">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="Id_ApplicationUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestStateHistory_ApplicationUser">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="0..1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_179">
+          <End Role="Sex" Type="Self.Sex" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sex">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="Id_Sex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_192">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_206">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_AnswerWriter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_173">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id_Document" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_202">
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="0..1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_TemplateDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_212">
+          <End Role="RequestElementType" Type="Self.RequestElementType" Multiplicity="1" />
+          <End Role="DocTemplForReqElemType" Type="Self.DocTemplForReqElemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocTemplForReqElemType">
+              <PropertyRef Name="Id_RequestElementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_195">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_Document" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_211">
+          <End Role="Document_Format" Type="Self.Document_Format" Multiplicity="1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Format">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="Id_DocumentFormat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_193">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_197">
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="1" />
+          <End Role="MessageForSentDocument" Type="Self.MessageForSentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentInRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageForSentDocument">
+              <PropertyRef Name="Id_SentDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_199">
+          <End Role="DocumentState" Type="Self.DocumentState" Multiplicity="1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_DocumentState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_204">
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="0..1" />
+          <End Role="DocumentInRequest" Type="Self.DocumentInRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentInRequest">
+              <PropertyRef Name="Id_RequestElement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_181">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="LicenseRequestActivityType" Type="Self.LicenseRequestActivityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequestActivityType">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_182">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_185">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_188">
+          <End Role="RequestType" Type="Self.RequestType" Multiplicity="0..1" />
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LicenseRequest">
+              <PropertyRef Name="Id_RequestType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_189">
+          <End Role="LicenseRequest" Type="Self.LicenseRequest" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LicenseRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_Request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalGoverment2_SettlementType">
+          <End Role="SettlementType" Type="Self.SettlementType" Multiplicity="0..1" />
+          <End Role="LocalGoverment2" Type="Self.LocalGoverment2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettlementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalGoverment2">
+              <PropertyRef Name="Id_SettlementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Child">
+          <End Role="LocalGoverment2" Type="Self.LocalGoverment2" Multiplicity="0..1" />
+          <End Role="LocalGoverment21" Type="Self.LocalGoverment2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalGoverment2">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalGoverment21">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_191">
+          <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Id_QuestionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_198">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
+          <End Role="MessageForSentDocument" Type="Self.MessageForSentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageForSentDocument">
+              <PropertyRef Name="Id_Message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_207">
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="Message1" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_184">
+          <End Role="OrganizationType" Type="Self.OrganizationType" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="Id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_190">
+          <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+          <End Role="QuestionType1" Type="Self.QuestionType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionType1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_200">
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="0..1" />
+          <End Role="RequestElement1" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_201">
+          <End Role="RequestElementType" Type="Self.RequestElementType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElementType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_RequestElemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_203">
+          <End Role="RequestType" Type="Self.RequestType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_RequestType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_210">
+          <End Role="RequestElemStructureType" Type="Self.RequestElemStructureType" Multiplicity="1" />
+          <End Role="RequestElement" Type="Self.RequestElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestElemStructureType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestElement">
+              <PropertyRef Name="Id_StructureType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_183">
+          <End Role="RequestState" Type="Self.RequestState" Multiplicity="1" />
+          <End Role="RequestStateHistory" Type="Self.RequestStateHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStateHistory">
+              <PropertyRef Name="Id_State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_213">
+          <End Role="RequestStep" Type="Self.RequestStep" Multiplicity="0..1" />
+          <End Role="RequestStep1" Type="Self.RequestStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStep">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestStep1">
+              <PropertyRef Name="Id_Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MedlicenseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivityType" EntityType="Self.ActivityType" />
+          <EntitySet Name="AdminUnits" EntityType="Self.AdminUnits" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="DocTemplForReqElemType" EntityType="Self.DocTemplForReqElemType" />
+          <EntitySet Name="Document" EntityType="Self.Document" />
+          <EntitySet Name="Document_Format" EntityType="Self.Document_Format" />
+          <EntitySet Name="DocumentInRequest" EntityType="Self.DocumentInRequest" />
+          <EntitySet Name="DocumentState" EntityType="Self.DocumentState" />
+          <EntitySet Name="LicenseRequest" EntityType="Self.LicenseRequest" />
+          <EntitySet Name="LicenseRequestActivityType" EntityType="Self.LicenseRequestActivityType" />
+          <EntitySet Name="LocalGoverment2" EntityType="Self.LocalGoverment2" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="MessageForSentDocument" EntityType="Self.MessageForSentDocument" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" />
+          <EntitySet Name="OrganizationType" EntityType="Self.OrganizationType" />
+          <EntitySet Name="QuestionType" EntityType="Self.QuestionType" />
+          <EntitySet Name="RequestElement" EntityType="Self.RequestElement" />
+          <EntitySet Name="RequestElementType" EntityType="Self.RequestElementType" />
+          <EntitySet Name="RequestElemStructureType" EntityType="Self.RequestElemStructureType" />
+          <EntitySet Name="RequestState" EntityType="Self.RequestState" />
+          <EntitySet Name="RequestStateHistory" EntityType="Self.RequestStateHistory" />
+          <EntitySet Name="RequestStep" EntityType="Self.RequestStep" />
+          <EntitySet Name="RequestType" EntityType="Self.RequestType" />
+          <EntitySet Name="SettlementType" EntityType="Self.SettlementType" />
+          <EntitySet Name="Sex" EntityType="Self.Sex" />
+          <EntitySet Name="TypeAdminUnits" EntityType="Self.TypeAdminUnits" />
+          <AssociationSet Name="R_180" Association="Self.R_180">
+            <End Role="ActivityType" EntitySet="ActivityType" />
+            <End Role="LicenseRequestActivityType" EntitySet="LicenseRequestActivityType" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="AdminUnits1" EntitySet="AdminUnits" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="TypeAdminUnits" EntitySet="TypeAdminUnits" />
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+          </AssociationSet>
+          <AssociationSet Name="R_186" Association="Self.R_186">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="R_187" Association="Self.R_187">
+            <End Role="AdminUnits" EntitySet="AdminUnits" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_ApplicationUser" Association="Self.FK_AspNetUsers_ApplicationUser">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestStateHistory_ApplicationUser" Association="Self.FK_RequestStateHistory_ApplicationUser">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_179" Association="Self.R_179">
+            <End Role="Sex" EntitySet="Sex" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="R_192" Association="Self.R_192">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_206" Association="Self.R_206">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="R_173" Association="Self.R_173">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+          </AssociationSet>
+          <AssociationSet Name="R_202" Association="Self.R_202">
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_212" Association="Self.R_212">
+            <End Role="RequestElementType" EntitySet="RequestElementType" />
+            <End Role="DocTemplForReqElemType" EntitySet="DocTemplForReqElemType" />
+          </AssociationSet>
+          <AssociationSet Name="R_195" Association="Self.R_195">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_211" Association="Self.R_211">
+            <End Role="Document_Format" EntitySet="Document_Format" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="R_193" Association="Self.R_193">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_197" Association="Self.R_197">
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+            <End Role="MessageForSentDocument" EntitySet="MessageForSentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="R_199" Association="Self.R_199">
+            <End Role="DocumentState" EntitySet="DocumentState" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_204" Association="Self.R_204">
+            <End Role="RequestElement" EntitySet="RequestElement" />
+            <End Role="DocumentInRequest" EntitySet="DocumentInRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_181" Association="Self.R_181">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="LicenseRequestActivityType" EntitySet="LicenseRequestActivityType" />
+          </AssociationSet>
+          <AssociationSet Name="R_182" Association="Self.R_182">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_185" Association="Self.R_185">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_188" Association="Self.R_188">
+            <End Role="RequestType" EntitySet="RequestType" />
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+          </AssociationSet>
+          <AssociationSet Name="R_189" Association="Self.R_189">
+            <End Role="LicenseRequest" EntitySet="LicenseRequest" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalGoverment2_SettlementType" Association="Self.FK_LocalGoverment2_SettlementType">
+            <End Role="SettlementType" EntitySet="SettlementType" />
+            <End Role="LocalGoverment2" EntitySet="LocalGoverment2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Child" Association="Self.FK_Parent_Child">
+            <End Role="LocalGoverment2" EntitySet="LocalGoverment2" />
+            <End Role="LocalGoverment21" EntitySet="LocalGoverment2" />
+          </AssociationSet>
+          <AssociationSet Name="R_191" Association="Self.R_191">
+            <End Role="QuestionType" EntitySet="QuestionType" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_198" Association="Self.R_198">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessageForSentDocument" EntitySet="MessageForSentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="R_207" Association="Self.R_207">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="Message1" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="R_184" Association="Self.R_184">
+            <End Role="OrganizationType" EntitySet="OrganizationType" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="R_190" Association="Self.R_190">
+            <End Role="QuestionType" EntitySet="QuestionType" />
+            <End Role="QuestionType1" EntitySet="QuestionType" />
+          </AssociationSet>
+          <AssociationSet Name="R_200" Association="Self.R_200">
+            <End Role="RequestElement" EntitySet="RequestElement" />
+            <End Role="RequestElement1" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_201" Association="Self.R_201">
+            <End Role="RequestElementType" EntitySet="RequestElementType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_203" Association="Self.R_203">
+            <End Role="RequestType" EntitySet="RequestType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_210" Association="Self.R_210">
+            <End Role="RequestElemStructureType" EntitySet="RequestElemStructureType" />
+            <End Role="RequestElement" EntitySet="RequestElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_183" Association="Self.R_183">
+            <End Role="RequestState" EntitySet="RequestState" />
+            <End Role="RequestStateHistory" EntitySet="RequestStateHistory" />
+          </AssociationSet>
+          <AssociationSet Name="R_213" Association="Self.R_213">
+            <End Role="RequestStep" EntitySet="RequestStep" />
+            <End Role="RequestStep1" EntitySet="RequestStep" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedlicenseModelStoreContainer" CdmEntityContainer="MedlicenseEntities">
+          <EntitySetMapping Name="ActivityType">
+            <EntityTypeMapping TypeName="MedlicenseModel.ActivityType">
+              <MappingFragment StoreEntitySet="ActivityType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUnits">
+            <EntityTypeMapping TypeName="MedlicenseModel.AdminUnits">
+              <MappingFragment StoreEntitySet="AdminUnits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IdTypeadm" ColumnName="IdTypeadm" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsRayonCenter" ColumnName="IsRayonCenter" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUser">
+            <EntityTypeMapping TypeName="MedlicenseModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Id_Sex" ColumnName="Id_Sex" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MedlicenseModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MedlicenseModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MedlicenseModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MedlicenseModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Id_ApplicationUser" ColumnName="Id_ApplicationUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocTemplForReqElemType">
+            <EntityTypeMapping TypeName="MedlicenseModel.DocTemplForReqElemType">
+              <MappingFragment StoreEntitySet="DocTemplForReqElemType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="Id_Document" ColumnName="Id_Document" />
+                <ScalarProperty Name="Id_RequestElementType" ColumnName="Id_RequestElementType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document">
+            <EntityTypeMapping TypeName="MedlicenseModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="PathToFile" ColumnName="PathToFile" />
+                <ScalarProperty Name="Id_DocumentFormat" ColumnName="Id_DocumentFormat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document_Format">
+            <EntityTypeMapping TypeName="MedlicenseModel.Document_Format">
+              <MappingFragment StoreEntitySet="Document_Format">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentInRequest">
+            <EntityTypeMapping TypeName="MedlicenseModel.DocumentInRequest">
+              <MappingFragment StoreEntitySet="DocumentInRequest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Request" ColumnName="Id_Request" />
+                <ScalarProperty Name="Id_Document" ColumnName="Id_Document" />
+                <ScalarProperty Name="Id_DocumentState" ColumnName="Id_DocumentState" />
+                <ScalarProperty Name="Id_RequestElement" ColumnName="Id_RequestElement" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentState">
+            <EntityTypeMapping TypeName="MedlicenseModel.DocumentState">
+              <MappingFragment StoreEntitySet="DocumentState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseRequest">
+            <EntityTypeMapping TypeName="MedlicenseModel.LicenseRequest">
+              <MappingFragment StoreEntitySet="LicenseRequest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_Company" ColumnName="Id_Company" />
+                <ScalarProperty Name="Id_AdminUnit" ColumnName="Id_AdminUnit" />
+                <ScalarProperty Name="Id_RequestType" ColumnName="Id_RequestType" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseRequestActivityType">
+            <EntityTypeMapping TypeName="MedlicenseModel.LicenseRequestActivityType">
+              <MappingFragment StoreEntitySet="LicenseRequestActivityType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Type" ColumnName="Id_Type" />
+                <ScalarProperty Name="Id_Request" ColumnName="Id_Request" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalGoverment2">
+            <EntityTypeMapping TypeName="MedlicenseModel.LocalGoverment2">
+              <MappingFragment StoreEntitySet="LocalGoverment2">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Parent" ColumnName="Id_Parent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SOATE" ColumnName="SOATE" />
+                <ScalarProperty Name="Id_SettlementType" ColumnName="Id_SettlementType" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="MedlicenseModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Parent" ColumnName="Id_Parent" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+                <ScalarProperty Name="Id_Request" ColumnName="Id_Request" />
+                <ScalarProperty Name="Id_QuestionType" ColumnName="Id_QuestionType" />
+                <ScalarProperty Name="Id_AnswerWriter" ColumnName="Id_AnswerWriter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageForSentDocument">
+            <EntityTypeMapping TypeName="MedlicenseModel.MessageForSentDocument">
+              <MappingFragment StoreEntitySet="MessageForSentDocument">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_SentDocument" ColumnName="Id_SentDocument" />
+                <ScalarProperty Name="Id_Message" ColumnName="Id_Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization">
+            <EntityTypeMapping TypeName="MedlicenseModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="NSCCode" ColumnName="NSCCode" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="Id_Type" ColumnName="Id_Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id_AdminUnit" ColumnName="Id_AdminUnit" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationType">
+            <EntityTypeMapping TypeName="MedlicenseModel.OrganizationType">
+              <MappingFragment StoreEntitySet="OrganizationType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionType">
+            <EntityTypeMapping TypeName="MedlicenseModel.QuestionType">
+              <MappingFragment StoreEntitySet="QuestionType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Parent" ColumnName="Id_Parent" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestElement">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestElement">
+              <MappingFragment StoreEntitySet="RequestElement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Parent" ColumnName="Id_Parent" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="Id_RequestElemType" ColumnName="Id_RequestElemType" />
+                <ScalarProperty Name="Id_TemplateDocument" ColumnName="Id_TemplateDocument" />
+                <ScalarProperty Name="Id_RequestType" ColumnName="Id_RequestType" />
+                <ScalarProperty Name="Id_StructureType" ColumnName="Id_StructureType" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestElementType">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestElementType">
+              <MappingFragment StoreEntitySet="RequestElementType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="IsNeedTemplate" ColumnName="IsNeedTemplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestElemStructureType">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestElemStructureType">
+              <MappingFragment StoreEntitySet="RequestElemStructureType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestState">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestState">
+              <MappingFragment StoreEntitySet="RequestState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStateHistory">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestStateHistory">
+              <MappingFragment StoreEntitySet="RequestStateHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Request" ColumnName="Id_Request" />
+                <ScalarProperty Name="Id_State" ColumnName="Id_State" />
+                <ScalarProperty Name="DateStatusChange" ColumnName="DateStatusChange" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStep">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestStep">
+              <MappingFragment StoreEntitySet="RequestStep">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Parent" ColumnName="Id_Parent" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ActiveImageUrl" ColumnName="ActiveImageUrl" />
+                <ScalarProperty Name="DiabledImageUrl" ColumnName="DiabledImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestType">
+            <EntityTypeMapping TypeName="MedlicenseModel.RequestType">
+              <MappingFragment StoreEntitySet="RequestType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="PrintTemplate_ru" ColumnName="PrintTemplate_ru" />
+                <ScalarProperty Name="PrintTemplate_kg" ColumnName="PrintTemplate_kg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettlementType">
+            <EntityTypeMapping TypeName="MedlicenseModel.SettlementType">
+              <MappingFragment StoreEntitySet="SettlementType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sex">
+            <EntityTypeMapping TypeName="MedlicenseModel.Sex">
+              <MappingFragment StoreEntitySet="Sex">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeAdminUnits">
+            <EntityTypeMapping TypeName="MedlicenseModel.TypeAdminUnits">
+              <MappingFragment StoreEntitySet="TypeAdminUnits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_kg" ColumnName="Name_kg" />
+                <ScalarProperty Name="Description_kg" ColumnName="Description_kg" />
+                <ScalarProperty Name="Name_ru" ColumnName="Name_ru" />
+                <ScalarProperty Name="Description_ru" ColumnName="Description_ru" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MedlicenseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

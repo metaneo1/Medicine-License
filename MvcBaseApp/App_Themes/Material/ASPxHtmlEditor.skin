@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dx" %>
+
+<dx:ASPxHtmlEditor runat="server" CssFilePath="{0}/styles.css" CssPostfix="Material">
+    <Styles CssPostfix="Material" CssFilePath="{0}/styles.css">
+        <ViewArea>
+            <BorderBottom BorderColor="#DCDCDC" BorderStyle="Solid" BorderWidth="1px" />
+        </ViewArea>
+    </Styles>
+    <Images SpriteCssFilePath="{0}/sprite.css" MenuIconSet="GrayScaledWithWhiteHottrackInToolbar">
+    </Images>
+</dx:ASPxHtmlEditor>
+
+

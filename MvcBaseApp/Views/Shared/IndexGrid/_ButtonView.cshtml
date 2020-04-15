@@ -1,0 +1,49 @@
+﻿@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+
+<script>
+    function btnView@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnView@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnView@(Model.EntityName)Click != null) {
+                needStop = OnBtnView@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+        if (current@(Model.EntityName)Id == 0) {
+            alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+
+        $.ajax({
+            url: '@Url.Action("IsDocumentEmpty")'+ '?Id=' + current@(Model.EntityName)Id,
+            type: "POST",
+            success: function(data) {
+                if (data === false) {
+                    var win = window.open('@Url.Action("ShowDocument")' + '?Id=' + current@(Model.EntityName)Id,
+                        '_blank');
+                    win.focus();
+                } else {
+                    alert('Документ не прикреплен');
+                }
+            },
+            error: function() { 
+                alert("Error: "); 
+            }      
+        });
+
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnView" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnView" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/show_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnViewData;
+}).GetHtml()

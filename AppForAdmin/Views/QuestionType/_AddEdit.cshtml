@@ -1,0 +1,194 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+@using DataModel
+@model QuestionType
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddQuestionTypeFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.QuestionType_MainInfo;
+        g.ColCount = 1;
+        //g.Items.Add(m => m.Id_Parent, i =>
+        //{
+        //    i.NestedExtension().ComboBox(tb =>
+        //    {
+        //        //Comes from lookup control _LookUpReload
+        //        tb.CallbackRouteValues = new { Controller = "QuestionType", Action = "GetAllQuestionTypeListAddQuestionType" };
+        //        tb.Name = "Id_QuestionType_AddQuestionType";
+        //        tb.Width = Unit.Pixel(250);
+        //        tb.ShowModelErrors = true;
+        //        tb.Properties.ValidationSettings.Display = Display.Dynamic;
+        //        //  tb.Properties.DataSource = datamodel.CountryList;
+        //        tb.Properties.ValueField = "Id";
+        //        tb.Properties.TextField = "Name";
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png" } });
+        //        tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" } });
+        //        tb.Properties.ClientSideEvents.ButtonClick = "On_QuestionTypeList_Add_QuestionType_ButtonClick";
+        //        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+        //    });
+        //}).Caption = Labels.QuestionType_QuestionType;
+        g.Items.Add(m => m.Id_Parent, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_Id_Parent");
+            i.NestedExtension().DropDownEdit(ds =>
+            {
+                ds.Name = "ddeLicense";
+                ds.Properties.NullText = "(Не выбрано)";
+                ds.ReadOnly = true;
+                ds.Properties.ClientSideEvents.DropDown = "OnDropDownLicense";
+                ds.Width = System.Web.UI.WebControls.Unit.Pixel(250);
+                ds.SetDropDownWindowTemplateContent(c =>
+                {
+                    Html.DevExpress().TextBox(settingsTB =>
+                    {
+                        settingsTB.Name = "SearchTextLicense";
+                        settingsTB.Properties.NullText = "Поиск...";
+                        settingsTB.Width = Unit.Pixel(140);
+                        settingsTB.ControlStyle.CssClass = "inline-editor";
+                    }).Render();
+                    Html.DevExpress().Button(settingsBtn =>
+                    {
+                        settingsBtn.Name = "SearchButtonLicense";
+                        settingsBtn.Text = "Поиск";
+                        settingsBtn.Width = Unit.Pixel(30);
+                        settingsBtn.ControlStyle.CssClass = "inline-editor";
+                        settingsBtn.ClientSideEvents.Click = "onSearchButtonClickLicense";
+                    }).Render();
+                    Html.RenderAction("TreeListPartial", "QuestionType", new { Id_QuestionType = Model.Id_Parent });
+                });
+            });
+        }).Caption = Labels.QuestionType_QuestionType;
+
+
+
+        g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_Name_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "QuestionType_Name_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.QuestionType_Name_ru;
+        g.Items.Add(m => m.Name_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_Name_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "QuestionType_Name_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.QuestionType_Name_kg;
+        g.Items.Add(m => m.Description_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_Description_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "QuestionType_Description_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.QuestionType_Description_ru;
+        g.Items.Add(m => m.Description_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_Description_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "QuestionType_Description_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.QuestionType_Description_kg;
+        g.Items.Add(m => m.CODE, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "QuestionType_CODE");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "QuestionType_CODE"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.QuestionType_CODE;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyQuestionTypeButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveQuestionTypeClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelQuestionTypeButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelQuestionTypeClick";
+            });
+        });
+    });
+
+}).GetHtml()

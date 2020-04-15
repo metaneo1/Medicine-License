@@ -1,0 +1,73 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+@using MvcBaseApp.Resources
+
+<script>
+    function btnAddLicenseStatusesClick() {
+        var needStop = false;
+        if (typeof OnBtnAddLicenseStatusesClick !== "undefined") {
+            if (OnBtnAddLicenseStatusesClick != null) {
+                needStop = OnBtnAddLicenseStatusesClick();
+            }
+            if (needStop)
+                return;
+        }
+        loadNewPage('@Url.Action("AddEdit", "RequestStateHistory")?id=0' + '&@Html.Raw(Model.AdditionalUrlParamenter)&Id_Request=' + requestId, updateLicenseStatusesList2);
+
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnAddLicenseStatuses";
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnAddLicenseStatusesClick";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/add_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnAddData;
+}).GetHtml()
+
+<script>
+    function btnRefreshLicenseStatusesClick() {
+        var needStop = false;
+        if (typeof OnBtnRefreshLicenseStatusesClick !== "undefined") {
+            if (OnBtnRefreshLicenseStatusesClick != null) {
+                needStop = OnBtnRefreshLicenseStatusesClick();
+            }
+            if (needStop)
+                return;
+        }
+
+        updateLicenseStatusesList();
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnRefreshLicenseStatuses";
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnRefreshLicenseStatusesClick";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/refresh_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnRefreshData;
+}).GetHtml()
+
+
+<script>
+    function updateLicenseStatusesList() {
+        if (!pnl_RequestStateHistory.InCallback()) {
+            pnl_RequestStateHistory.PerformCallback({ Id_Request: requestId });
+        }
+    }
+    function updateLicenseStatusesList2() {
+        if (!pnl_RequestStateHistory.InCallback()) {
+            pnl_RequestStateHistory.PerformCallback({ Id_Request: requestId });
+        }
+    }
+</script>
+
+@Html.Partial("pnl_RequestStateHistory")

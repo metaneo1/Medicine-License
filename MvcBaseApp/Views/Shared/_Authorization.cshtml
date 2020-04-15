@@ -1,0 +1,257 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.LoginViewModel
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+<style>
+    div#LoginForm {
+        background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        padding: 10px;
+    }
+
+    .form-heading {
+        color: #fff;
+        font-size: 23px;
+    }
+
+    .panel h2 {
+        color: #444444;
+        font-size: 18px;
+        margin: 0 0 8px 0;
+    }
+
+    .panel p {
+        color: #777777;
+        font-size: 14px;
+        margin-bottom: 30px;
+        line-height: 24px;
+    }
+
+    .login-form .form-control {
+        background: #f7f7f7 none repeat scroll 0 0;
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
+        font-size: 14px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .main-div {
+        background: #ffffff none repeat scroll 0 0;
+        border-radius: 2px;
+        min-width: 360px;
+        margin: 10px auto 30px;
+        max-width: 48%;
+        padding: 0 70px 70px 71px;
+    }
+
+    .login-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .login-form {
+        text-align: center;
+    }
+
+    .forgot a {
+        color: #777777;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+
+    .login-form .btn.btn-primary {
+        background: #f0ad4e none repeat scroll 0 0;
+        border-color: #f0ad4e;
+        color: #ffffff;
+        font-size: 14px;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        padding: 0;
+    }
+
+    .forgot {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .botto-text {
+        color: #ffffff;
+        font-size: 14px;
+        margin: auto;
+    }
+
+    .login-form .btn.btn-primary.reset {
+        background: #ff9900 none repeat scroll 0 0;
+    }
+
+    .back {
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    .back a {
+        color: #444444;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+</style>
+
+
+
+
+<script>
+    hideBigLoader();
+</script>
+
+
+
+<script>
+    function OnSaveLoginClick(s, e) {
+        var formdata = new FormData();
+        formdata.append("UserName", $('[name=UserName]').val());
+        formdata.append("Password", $('[name=Password]').val());
+        formdata.append("RememberMe", $('[name=RememberMe]').val());
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Login", "InPageAutorize")',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var data = response.split(':');
+                if (data[0] != 'OK') {
+                    $.alert(response);
+                    return;
+                }
+                closeLastPage();
+                location.reload();
+            }
+        });
+    }
+
+    function OnRegisterClick(s, e) {
+        showBigLoader();
+        loadNewPage('@Url.Action("AddEdit", "ApplicationUser")?Id=0');
+    }
+</script>
+
+<div style="min-height: 100%; min-width: 100%; background: white; position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 9999">
+    <div id="LoginForm" style="top: 0; bottom: 0; left: 0; right: 0; min-height: 100%; min-width: 100%; ">
+        <div class="container">
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="logopic" style="align-content: center">
+                                    <img src="@Url.Content("~/Content/icons/logo.png")" alt="" style="display: block; margin: 0 auto; margin-top: 15px; margin-right: 0;">
+                                </div>
+                            </div>
+                            <div class ="col-md-8" >
+                                <div style="text-align: center; vertical-align: middle; height: 100%; margin-top: 35px;">
+                                    <b style="vertical-align: middle; display: inline-block; ">
+                                        Лицензирование медицинских и фармацевтических услуг
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel" style="min-height: 20%; margin-bottom: 40px;">
+
+                    </div>
+                    @Html.DevExpress().FormLayout(settings =>
+                    {
+                        settings.Name = "LoginFormLayout";
+                        settings.AlignItemCaptionsInAllGroups = true;
+                        settings.Items.AddGroupItem(g =>
+                        {
+                            g.Caption = Labels.NeedToLogIn;
+                            g.ColCount = 1;
+                            g.Items.Add(m => m.UserName, i =>
+                            {
+                                i.NestedExtension().TextBox(tb =>
+                                {
+                                    tb.Width = Unit.Pixel(250);
+                                    tb.ShowModelErrors = true;
+                                    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                                    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                                });
+                            }).Caption = Labels.LogIn;
+                            g.Items.Add(m => m.Password, i =>
+                            {
+                                i.NestedExtension().TextBox(tb =>
+                                {
+                                    tb.Properties.Password = true;
+                                    tb.Width = Unit.Pixel(250);
+                                    tb.ShowModelErrors = true;
+                                    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                                    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                                });
+                            }).Caption = Labels.Password;
+
+                            g.Items.Add(m => m.RememberMe, i =>
+                            {
+                                i.NestedExtension().CheckBox(tb =>
+                                {
+                                    tb.Width = Unit.Pixel(250);
+                                    tb.ShowModelErrors = true;
+                                    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                                    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                                });
+                            }).Caption = Labels.RememberMe;
+                        });
+
+                        settings.Items.AddGroupItem(g =>
+                        {
+                            g.Caption = "";
+                            g.ColCount = 1;
+
+                            g.Items.Add(i =>
+                            {
+                                i.ShowCaption = DefaultBoolean.False;
+                                i.HorizontalAlign = FormLayoutHorizontalAlign.Center;
+                                i.Width = 150;
+                                i.NestedExtension().Button(s =>
+                                {
+                                    s.Name = "applyLoginButton";
+                                    s.Text = Labels.btnLogIn;
+                                    s.Width = 140;
+                                    s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                                    s.UseSubmitBehavior = false;
+                                    s.ClientSideEvents.Click = "OnSaveLoginClick";
+                                });
+                            });
+                            g.Items.Add(i =>
+                            {
+                                i.ShowCaption = DefaultBoolean.False;
+                                i.HorizontalAlign = FormLayoutHorizontalAlign.Center;
+                                i.Width = 150;
+                                i.NestedExtension().Button(s =>
+                                {
+                                    s.Name = "registerButton";
+                                    s.Text = "Регистрация";
+                                    s.Width = 140;
+                                    s.Images.Image.Url = Url.Content("~/Content/icons/plan_32x32.png");
+                                    s.UseSubmitBehavior = false;
+                                    s.ClientSideEvents.Click = "OnRegisterClick";
+                                });
+                            });
+                        });
+
+                    }).GetHtml()
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    
+</div>

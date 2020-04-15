@@ -1,0 +1,187 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model RequestElement
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddRequestElementFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.RequestElement_MainInfo;
+        g.ColCount = 1;
+g.Items.Add(m => m.Id_Parent, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "RequestElement", Action = "GetAllRequestElementListAddRequestElement" };
+                tb.Name = "Id_RequestElement_AddRequestElement";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_RequestElementList_Add_RequestElement_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_RequestElement;
+g.Items.Add(m => m.IsActive, i =>
+        {
+            i.NestedExtension().CheckBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_IsActive;
+ RequestElement.OrderNumber = Convert.ToInt32(formData["OrderNumber"]);
+
+
+              
+g.Items.Add(m => m.Id_RequestElemType, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "RequestElementType", Action = "GetAllRequestElementTypeListAddRequestElement" };
+                tb.Name = "Id_RequestElementType_AddRequestElement";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_RequestElementTypeList_Add_RequestElement_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_RequestElementType;
+g.Items.Add(m => m.Id_TemplateDocument, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "DocTemplForReqElemType", Action = "GetAllDocTemplForReqElemTypeListAddRequestElement" };
+                tb.Name = "Id_DocTemplForReqElemType_AddRequestElement";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_DocTemplForReqElemTypeList_Add_RequestElement_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_DocTemplForReqElemType;
+g.Items.Add(m => m.Id_RequestType, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "RequestType", Action = "GetAllRequestTypeListAddRequestElement" };
+                tb.Name = "Id_RequestType_AddRequestElement";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_RequestTypeList_Add_RequestElement_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_RequestType;
+g.Items.Add(m => m.Id_StructureType, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "RequestElemStructureType", Action = "GetAllRequestElemStructureTypeListAddRequestElement" };
+                tb.Name = "Id_RequestElemStructureType_AddRequestElement";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_RequestElemStructureTypeList_Add_RequestElement_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_RequestElemStructureType;
+g.Items.Add(m => m.IsRequired, i =>
+        {
+            i.NestedExtension().CheckBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.RequestElement_IsRequired;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyRequestElementButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveRequestElementClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelRequestElementButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelRequestElementClick";
+            });
+        });
+    });
+
+}).GetHtml()

@@ -1,0 +1,177 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+@{
+    Layout = null;
+}
+
+<style>
+    .logopic > img {
+        margin-top: 15px;
+    }
+
+    .orgname > h1 {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0;
+        margin-top: 30px;
+        line-height: 24px;
+    }
+</style>
+
+<script type="text/javascript">
+
+    var navigationData = [];
+    navigationData["Ribbon_LicenseRequest_Unassigned"] = '@Url.Action("AllLicenses", "Message")';
+    navigationData["Ribbon_LicenseRequest_My"] = '@Url.Action("My", "RequestStateHistory")';
+    navigationData["Ribbon_Messages_ByQuestionType"] = '@Url.Action("Index", "LicenseRequest")';
+    navigationData["Ribbon_Messages_MyActive"] = '@Url.Action("MeActive", "Message")';
+    navigationData["MyInfo"] = '@Url.Action("AddEdit", "ApplicationUser")';
+
+    $(document).ready(function () {
+        $(".OptionsTable")
+            .find("input[type=checkbox]")
+            .change(function () { $("form").submit(); });
+    });
+    function OnWindowResize(s, e) {
+        ribbon.AdjustControl();
+    }
+    function OnCommandExecuted(s, e) {
+        loadNewPage(navigationData[e.item.name], hideLeftPane);
+    }
+    function OnFileTabClicked(s, e) {
+        label.SetText("File Tab");
+    }
+    function OnDialogBoxLauncherClicked(s, e) {
+    }
+</script>
+
+<div id="loader_big" style="z-index: 99; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: gray; opacity: 0.5; display: none;" onclick="onBigLoaderClick()">
+
+</div>
+
+<script>
+    var alertDownload = $.confirm({
+        title: 'Подождите',
+        content: 'Идёт загрузка данных',
+        lazyOpen: true,
+        buttons: {
+            confirm: {
+                text: 'Закрыть загрузчик',
+                action: function () {
+                    hideBigLoader();
+                }
+            },
+            cancel: {
+                text: '@Labels.btnCancel',
+                btnClass: 'btn-blue',
+                action: function () {
+                }
+            }
+        }
+    });
+    function onBigLoaderClick() {
+        alertDownload.open();
+    }
+
+    function showBigLoader() {
+        $('#loader_big').show();
+
+
+
+    }
+
+    function hideBigLoader() {
+        alertDownload.open();
+        alertDownload.close();
+        $('#loader_big').hide();
+    }
+</script>
+
+<div class="row">
+<div class="col-md-1" style="background-color: #D9E4F3">
+
+    <div class="logopic" style="align-content: center">
+        <img src="@Url.Content("~/Content/icons/logo.png")" alt="" style="display: block; margin: 0 auto; margin-top: 15px; margin-right: 0;">
+    </div>
+
+</div>
+<div class="col-md-10" style="background-color: #D9E4F3">
+<div id="loader_background" style="z-index: 9; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: gray; opacity: 0.5; display: none; height: 123px" onclick="alert('Закончите работу с текущими данными!')">
+
+</div>
+
+@Html.DevExpress().Ribbon(settings =>
+{
+
+    settings.Name = "ribbon";
+    settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+    settings.ShowFileTab = false;
+
+    settings.Theme = Startup.THEME;
+
+
+
+    var tab = settings.Tabs.Add(Labels.Ribbon_LicenseRequest);
+    var tasksGroup = tab.Groups.Add("");
+    //заявки
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = Labels.Ribbon_LicenseRequest;
+        i.Name = "Ribbon_LicenseRequest_Unassigned";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/FormatDocument_32x32.png");
+        ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/FormatDocument_32x32.png");
+    });
+    //tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    //{
+    //    i.Text = Labels.Ribbon_LicenseRequest_My;
+    //    i.Name = "Ribbon_LicenseRequest_My";
+    //    i.Size = RibbonItemSize.Large;
+    //    ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //    ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //});
+
+    //сообщения
+    //tab = settings.Tabs.Add(Labels.Ribbon_Messages);
+    //tasksGroup = tab.Groups.Add(Labels.Ribbon_Messages);
+    //tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    //{
+    //    i.Text = Labels.Ribbon_Messages_ByQuestionType;
+    //    i.Name = "Ribbon_Messages_ByQuestionType";
+    //    i.Size = RibbonItemSize.Large;
+    //    ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //    ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //});
+    //tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    //{
+    //    i.Text = "По организации";//Labels.Ribbon_Messages_ByQuestionType;
+    //    i.Name = "Ribbon_Messages_ByOrganization";
+    //    i.Size = RibbonItemSize.Large;
+    //    ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //    ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/home_32x32.png");
+    //});
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = Labels.Ribbon_Messages_All;
+        i.Name = "Ribbon_Messages_MyActive";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/PhoneNumberType_32x32.png");
+        ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/PhoneNumberType_32x32.png");
+    });
+
+
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = Labels.Ribbon_MyInfo;
+        i.Name = "MyInfo";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/customer_32x32.png");
+        ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/customer_32x32.png");
+    });
+
+}).GetHtml()
+</div>
+<div class="col-md-1" style="background-color: #D9E4F3">
+    @Html.Partial("_LoginPartial")
+</div>
+</div>

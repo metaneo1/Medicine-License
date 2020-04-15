@@ -1,0 +1,32 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxNewsControl runat="server" SpriteCssFilePath="~/App_Themes/Office2003Blue/{0}/sprite.css"
+    CssFilePath="~/App_Themes/Office2003Blue/{0}/styles.css" CssPostfix="Office2003Blue"
+    ItemSpacing="2px">
+    <ItemDateStyle Spacing="2px" />
+    <ItemLeftPanelStyle Spacing="21px" />
+    <ItemRightPanelStyle Spacing="21px" />
+    <ItemSettings>
+        <TailImage>
+			<SpriteProperties CssClass="dxWeb_hlTail_Office2003Blue" />
+		</TailImage>
+    </ItemSettings>
+    <PagerSettings CurrentPageNumberFormat="{0}">
+        <AllButton Text="">
+        </AllButton>
+
+        <FirstPageButton Text="">
+        </FirstPageButton>
+
+        <LastPageButton Text="">
+        </LastPageButton>
+
+        <NextPageButton Text="">
+        </NextPageButton>
+
+        <PrevPageButton Text="">
+        </PrevPageButton>
+    </PagerSettings>
+</dx:ASPxNewsControl>
+

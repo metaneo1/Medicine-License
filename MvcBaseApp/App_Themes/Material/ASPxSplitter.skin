@@ -1,0 +1,7 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxSplitter runat="server" SeparatorSize="12px" CssFilePath="{0}/styles.css" CssPostfix="Material">
+    <Styles CssPostfix="Material" CssFilePath="{0}/styles.css" />
+    <Images SpriteCssFilePath="{0}/sprite.css" />
+</dx:ASPxSplitter>

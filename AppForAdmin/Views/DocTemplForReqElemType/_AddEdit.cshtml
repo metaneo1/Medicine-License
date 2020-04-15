@@ -1,0 +1,184 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+@using System.Drawing
+
+@model DocTemplForReqElemType
+
+@{
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddDocTemplForReqElemTypeFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.DocTemplForReqElemType_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.Name_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocTemplForReqElemType_Name_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocTemplForReqElemType_Name_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocTemplForReqElemType_Name_ru;
+ g.Items.Add(m => m.Name_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocTemplForReqElemType_Name_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocTemplForReqElemType_Name_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocTemplForReqElemType_Name_kg;
+ g.Items.Add(m => m.Description_ru, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocTemplForReqElemType_Description_ru");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocTemplForReqElemType_Description_ru"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocTemplForReqElemType_Description_ru;
+ g.Items.Add(m => m.Description_kg, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocTemplForReqElemType_Description_kg");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocTemplForReqElemType_Description_kg"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocTemplForReqElemType_Description_kg;
+ g.Items.Add(m => m.CODE, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "DocTemplForReqElemType_CODE");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "DocTemplForReqElemType_CODE"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.DocTemplForReqElemType_CODE;
+g.Items.Add(m => m.Id_Document, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "Document", Action = "GetAllDocumentListAddDocTemplForReqElemType" };
+                tb.Name = "Id_Document_AddDocTemplForReqElemType";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_DocumentList_Add_DocTemplForReqElemType_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.DocTemplForReqElemType_Document;
+g.Items.Add(m => m.Id_RequestElementType, i =>
+        {
+            i.NestedExtension().ComboBox(tb =>
+            {
+                //Comes from lookup control _LookUpReload
+                tb.CallbackRouteValues = new { Controller = "RequestElementType", Action = "GetAllRequestElementTypeListAddDocTemplForReqElemType" };
+                tb.Name = "Id_RequestElementType_AddDocTemplForReqElemType";
+
+                
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.DataSource = datamodel.CountryList;
+                tb.Properties.ValueField = "Id";
+                tb.Properties.TextField = "Name";
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/edit_16x161.png" } });
+                tb.Properties.Buttons.Add(new EditButton() { Index = 0, Visible = true, Image = { Url = "~/Content/add_16x16.png"}});
+                tb.Properties.Buttons.Add(new EditButton() { Index = 1, Visible = true, Image = { Url = "~/Content/cancel_16x16.png" }});
+                tb.Properties.ClientSideEvents.ButtonClick = "On_RequestElementTypeList_Add_DocTemplForReqElemType_ButtonClick";
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+            });
+        }).Caption = Labels.DocTemplForReqElemType_RequestElementType;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "applyDocTemplForReqElemTypeButton";
+                s.Text = Labels.btnSave;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnSaveDocTemplForReqElemTypeClick";
+            });
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.Width = 150;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelDocTemplForReqElemTypeButton";
+                s.Text = Labels.btnCancel;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.UseSubmitBehavior = false;
+                s.ClientSideEvents.Click = "OnCancelDocTemplForReqElemTypeClick";
+            });
+        });
+    });
+
+}).GetHtml()

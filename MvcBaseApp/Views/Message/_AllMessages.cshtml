@@ -1,0 +1,103 @@
+@using System.Linq.Expressions
+@using System.Web.UI.WebControls
+@using DataModel
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+    var filter = (Expression<Func<Message, bool>>)ViewBag.Filter;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvMessageDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "Message", Action = "AllMessagesPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+
+        if (Html.HasRoleView(Session, Model.EntityName + "_MessageText"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "LicenseRequest.Id";
+                x.FieldName = "LicenseRequest.Id";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_LicenseRequest_Id");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_MessageText"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Document.RequestElement.RequestElementType.Name_ru";
+                x.FieldName = "Document.RequestElement.RequestElementType.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Document");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_MessageText"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "MessageText";
+                x.FieldName = "MessageText";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_MessageText");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_MessageDate"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "MessageDate";
+                x.FieldName = "MessageDate";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_MessageDate");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_QuestionType.Name"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "QuestionType.Name_ru";
+                x.FieldName = "QuestionType.Name_ru";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_QuestionType");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        if (Html.HasRoleView(Session, Model.EntityName + "_Id_AnswerWriter"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "ApplicationUser.FullName";
+                x.FieldName = "ApplicationUser.FullName";
+                x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_ApplicationUser");
+                x.CellStyle.Wrap = DefaultBoolean.True;
+                x.HeaderStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnMessageGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.Message.Where(filter).OrderByDescending(x=>x.MessageDate);
+
+    }).GetHtml()

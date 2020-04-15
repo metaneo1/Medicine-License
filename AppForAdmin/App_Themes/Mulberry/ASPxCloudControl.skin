@@ -1,0 +1,16 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxCloudControl runat="server" ValueFormatString="&nbsp;/&nbsp;{0:N0}" CssPostfix="Mulberry" CssFilePath="~/App_Themes/Mulberry/{0}/styles.css"  HorizontalAlign="Left">
+    <RankProperties>
+        <dx:RankProperties CssClass="dxccRank1"/>
+        <dx:RankProperties CssClass="dxccRank2"/>
+        <dx:RankProperties CssClass="dxccRank3"/>
+        <dx:RankProperties CssClass="dxccRank4"/>
+        <dx:RankProperties CssClass="dxccRank5"/>
+        <dx:RankProperties CssClass="dxccRank6"/>
+        <dx:RankProperties CssClass="dxccRank7"/>
+    </RankProperties>
+</dx:ASPxCloudControl>
+
+

@@ -1,0 +1,49 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+    
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvAspNetUsersDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "AspNetUsers", Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+        
+	settings.Columns.Add(x =>
+        {
+            x.Name = "UserName";
+            x.FieldName = "UserName";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Language");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+        });
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Workers.Name";
+            x.FieldName = "Workers.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_LanguageLevel");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+        });
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnAspNetUsersGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+        
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.AspNetUsers;
+        
+    }).GetHtml()

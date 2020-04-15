@@ -1,0 +1,17 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridView runat="server" CssPostfix="SoftOrange" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" >
+    <SettingsPager CurrentPageNumberFormat="{0}">
+    </SettingsPager>
+    <SettingsLoadingPanel ImagePosition="Top"></SettingsLoadingPanel>
+
+    <Images SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+    </Images>
+
+    <Styles CssPostfix="SoftOrange" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" GroupButtonWidth="28">
+        <Header SortingImageSpacing="5px" ImageSpacing="5px"></Header>
+    </Styles>
+    <Paddings Padding="1px" />
+</dx:ASPxGridView>
+

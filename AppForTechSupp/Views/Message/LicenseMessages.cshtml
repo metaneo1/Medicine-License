@@ -1,0 +1,73 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+@using MvcBaseApp.Resources
+
+<script>
+    function btnAddLicenseMessagesClick() {
+        var needStop = false;
+        if (typeof OnBtnAddLicenseMessagesClick !== "undefined") {
+            if (OnBtnAddLicenseMessagesClick != null) {
+                needStop = OnBtnAddLicenseMessagesClick();
+            }
+            if (needStop)
+                return;
+        }
+        loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=0' + '&MessageId=' + messageId + '&Id_Request=' + requestId, updateLicenseMessagesList2);
+    }
+</script>   
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnAddLicenseMessages";
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnAddLicenseMessagesClick";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/add_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnAddData;
+}).GetHtml()
+
+<script>
+    function btnRefreshLicenseMessagesClick() {
+        var needStop = false;
+        if (typeof OnBtnRefreshLicenseMessagesClick !== "undefined") {
+            if (OnBtnRefreshLicenseMessagesClick != null) {
+                needStop = OnBtnRefreshLicenseMessagesClick();
+            }
+            if (needStop)
+                return;
+        }
+
+        updateLicenseMessagesList();
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnRefreshLicenseMessages";
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnRefreshLicenseMessagesClick";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/refresh_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnRefreshData;
+}).GetHtml()
+
+
+<script>
+    function updateLicenseMessagesList() {
+        if (!gvMessageDataBindingToLinq.InCallback()) {
+            gvMessageDataBindingToLinq.PerformCallback({ Id_Request: requestId });
+        }
+    }
+
+    function updateLicenseMessagesList2() {
+        if (!pnl_Messages.InCallback()) {
+            pnl_Messages.PerformCallback({ Id_Request: requestId });
+        }
+    }
+</script>
+
+@Html.Partial("pnl_Messages")

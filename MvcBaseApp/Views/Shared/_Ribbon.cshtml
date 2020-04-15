@@ -1,0 +1,158 @@
+﻿@using System.Linq
+@using System.Web.UI.WebControls
+@using Microsoft.AspNet.Identity
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@{
+    Layout = null;
+}
+
+<style>
+    .logopic > img {
+        margin-top: 15px;
+    }
+
+    .orgname > h1 {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0;
+        margin-top: 30px;
+        line-height: 24px;
+    }
+</style>
+
+<script type="text/javascript">
+    @{    
+        var aspuser = User.Identity.GetUserId();
+        var userId = DatabaseProvider.DB.AspNetUsers.Where(x => x.Id == aspuser).Select(x=>x.Id_ApplicationUser).FirstOrDefault();
+        //var userId = DatabaseProvider.DB.ApplicationUser.Where(x => x.AspUserId == aspuser).Select(x=>x.Id).FirstOrDefault();
+    }
+    var navigationData = [];
+    navigationData["LicenseRequest"] = '@Url.Action("Index", "LicenseRequest")';
+    navigationData["ActivityType"] = '@Url.Action("Index", "ActivityType")';
+    navigationData["AdminUnits"] = '@Url.Action("Index", "AdminUnits")';
+    navigationData["OrganizationType"] = '@Url.Action("Index", "OrganizationType")';
+    navigationData["QuestionType"] = '@Url.Action("Index", "QuestionType")';
+    navigationData["RequestState"] = '@Url.Action("Index", "RequestState")';
+    navigationData["RequestType"] = '@Url.Action("Index", "RequestType")';
+    navigationData["Document_Format"] = '@Url.Action("Index", "Document_Format")';
+    navigationData["DocumentState"] = '@Url.Action("Index", "DocumentState")';
+    navigationData["MyInfo"] = '@Url.Action("AddEdit", "ApplicationUser")';
+    @*navigationData["Countries"] = '@Url.Action("Index", "Country")';
+    navigationData["AbroadTripReason"] = '@Url.Action("Index", "AbroadTripReason")';
+    navigationData["Organizations"] = '@Url.Action("Index", "Organization")';
+    navigationData["Country"] = '@Url.Action("Index", "Country")';
+    navigationData["Disability"] = '@Url.Action("Index", "Disability")';
+    navigationData["Chart"] = '@Url.Action("Index", "Chart")';
+    navigationData["Faculty"] = '@Url.Action("Index", "Faculty")';
+    navigationData["FamilyState"] = '@Url.Action("Index", "FamilyState")';
+    navigationData["FamilyType"] = '@Url.Action("Index", "FamilyType")';
+    navigationData["LanguageLevel"] = '@Url.Action("Index", "LanguageLevel")';
+    navigationData["Languages"] = '@Url.Action("Index", "Language")';
+    navigationData["Nationality"] = '@Url.Action("Index", "Nationality")';
+    navigationData["OrganizationForExperience"] = '@Url.Action("Index", "OrganizationForExperience")';
+    navigationData["PassportMaker"] = '@Url.Action("Index", "PassportMaker")';
+    navigationData["PhoneNumberType"] = '@Url.Action("Index", "PhoneNumberType")';
+    navigationData["Post"] = '@Url.Action("Index", "Post")';
+    navigationData["PostOutOfOrganization"] = '@Url.Action("Index", "PostOutOfOrganization")';
+    navigationData["Profession"] = '@Url.Action("Index", "Profession")';
+    navigationData["Quality"] = '@Url.Action("Index", "Quality")';
+    navigationData["QualityUpperTyle"] = '@Url.Action("Index", "QualityUpperTyle")';
+    navigationData["RelativeStatus"] = '@Url.Action("Index", "RelativeStatus")';
+    navigationData["Reward"] = '@Url.Action("Index", "Reward")';
+    navigationData["ScienceDegree"] = '@Url.Action("Index", "ScienceDegree")';
+    navigationData["ScienceThingType"] = '@Url.Action("Index", "ScienceThingType")';
+    navigationData["Sex"] = '@Url.Action("Index", "Sex")';
+    navigationData["Skills"] = '@Url.Action("Index", "Skills")';
+    navigationData["SpecialRank"] = '@Url.Action("Index", "SpecialRank")';
+    navigationData["StudyType"] = '@Url.Action("Index", "StudyType")';
+    navigationData["TypeDocument"] = '@Url.Action("Index", "TypeDocument")';
+    navigationData["TypeOrganization"] = '@Url.Action("Index", "TypeOrganization")';
+    navigationData["TypePenalty"] = '@Url.Action("Index", "TypePenalty")';
+    navigationData["University"] = '@Url.Action("Index", "University")';
+    navigationData["UniversityDegree"] = '@Url.Action("Index", "UniversityDegree")';
+    navigationData["VacationType"] = '@Url.Action("Index", "VacationType")';
+    navigationData["WarriorCategory"] = '@Url.Action("Index", "WarriorCategory")';
+    navigationData["WarriorDegree"] = '@Url.Action("Index", "WarriorDegree")';
+    navigationData["WarriorGroup"] = '@Url.Action("Index", "WarriorGroup")';
+    navigationData["WarriorReadyType"] = '@Url.Action("Index", "WarriorReadyType")';
+    navigationData["WarriorSpeciality"] = '@Url.Action("Index", "WarriorSpeciality")';
+    navigationData["WorkerStatus"] = '@Url.Action("Index", "WorkerStatus")';
+    navigationData["WorkingType"] = '@Url.Action("Index", "WorkingType")';
+    navigationData["Users"] = '@Url.Action("Index","AspNetUsers")';
+    navigationData["Overseers"] = '@Url.Action("Index", "StateItemOverseerFormOrganization")';
+    navigationData["EducationPlan"] = '@Url.Action("Index", "EducationPlan")';
+    navigationData["Pivot"] = '@Url.Action("Index", "Pivot")';
+    navigationData["Roles"] = '@Url.Action("Index", "AspNetRoles")';
+    navigationData["ReportTemplate"] = '@Url.Action("Index", "ReportTemplate")';*@
+
+    $(document).ready(function () {
+        $(".OptionsTable")
+            .find("input[type=checkbox]")
+            .change(function () { $("form").submit(); });
+    });
+    function OnWindowResize(s, e) {
+        ribbon.AdjustControl();
+    }
+    function OnCommandExecuted(s, e) {
+        loadNewPage(navigationData[e.item.name], hideLeftPane);
+    }
+    function OnFileTabClicked(s, e) {
+        label.SetText("File Tab");
+    }
+    function OnDialogBoxLauncherClicked(s, e) {
+    }
+</script>
+
+
+
+<div class="row">
+    <div class="col-md-1" style="background-color: #D9E4F3">
+
+        <div class="logopic" style="align-content: center">
+            <img src="@Url.Content("~/Content/icons/logo.png")" alt="" style="display: block; margin: 0 auto; margin-top: 15px; margin-right: 0;">
+        </div>
+
+    </div>
+    <div class="col-md-10" style="background-color: #D9E4F3">
+        <div id="loader_background" style="z-index: 9; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: gray; opacity: 0.5; display: none; height: 123px" onclick="alert('Закончите работу с текущими данными!')">
+
+        </div>
+
+        @Html.DevExpress().Ribbon(settings =>
+{
+
+    settings.Name = "ribbon";
+    settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+    settings.ShowFileTab = false;
+
+    settings.Theme = Startup.THEME;
+
+
+
+    var tab = settings.Tabs.Add("Личный кабинет");
+    var tasksGroup = tab.Groups.Add(Labels.Ribbon_HRM_Database);
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = Labels.Ribbon_HRM_Workers;
+        i.Name = "LicenseRequest";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/FormatDocument_32x32.png");
+        ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/FormatDocument_32x32.png");
+    });
+
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = Labels.Ribbon_MyInfo;
+        i.Name = "MyInfo";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.Url = Url.Content("~/Content/icons/customer_32x32.png");
+        ((RibbonButtonItem)i).SmallImage.Url = Url.Content("~/Content/icons/customer_32x32.png");
+    });
+
+}).GetHtml()
+    </div>
+    <div class="col-md-1" style="background-color: #D9E4F3">
+        @Html.Partial("_LoginPartial")
+    </div>
+</div>

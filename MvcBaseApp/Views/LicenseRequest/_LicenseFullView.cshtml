@@ -1,0 +1,61 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@model DataModel.LicenseRequest
+
+
+<script>
+    function anbItemClick(s, e) {
+        var curNavigateUrl = e.item.GetNavigateUrl();
+        e.item.SetNavigateUrl('javascript:void(0)');
+
+        //navigateItemAjax(curNavigateUrl, e.item);
+    }
+</script>
+@if (Model != null)
+{
+
+    var items = ViewBag.NAVBAR;
+
+    <div class="row">
+        <div class="col-md-2">
+
+            @Html.DevExpress().NavBar(s =>
+            {
+                s.Name = "nbAdmin";
+
+                s.SkinID = "AdminNav";
+                s.AllowExpanding = true;
+                s.AllowSelectItem = true;
+                s.AutoCollapse = true;
+                s.EnableHotTrack = true;
+                s.EnableAnimation = true;
+                s.Width = Unit.Percentage(100);
+
+                s.SetGroupHeaderTemplateCollapsedContent(c =>
+                {
+                    ViewContext.Writer.Write("<div class='anbInactiveFlag'>");
+                    ViewContext.Writer.Write("<img src='{0}'/>", Url.Content(String.Format("{0}", DataBinder.Eval(c.Group.DataItem, "InactiveImageName").ToString())));
+                    ViewContext.Writer.Write("</div>");
+                    ViewContext.Writer.Write("<span class='anbHeaderText'>{0}</span>", DataBinder.Eval(c.Group.DataItem, "Text").ToString());
+                });
+
+                s.SetGroupHeaderTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write("<div class='anbActiveFlag'>");
+                    ViewContext.Writer.Write("<img src='{0}'/>", Url.Content(String.Format("{0}", DataBinder.Eval(c.Group.DataItem, "ActiveImageName").ToString())));
+                    ViewContext.Writer.Write("</div>");
+                    ViewContext.Writer.Write("<span class='anbHeaderText'>{0}</span>", DataBinder.Eval(c.Group.DataItem, "Text").ToString());
+                });
+
+                s.ClientSideEvents.ItemClick = "anbItemClick";
+            }).Bind(items).GetHtml()
+        </div>
+        <div>
+
+        </div>
+    </div>
+}
+else
+{
+    @: anbItemClick
+}

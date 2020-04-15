@@ -1,0 +1,29 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTitleIndex runat="server" GroupSpacing="26px" BackToTopSpacing="7px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css"
+    FilterBoxSpacing="10px" IndexPanelSpacing="10px" CssPostfix="PlasticBlue" Font-Underline="False">
+	
+	<BackToTopImage>
+		<SpriteProperties CssClass="dxWeb_tiBackToTop_PlasticBlue"></SpriteProperties>
+	</BackToTopImage>
+
+    <ItemStyle>
+        <CurrentItemStyle Font-Underline="False" Font-Bold="False"></CurrentItemStyle>
+    </ItemStyle>
+
+    <FilterBox InfoText=""></FilterBox>
+
+    <BackToTopStyle HorizontalAlign="Right" ImageSpacing="4px"></BackToTopStyle>
+
+    <GroupContentStyle ItemSpacing="0px" Font-Underline="False" Font-Bold="False">
+        <Paddings PaddingTop="18px" PaddingBottom="1px" PaddingLeft="25px"></Paddings>
+    </GroupContentStyle>
+
+    <IndexPanelSeparatorStyle Height="0px"></IndexPanelSeparatorStyle>
+
+    <IndexPanel Separator="|"></IndexPanel>
+
+    <LoadingPanelStyle ImageSpacing="6px"></LoadingPanelStyle>
+</dx:ASPxTitleIndex>
+

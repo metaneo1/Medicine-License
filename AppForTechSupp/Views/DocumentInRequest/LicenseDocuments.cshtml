@@ -1,0 +1,187 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+@using MvcBaseApp.Resources
+
+<!-- Variables -->
+<script>
+    var current@(Model.EntityName)Id = 0;
+    var currentRequestTypeId = @ViewBag.DocumentInRequest_Id_Request;
+    var hasDocument = false;
+    var isActive = false;
+    //var current@(Model.EntityName)Name = '';
+</script>
+
+<!-- Grid Events-->
+<script>
+    function On@(Model.EntityName)GridFocusedRowChanged(s, e) {
+        s.GetRowValues(s.GetFocusedRowIndex(), 'Id;Id_RequestElement;HasDocument;IsActive', On@(Model.EntityName)GetRowValues);
+    }
+    function On@(Model.EntityName)GetRowValues(values) {
+        current@(Model.EntityName)Id = values[0];
+        currentRequestTypeId = values[1];
+        hasDocument = values[2];
+        isActive = values[3];
+        //current@(Model.EntityName)Name = values[1];
+    }
+</script>
+
+<!-- Private Functions -->
+<script>
+    function update@(Model.EntityName)List() {
+        hasDocument = false;
+        isActive = false;
+        current@(Model.EntityName)Id = 0;
+        //treeList.PerformCallback({Id_Request: currentRequestTypeId.toString().split("_")[0]});
+        $.get('@Url.Action("DataBindingPartial")' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_Request='+currentRequestTypeId.toString().split("_")[0],
+            function(data) {
+                $('#@(Model.EntityName)List').html(data);
+            });
+    }
+
+    function OnGetNodeValues(values) {
+        current@(Model.EntityName)Id = values[0];
+        currentRequestTypeId = values[1];
+        hasDocument = values[2];
+        isActive = values[3];
+    }
+
+    function OnFocusedNodeChangedDocument(s, e) {
+           
+    }
+    function OnNodeClickHandlerDocument(s, e) {
+        treeList.GetNodeValues(e.nodeKey, 'Id;Id_RequestElement;HasDocument;IsActive', OnGetNodeValues);
+    }
+</script>
+
+<script>
+        function btnAdd@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnAdd@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnAdd@(Model.EntityName)Click != null) {
+                    needStop = OnBtnAdd@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+            if (isActive == false) {
+                $.alert('Нельзя добавить документ на группу');
+                return;
+            }
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=0' + '&@Html.Raw(Model.AdditionalUrlParamenter)&Id_RequestElement=' + currentRequestTypeId, update@(Model.EntityName)List);
+        }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+    {
+        btnSettings.Name = "btnAdd" + Model.EntityName;
+        btnSettings.Text = "";
+        btnSettings.ClientSideEvents.Click = "btnAdd" + Model.EntityName + "Click";
+        btnSettings.Images.Image.Url = Url.Content("~/Content/icons/add_32x32.png");
+        btnSettings.ControlStyle.CssClass = "button";
+        btnSettings.UseSubmitBehavior = false;
+        btnSettings.ToolTip = Labels.btnAddData;
+    }).GetHtml()
+
+<script>
+        function btnEdit@(Model.EntityName)Click() {
+            var needStop = false;
+            if (typeof OnBtnEdit@(Model.EntityName)Click !== "undefined") {
+                if (OnBtnEdit@(Model.EntityName)Click != null) {
+                    needStop = OnBtnEdit@(Model.EntityName)Click();
+                }
+                if (needStop)
+                    return;
+            }
+
+            if ((current@(Model.EntityName)Id == 0 || current@(Model.EntityName)Id == null) && currentRequestTypeId==0) {
+                $.alert('@Labels.ErrorNoItemSelected');
+                return;
+            }
+            if (isActive == false) {
+                $.alert('Нельзя изменить документ группы');
+                return;
+            }
+            if (hasDocument == false) {
+                $.alert('Документ не прикреплен');
+                return;
+            }
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=' + current@(Model.EntityName)Id + '&@Html.Raw(Model.AdditionalUrlParamenter)&Id_RequestElement' + currentRequestTypeId, update@(Model.EntityName)List);
+        }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+    {
+        btnSettings.Name = "btnEdit" + Model.EntityName;
+        btnSettings.Text = "";
+        btnSettings.ClientSideEvents.Click = "btnEdit" + Model.EntityName + "Click";
+        btnSettings.Images.Image.Url = Url.Content("~/Content/icons/edit_32x32.png");
+        btnSettings.ControlStyle.CssClass = "button";
+        btnSettings.UseSubmitBehavior = false;
+        btnSettings.ToolTip = Labels.btnEditData;
+    }).GetHtml()
+
+
+
+<script>
+    function btnView@(Model.EntityName)Click() {
+        var needStop = false;
+        if (typeof OnBtnView@(Model.EntityName)Click !== "undefined") {
+            if (OnBtnView@(Model.EntityName)Click != null) {
+                needStop = OnBtnView@(Model.EntityName)Click();
+            }
+            if (needStop)
+                return;
+        }
+        if (current@(Model.EntityName)Id == 0) {
+            alert('@Labels.ErrorNoItemSelected');
+            return;
+        }
+
+        $.ajax({
+            url: '@Url.Action("IsDocumentEmpty")'+ '?Id=' + current@(Model.EntityName)Id,
+            type: "POST",
+            success: function(data) {
+                if (data === false) {
+                    var win = window.open('@Url.Action("ShowDocument")' + '?Id=' + current@(Model.EntityName)Id,
+                        '_blank');
+                    win.focus();
+                } else {
+                    alert('Документ не прикреплен');
+                }
+            },
+            error: function() {
+                alert("Error: ");
+            }
+        });
+
+    }
+</script>
+
+@Html.DevExpress().Button(btnSettings =>
+{
+    btnSettings.Name = "btnView" + Model.EntityName;
+    btnSettings.Text = "";
+    btnSettings.ClientSideEvents.Click = "btnView" + Model.EntityName + "Click";
+    btnSettings.Images.Image.Url = Url.Content("~/Content/icons/show_32x32.png");
+    btnSettings.ControlStyle.CssClass = "button";
+    btnSettings.UseSubmitBehavior = false;
+    btnSettings.ToolTip = Labels.btnViewData;
+}).GetHtml()
+
+<script>
+    function updateLicenseDocumentsList() {
+        if (!treeList.InCallback()) {
+            treeList.PerformCallback({ Id_Request: requestId });
+        }
+    }
+
+    function updateLicenseDocumentsList2() {
+        if (!pnl_Documents.InCallback()) {
+            pnl_Documents.PerformCallback({ Id_Request: requestId });
+        }
+    }
+</script>
+
+@Html.Partial("pnl_Documents")

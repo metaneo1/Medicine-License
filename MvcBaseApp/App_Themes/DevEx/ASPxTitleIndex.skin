@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTitleIndex runat="server" ImageFolder="~/App_Themes/DevEx/{0}/" SpriteCssFilePath="~/App_Themes/DevEx/{0}/sprite.css" CssFilePath="~/App_Themes/DevEx/{0}/styles.css"
+    CssPostfix="DevEx" FilterBoxSpacing="16" GroupSpacing="22">
+    <FilterBox Caption="Filter:&amp;nbsp;&amp;nbsp;" HorizontalPosition="Right" />
+    <IndexPanelSeparatorStyle Height="1" BackColor="#b8bac2" />
+    <GroupContentStyle BackColor="White" />
+    <ColumnStyle>
+        <Paddings PaddingLeft="10" PaddingRight="10" />
+    </ColumnStyle>
+    <ColumnSeparatorStyle>
+        <Paddings Padding="0" />
+    </ColumnSeparatorStyle>
+    <BackToTopImage>
+        <SpriteProperties CssClass="dxWeb_tiBackToTop_DevEx" />
+    </BackToTopImage>
+    <BackToTopStyle ImageSpacing="3" />
+</dx:ASPxTitleIndex>
+

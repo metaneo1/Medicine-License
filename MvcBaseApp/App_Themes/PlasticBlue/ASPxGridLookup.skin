@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridLookup runat="server" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" CssPostfix="PlasticBlue">
+    <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+    </GridViewImages>
+    <GridViewStyles CssPostfix="PlasticBlue" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css">
+        <Header SortingImageSpacing="10px" ImageSpacing="10px" />
+    </GridViewStyles>
+    <GridViewProperties>
+        <SettingsPager ShowDefaultImages="False" CurrentPageNumberFormat="{0}">
+            <AllButton Text="All" />
+            <NextPageButton ShowDefaultText="True" TextFormatString="{0} &gt;"></NextPageButton>
+            <PrevPageButton ShowDefaultText="True" TextFormatString="&lt; {0}"></PrevPageButton>
+        </SettingsPager>
+    </GridViewProperties>
+</dx:ASPxGridLookup>
+

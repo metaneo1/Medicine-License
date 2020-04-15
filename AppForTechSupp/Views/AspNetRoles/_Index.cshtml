@@ -1,0 +1,43 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model IndexGridModel
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvStateItemDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "AspNetRoles", Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        if (Html.HasRoleView(Session, Model.EntityName + "_Name"))
+        {
+            settings.Columns.Add(x =>
+            {
+                x.Name = "Name";
+                x.FieldName = "Name";
+                x.Caption = "Название";
+                x.CellStyle.Wrap = DefaultBoolean.True;
+            });
+        }
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "OnAspNetRolesGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "resizeGrid";
+
+        settings.PreRender = settings.BeforeGetCallbackResult = (sender, e) =>
+        {
+            MVCxGridView gridView = sender as MVCxGridView;
+            Session["gv" + Model.EntityName + "State"] = new MVCxGridViewState(gridView);
+        };
+        
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.AspNetRoles;
+
+    }).GetHtml()

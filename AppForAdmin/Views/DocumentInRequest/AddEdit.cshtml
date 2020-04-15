@@ -1,0 +1,52 @@
+@using MvcBaseApp.Resources
+@model DocumentInRequest
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<h4>
+    @(Model.Id == 0 ? Labels.DocumentInRequest_Add : Labels.DocumentInRequest + Model.Id)
+</h4>
+
+
+<!-- Button Click Events-->
+<script>
+function OnSaveDocumentInRequestClick(s, e) {
+        var data = $(AddDocumentInRequestFormLayout.GetParentForm()).serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "DocumentInRequest")',
+            data: data + '&id=@Model.Id&Id_Request=@Model.Id_Request',
+            success: function (response) {
+                closeLastPage();
+            },
+            error: function () {
+                $.alert('@Labels.ErrorNullFields');
+            }
+        });
+    }
+
+    function OnCancelDocumentInRequestClick(s, e) {
+        closeLastPage();
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AddEdit", "DocumentInRequest"))
+{
+    <div id="editableContainer">
+        @Html.Partial("_AddEdit", Model)
+    </div>
+}
+
+<!-- Additional Binding -->
+<script>
+    hideBigLoader();
+</script>

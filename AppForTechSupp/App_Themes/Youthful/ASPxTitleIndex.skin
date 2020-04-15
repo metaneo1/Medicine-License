@@ -1,0 +1,27 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxTitleIndex runat="server" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" SpriteCssFilePath="~/App_Themes/Youthful/{0}/sprite.css" 
+    FilterBoxSpacing="0px" CssPostfix="Youthful" GroupSpacing="30px" IndexPanelSpacing="0px">
+    <FilterBox InfoText="" />
+    <ColumnStyle>
+        <Paddings PaddingLeft="10px" PaddingTop="10px" />
+    </ColumnStyle>
+    <IndexPanelSeparatorStyle Height="5px" BackColor="#9CC525" />
+    <IndexPanel Separator="|" />
+    <ItemStyle>
+        <CurrentItemStyle Font-Bold="False" Font-Underline="False" />
+    </ItemStyle>
+    <ColumnSeparatorStyle Width="15px">
+        <Paddings Padding="0px" />
+    </ColumnSeparatorStyle>
+    <GroupContentStyle ItemSpacing="0px">
+        <Paddings PaddingBottom="25px" PaddingLeft="37px" PaddingTop="5px" />
+    </GroupContentStyle>
+    <BackToTopStyle>
+        <Paddings PaddingLeft="38px" />
+    </BackToTopStyle>
+
+    <SettingsLoadingPanel ImagePosition="Bottom" />
+</dx:ASPxTitleIndex>
+

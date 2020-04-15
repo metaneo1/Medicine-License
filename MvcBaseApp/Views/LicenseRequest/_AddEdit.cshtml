@@ -1,0 +1,232 @@
+@using System.Drawing
+@using System.Web.UI.WebControls
+@using DataModel.DataTypeConverters
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Resources
+
+@model DataModel.LicenseRequest
+
+@{
+    var datamodel = (LicenseRequestAddEditModel)ViewBag.MODEL;
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddLicenseRequestFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.LicenseRequest_MainInfo;
+        g.ColCount = 1;
+        g.Items.Add(m => m.DateCreate, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_DateCreate");
+            i.NestedExtension().DateEdit(tb =>
+            {
+                tb.Properties.UseMaskBehavior = true;
+                tb.Properties.EditFormat = EditFormat.Custom;
+                tb.Properties.EditFormatString = DataTypeFormatter.DateTimeFormat;
+                tb.Properties.TimeSectionProperties.Visible = false;
+                tb.Width = Unit.Pixel(250);
+                tb.ReadOnly = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_DateCreate"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_DateCreate;
+        g.Items.Add(m => m.ClinicName, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_ClinicName");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_ClinicName"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_ClinicName;
+        g.Items.Add(m => m.Id_AdminUnit, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "Organization_Id_AdminUnit");
+            i.NestedExtension().DropDownEdit(ds =>
+            {
+                ds.Name = "ddeLicense";
+                ds.Properties.NullText = "(Не выбрано)";
+                ds.ReadOnly = true;
+                ds.Properties.ClientSideEvents.DropDown = "OnDropDownLicense";
+                ds.Width = System.Web.UI.WebControls.Unit.Pixel(250);
+                ds.SetDropDownWindowTemplateContent(c =>
+                {
+                    Html.DevExpress().TextBox(settingsTB =>
+                    {
+                        settingsTB.Name = "SearchTextLicense";
+                        settingsTB.Properties.NullText = "Поиск...";
+                        settingsTB.Width = Unit.Pixel(140);
+                        settingsTB.ControlStyle.CssClass = "inline-editor";
+                    }).Render();
+                    Html.DevExpress().Button(settingsBtn =>
+                    {
+                        settingsBtn.Name = "SearchButtonLicense";
+                        settingsBtn.Text = "Поиск";
+                        settingsBtn.Width = Unit.Pixel(30);
+                        settingsBtn.ControlStyle.CssClass = "inline-editor";
+                        settingsBtn.ClientSideEvents.Click = "onSearchButtonClickLicense";
+                    }).Render();
+                    Html.RenderAction("TreeListPartial", "LicenseRequest", new {Id_AdminUnit = Model.Id_AdminUnit});
+                });
+            });
+        }).Caption = Labels.LicenseRequest_AdminUnits;
+        g.Items.Add(m => m.Address, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Address");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_Address"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_Address;
+        g.Items.Add(m => m.Phone1, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Phone1");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                tb.Properties.ClientSideEvents.KeyUp = "TextBoxIntegerKeyUp";
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_Phone1"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_Phone1;
+        g.Items.Add(m => m.Phone2, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Phone2");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                tb.Properties.ClientSideEvents.KeyUp = "TextBoxIntegerKeyUp";
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_Phone2"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_Phone2;
+        g.Items.Add(m => m.Email, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Email");
+            i.NestedExtension().TextBox(tb =>
+            {
+                tb.Width = Unit.Pixel(250);
+                tb.ShowModelErrors = true;
+                tb.Properties.ValidationSettings.Display = Display.Dynamic;
+                tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+                tb.Properties.ValidationSettings.RegularExpression.ValidationExpression = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+                if (!Html.HasRoleEnable(Session, "LicenseRequest_Email"))
+                {
+                    tb.Enabled = false;
+                    tb.Properties.Style.BackColor = Color.LightGray;
+                    tb.Properties.Style.ForeColor = Color.Black;
+                }
+            });
+        }).Caption = Labels.LicenseRequest_Email;
+        //g.Items.Add(m => m.Id_AdminUnit, i =>
+        //{
+        //    i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Id_AdminUnit");
+        //    i.SetNestedContent(Html.Action("GetLookUp", "AdminUnits", new { JsElementName = "Id_AdminUnit_AddLicenseRequest", CallerConrtoller = "AddLicenseRequest", CurrentValue = Model.Id_AdminUnit }).ToString());
+        //}).Caption = Labels.LicenseRequest_AdminUnits;
+        g.Items.Add(m => m.Id_Company, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Id_Company");
+            i.SetNestedContent(Html.Action("GetLookUp", "Organization", new {JsElementName = "Id_Company_AddLicenseRequest", CallerConrtoller = "AddLicenseRequest", CurrentValue = Model.Id_Company}).ToString());
+        }).Caption = Labels.LicenseRequest_Organization;
+
+
+        g.Items.Add(m => m.Id_RequestType, i =>
+        {
+            i.ClientVisible = Html.HasRoleView(Session, "LicenseRequest_Id_RequestType");
+            i.SetNestedContent(Html.Action("GetLookUp", "RequestType", new {JsElementName = "Id_RequestType_AddLicenseRequest", CallerConrtoller = "AddLicenseRequest", CurrentValue = Model.Id_RequestType}).ToString());
+        }).Caption = Labels.LicenseRequest_RequestType;
+        g.Items.Add(i =>
+        {
+            i.Caption = "Виды деятельности";
+            i.SetNestedContent(Html.Action("Index", "LicenseRequestActivityType", new { Id_Request = Model.Id }).ToString());
+        });
+        //g.Items.Add(m => m.Id_User, i =>
+        //{
+        //    i.NestedExtension().TextBox(tb =>
+        //    {
+        //        tb.Width = Unit.Pixel(250);
+        //        tb.ShowModelErrors = true;
+        //        tb.Properties.ValidationSettings.Display = Display.Dynamic;
+        //        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.None;
+        //        if (!Html.HasRoleEnable(Session, "LicenseRequest_Id_User"))
+        //        {
+        //            tb.Enabled = false;
+        //            tb.Properties.Style.BackColor = Color.LightGray;
+        //            tb.Properties.Style.ForeColor = Color.Black;
+        //        }
+        //    });
+        //});//.Caption = Labels.LicenseRequest_Email;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "saveLicenseRequestButton";
+                s.Text = Labels.btnSave;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.ClientSideEvents.Click = "OnSaveLicenseRequestClick";
+            });
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelLicenseRequestButton";
+                s.Text = Labels.btnCancel;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.ClientSideEvents.Click = "OnCancelLicenseRequestClick";
+            });
+        });
+    });
+
+}).GetHtml()

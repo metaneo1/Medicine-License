@@ -1,0 +1,19 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxCardView runat="server" CssFilePath="~/App_Themes/Office2010Black/{0}/styles.css" CssPostfix="Office2010Black">
+	<Images SpriteCssFilePath="~/App_Themes/Office2010Black/{0}/sprite.css" />
+    <SettingsPager CurrentPageNumberFormat="{0}" />
+    <Styles>
+        <Header SortingImageSpacing="5" />
+	    <LoadingPanel ImageSpacing="5" />
+    </Styles>	
+    <StylesPager>
+        <CurrentPageNumber ForeColor="Black" />
+        <PageNumber ForeColor="White" />
+        <Summary ForeColor="White" />
+        <Ellipsis ForeColor="White" />
+        <PageSizeItem ForeColor="White" />
+    </StylesPager>
+</dx:ASPxCardView>
+

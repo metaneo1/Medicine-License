@@ -1,0 +1,11 @@
+@model DevExpress.Web.Data.WebDataRow
+    
+
+<div class="card col-md-6">
+    <div class="card-header">
+        Заявка № @DataBinder.Eval(Model, "Id")
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@DataBinder.Eval(Model, "Organization.Name_kg")</h5>
+    </div>
+</div>

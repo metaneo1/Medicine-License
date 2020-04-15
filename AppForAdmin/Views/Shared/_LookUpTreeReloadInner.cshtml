@@ -1,0 +1,82 @@
+﻿@using System.Drawing
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.LookUpReloadModel<DataModel.Interfaces.IEntityWithId>
+
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().TreeList(tlSettings =>
+        {
+            tlSettings.Name = Model.JsElementName;
+            tlSettings.CallbackRouteValues = new { Controller = Model.ControllerName, Action = Model.ActionName, JsElementName = Model.JsElementName, CallerConrtoller = Model.CallerConrtoller, CurrentValue = Model.CurrentValue };
+            tlSettings.KeyFieldName = "Id";
+            tlSettings.PreviewFieldName = "Name";
+            
+            tlSettings.SettingsBehavior.AutoExpandAllNodes = false;
+            tlSettings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
+
+            tlSettings.SettingsBehavior.AllowFocusedNode = true;
+            
+            tlSettings.SettingsSelection.Enabled = true;
+            tlSettings.SettingsSelection.Recursive = false;
+            
+            tlSettings.Settings.ScrollableHeight = 200;
+            tlSettings.Width = 500;
+            tlSettings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+            tlSettings.SettingsSelection.AllowSelectAll = false;
+
+            tlSettings.ParentFieldName = "Id_Parent";
+
+            tlSettings.Columns.Add(x =>
+            {
+                x.Name = "Name";
+                x.Caption = Labels.WorkerGridColumnName;
+                x.FieldName = "Name";
+                x.CellStyle.Wrap = DefaultBoolean.True;
+            });
+
+            tlSettings.HtmlDataCellPrepared += (s, e) =>
+            {
+
+                if (e.Column.Name == "Name")
+                {
+                    var value = (string)e.CellValue;
+                    if (Equals(e.GetValue("IsArchive"), true))
+                        //if (value.Contains("(Архив)"))
+                    {
+                        e.Cell.Text = value + " "; //обновит текст, иначе не получилось
+                        e.Cell.Font.Italic = true;
+                    }
+                }
+            };
+            tlSettings.HtmlRowPrepared += (s, e) =>
+            {
+                var tree = s as MVCxTreeList;
+                if (Equals(e.GetValue("IsArchive"), true))
+                {
+                    e.Row.ForeColor = Color.DarkGray;
+                    var node = tree.FindNodeByKeyValue(e.NodeKey);
+                    var name = node.GetValue("Name");
+                    node.SetValue("Name", name + " (Архив)");
+                    node.AllowSelect = false;
+                }
+            };
+
+            tlSettings.CustomJSProperties += (s, e) =>
+            {
+                var tree = s as MVCxTreeList;
+                if (tree.SelectionCount > 0)
+                {
+                    var lastSelectedNode = tree.GetSelectedNodes()[0];
+                    e.Properties["cp_lastKey_" + Model.ControllerName] = lastSelectedNode.Key;
+                }
+
+            };
+            
+            tlSettings.SettingsBehavior.ProcessFocusedNodeChangedOnServer = true;
+            tlSettings.ClientSideEvents.Init = "updateText";
+            //tlSettings.ClientSideEvents.NodeClick = "On" + Model.ControllerName + "TreeLookUpNodeClick";
+            tlSettings.ClientSideEvents.SelectionChanged = "On" + Model.ControllerName + "TreeLookUpFocusedRowChanged";
+            //tlSettings.ClientSideEvents.FocusedNodeChanged = "On" + Model.ControllerName + "TreeLookUpFocusedRowChanged";
+        }).Bind(Model.List).GetHtml()

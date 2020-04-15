@@ -1,0 +1,21 @@
+@model MvcBaseApp.Models.IndexGridModel
+
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+<!-- Title -->
+@Html.Partial("_IndexHeader", Model)
+
+<!-- Buttons-->
+@Html.Partial("IndexGrid/_ButtonAdd", Model)
+@Html.Partial("IndexGrid/_ButtonEdit", Model)
+@Html.Partial("IndexGrid/_ButtonDelete", Model)
+@Html.Partial("IndexGrid/_ButtonRefresh", Model)
+@Html.Partial("IndexGrid/_ButtonPrint", Model)
+@Html.Partial("IndexGrid/_ButtonClose", Model)
+
+<!-- Grid -->
+@Html.Partial("IndexGrid/_Header", Model)
+@Html.Partial("_Index", Model)
+@Html.Partial("IndexGrid/_Footer", Model)

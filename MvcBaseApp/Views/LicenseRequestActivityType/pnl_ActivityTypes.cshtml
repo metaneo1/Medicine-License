@@ -1,0 +1,19 @@
+﻿@using MvcBaseApp.Models
+@{
+    Layout = null;
+    var id = ((int?) ViewBag.LicenseRequestActivityType_Id_Request ?? 0);
+}
+    @Html.DevExpress().CallbackPanel(s =>
+{
+    s.Name = "pnl_ActivityTypes";
+    s.CallbackRouteValues = new { Controller = "LicenseRequestActivityType", Action = "pnl_ActivityTypesPartial", Id_Request = id, IsCallBack = true };
+
+    s.SetContent(() =>
+    {
+        Html.RenderAction("IndexPartial", "LicenseRequestActivityType", new { Id_Request = id, IsCallBack = true});
+    });
+}).GetHtml()
+
+@*<script>
+    pnl_ActivityTypes.PerformCallback();
+</script>*@

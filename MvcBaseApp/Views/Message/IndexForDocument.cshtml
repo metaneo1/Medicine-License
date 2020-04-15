@@ -1,0 +1,77 @@
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+}
+
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+
+@if (
+Html.HasRoleView(Session, Model.EntityName + "_Id")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_Parent")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_Request")||
+Html.HasRoleView(Session, Model.EntityName + "_MessageText")||
+Html.HasRoleView(Session, Model.EntityName + "_MessageDate")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_QuestionType")||
+Html.HasRoleView(Session, Model.EntityName + "_Id_AnswerWriter")
+    )
+{
+    <script>
+        function OnBtnRefresh@(Model.EntityName)Click () {
+            update@(Model.EntityName)List2();
+            return true;
+        }
+
+        function update@(Model.EntityName)List2() {
+            $.get('@Url.Action("IndexForDocumentPartial", Model.EntityName)' + '?@Html.Raw(Model.AdditionalUrlParamenter)&Id_Document=' + @ViewBag.Message_Id_Document, function (data) {
+                $('#@(Model.EntityName)List').html(data);
+                gv@(Model.EntityName)DataBindingToLinq.SetFocusedRowIndex(current@(Model.EntityName)RowHandle);
+            });
+        }
+    </script>
+    @Html.Partial("_IndexHeader", Model)
+
+    <script>
+        function OnBtnAdd@(Model.EntityName)Click() {
+            current@(Model.EntityName)RowHandle = gv@(Model.EntityName)DataBindingToLinq.GetFocusedRowIndex();
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=0&Id_Document=' + @ViewBag.Message_Id_Document + '&@Html.Raw(Model.AdditionalUrlParamenter)', update@(Model.EntityName)List2);
+            return true;
+        }
+
+        function btnEdit@(Model.EntityName)Click()
+        {
+            current@(Model.EntityName)RowHandle = gv@(Model.EntityName)DataBindingToLinq.GetFocusedRowIndex();
+            loadNewPage('@Url.Action("AddEdit", Model.EntityName)?id=' + current@(Model.EntityName)Id + '&Id_Document=' + @ViewBag.Message_Id_Document + '&@Html.Raw(Model.AdditionalUrlParamenter)', update@(Model.EntityName)Lis2);
+            return true;
+        }
+    </script>
+
+@Html.Partial("IndexGrid/_ButtonAdd", Model)
+@Html.Partial("IndexGrid/_ButtonEdit", Model)
+@Html.Partial("IndexGrid/_ButtonDelete", Model)
+@Html.Partial("IndexGrid/_ButtonRefresh", Model)
+@Html.Partial("IndexGrid/_ButtonPrint", Model)
+@Html.Partial("IndexGrid/_ButtonClose", Model)
+
+@Html.Partial("IndexGrid/_Header", Model)
+
+@Html.Partial("_IndexForDocument")
+
+    @Html.Partial("IndexGrid/_Footer", Model)
+}
+else
+{
+    <!-- Additional Binding -->
+    <script>
+
+        hideBigLoader();
+
+        function bind@(Model.EntityName)List() {
+        }
+
+        bindings.push(bind@(Model.EntityName)List);
+
+
+        $.alert('@Labels.NotAccessRights');
+        closeLastPage();
+    </script>
+}

@@ -1,0 +1,7 @@
+Labels.Organization_Name,Наименование
+Labels.Organization_TIN,ИНН
+Labels.Organization_NSCCode,ОКПО
+Labels.Organization_RegistrationNumber,Регистрационный номер
+Labels.Organization_OrganizationType,Id_ТипКомпании
+Labels.Organization_Address,Адрес
+Labels.Organization_AdminUnits,Id Административного деления

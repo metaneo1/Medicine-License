@@ -1,0 +1,104 @@
+﻿
+
+@using System.Web.UI.WebControls
+@using DataModel
+@using MvcBaseApp.Models
+@model List<MvcBaseApp.Controllers.QuestionTypeController.QuestionTypeTreeModel>
+@functions {
+
+
+    string GetSearchText()
+    {
+        return ViewData["SearchText"] != null ? ViewData["SearchText"].ToString() : "";
+    }
+
+    int GetCurrentId()
+    {
+        return (int?)ViewData["Id_QuestionType"] ?? 0;
+    }
+}
+
+
+@{
+    var treeList = Html.DevExpress().TreeList(treeListSettings =>
+    {
+        treeListSettings.Name = "treeListGroupsLicense";
+
+        treeListSettings.SettingsBehavior.DisablePartialUpdate = true;
+        treeListSettings.CustomActionRouteValues = new { Controller = "QuestionType", Action = "TreeListCustomPartial" };
+
+        treeListSettings.CallbackRouteValues = new { Controller = "QuestionType", Action = "TreeListPartial" };
+        treeListSettings.ParentFieldName = "ParentId";
+        treeListSettings.KeyFieldName = "Id";
+        treeListSettings.Width = Unit.Percentage(100);
+
+        treeListSettings.Columns.Add(col =>
+        {
+            col.FieldName = "Name";
+            col.SetDataCellTemplateContent(t =>
+            {
+                ViewContext.Writer.Write(TreeListHighlightHelper.GetCellText(t, GetSearchText()));
+            });
+        });
+
+        //treeListSettings.Columns.Add(col =>
+        //{
+        //    col.Name = "Level";
+        //    col.FieldName = "Level";
+        //});
+
+        treeListSettings.ClientSideEvents.BeginCallback = "onTreeListBeginCallbackLicense";
+
+        treeListSettings.BeforeGetCallbackResult = (s, e) =>
+        {
+
+            if (ViewData["IsNewSearch"] == null)
+            {
+                if (ViewData["Id_QuestionType"] != null)
+                {
+                    var id = GetCurrentId();
+                    if (id == 0) return;
+                    MVCxTreeList mvcTree1 = (MVCxTreeList)s;
+                    var node = mvcTree1.FindNodeByKeyValue(id.ToString());
+                    node.Selected = true;
+                    node.Focus();
+                }
+                return;
+            }
+
+            MVCxTreeList mvcTree = (MVCxTreeList)s;
+            TreeListNodeIterator iterator = new TreeListNodeIterator(mvcTree.RootNode);
+            while (iterator.Current != null)
+            {
+                TreeListHighlightHelper.CheckNode(iterator.Current, GetSearchText());
+                iterator.GetNext();
+            }
+        };
+
+        treeListSettings.SettingsSelection.AllowSelectAll = true;
+        //treeListSettings.SettingsBehavior.AutoExpandAllNodes = true;
+        treeListSettings.SettingsBehavior.AllowFocusedNode = true;
+        treeListSettings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.Button;
+        treeListSettings.SettingsSelection.Enabled = false;
+        treeListSettings.SettingsSelection.Recursive = false;
+        //treeListSettings.SettingsPager.Mode = DevExpress.Web.ASPxTreeList.TreeListPagerMode.ShowAllNodes;
+
+        //treeListSettings.SettingsLoadingPanel.Delay = 0;
+        //treeListSettings.Settings.ShowColumnHeaders = true;
+        //treeListSettings.Settings.GridLines = System.Web.UI.WebControls.GridLines.Both;
+        //treeListSettings.Settings.ShowTreeLines = true;
+
+        //treeListSettings.AutoGenerateColumns = true;
+
+        //treeListSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        //treeListSettings.RootValue = null;
+        //treeListSettings.Styles.AlternatingNode.Enabled = DefaultBoolean.True;
+        //treeListSettings.Styles.AlternatingNode.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+        //treeListSettings.Styles.Node.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f3f4");
+        //treeListSettings.ClientSideEvents.FocusedNodeChanged = "OnFocusedNodeChanged";
+        treeListSettings.ClientSideEvents.NodeClick = "OnNodeClickHandlerLicense";
+        treeListSettings.ClientSideEvents.Init = "TreeInitLicense";
+
+    });
+}
+@treeList.Bind(Model).GetHtml()

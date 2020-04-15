@@ -1,0 +1,139 @@
+﻿@using System.Web.UI.WebControls
+@using MvcBaseApp.Resources
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лицензирование медицинских и фармацевтических услуг</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    @Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, AccessibilityCompliant = true },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList }
+        )
+
+    @Html.DevExpress().GetScripts(
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.GridView },
+        new Script { ExtensionSuite = ExtensionSuite.TreeList }
+        )
+
+    <style>
+        .inline-editor {
+            float: left;
+            margin: 0.5em;
+        }
+        .highlight {
+            background-color: #99FF66;
+        }
+
+        .anbInactiveFlag, .anbActiveFlag {
+            position: absolute;
+            height: 32 px;
+            width: 50px;
+            left: -20px;
+            padding: 8px 6px;
+            background: transparent url(@Url.Content("~/Content/icons/AdminNavTab.png")) 0 0 no-repeat;
+
+        }
+        .anbActiveFlag {
+            background-image: url(@Url.Content("~/Content/icons/AdminNavActiveTab.png"));
+        }
+
+        #headerContent {
+            position: relative;
+            height: 61px;
+            margin: 0 auto;
+            padding: 30px 35px 0 35px;
+            background-color: #727272;
+        }
+
+        #nbAdmin {
+            position: relative;
+            float: left;
+            width: 208px;
+            min-height: 450px;
+            padding: 30px;
+        }
+    </style>
+
+    <link rel="stylesheet" href='@Url.Content("~/Content/jqonfirm.css")'>
+    <script src='@Url.Content("~/Scripts/jquery-confirm.js")'></script>
+
+</head>
+<body style="padding: 0">
+
+    @Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Chart, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Report, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler, Theme = Startup.THEME },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList, Theme = Startup.THEME }
+    )
+
+
+
+
+
+
+    <style>
+        * {
+            font-size: 14px !important;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        body {
+            background: transparent url(Images/BodyBkg.png) repeat-y center;
+        }
+    </style>
+
+    @Html.Partial("_LookUpEditJs")
+    
+    <div class="container-fluid body-content">
+        <div class="row">
+            <div id="headerContent" class="col-md-12">
+                asdfa sfd asfd
+                @*@Html.Action("LoggedUserInfo", "Account", new {area = ""})
+
+                    @Html.DevExpress().HyperLink(settings => {
+                                                                 settings.NavigateUrl = Url.Action("Index", "Dashboard", null);
+                                                                 settings.Properties.Text = "Dashboard";
+                                                                 settings.Properties.ImageUrl = "~/Content/Images/Logo.png";
+                                                                 settings.Properties.ImageHeight = 49;
+                                                                 settings.Properties.ImageWidth = 253;
+                    }).GetHtml()*@
+            </div>
+        </div>
+    </div>
+
+<div class="container-fluid body-content">
+
+    <div class="row" style="z-index: 9999;">
+
+            @RenderBody()
+    </div>
+</div>
+
+
+</body>
+</html>

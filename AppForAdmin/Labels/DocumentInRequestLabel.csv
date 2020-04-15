@@ -1,0 +1,4 @@
+Labels.DocumentInRequest_Document,Id Документа
+Labels.DocumentInRequest_DocumentState,Id_Статус документа
+Labels.DocumentInRequest_RequestElement,Id_ Элемента заявки
+Labels.DocumentInRequest_Description,Описание

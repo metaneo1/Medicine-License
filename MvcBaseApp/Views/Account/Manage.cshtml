@@ -1,0 +1,40 @@
+﻿@using MvcBaseApp.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    Layout = ((bool?)ViewBag.AJAX) ?? false ? "~/Views/Shared/_Layout.cshtml" : null;
+    ViewBag.Title = "Управление учётной записью";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="row" style="width: 100%">
+    <div class="col-md-12" id="manage-pane">
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial")
+        }
+        else
+        {
+            @Html.Partial("_SetPasswordPartial")
+        }
+
+        @*<section id="externalLogins">
+            @Html.Action("RemoveAccountList")
+            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+        </section>*@
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function cancelManage() {
+        closeLastPage();
+    }
+
+    resizeLoadedPane($('#manage-pane'));
+
+    hideBigLoader();
+</script>

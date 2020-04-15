@@ -1,0 +1,23 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridLookup runat="server" CssFilePath="~/App_Themes/Office2010Black/{0}/styles.css" CssPostfix="Office2010Black"
+	SpriteCssFilePath="~/App_Themes/Office2010Black/{0}/sprite.css">
+	<GridViewImages SpriteCssFilePath="~/App_Themes/Office2010Black/{0}/sprite.css">
+	</GridViewImages>
+    <GridViewProperties>
+        <SettingsPager CurrentPageNumberFormat="{0}">
+            <Summary Position="Right" />
+        </SettingsPager>
+    </GridViewProperties>
+    <GridViewStyles>
+        <Header SortingImageSpacing="5" />
+	    <LoadingPanel ImageSpacing="5" />
+    </GridViewStyles>	
+    <GridViewStylesPager>
+        <CurrentPageNumber ForeColor="Black" />
+        <PageNumber ForeColor="White" />
+        <Summary ForeColor="White" />
+        <Ellipsis ForeColor="White" />
+    </GridViewStylesPager>
+</dx:ASPxGridLookup>

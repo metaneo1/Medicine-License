@@ -1,0 +1,7 @@
+Labels.WorkExperience_DateStart,Дата начала
+Labels.WorkExperience_DateFinished,Дата окончания
+Labels.WorkExperience_PostOutOfOrganization,Id Должности
+Labels.WorkExperience_OrganizationForExperience,Id Организации
+Labels.WorkExperience_IsMainWork,Основное место работы
+Labels.WorkExperience_IsGovermentWork,Является Госслужбой
+Labels.WorkExperience_IsSpeciality,По специальности

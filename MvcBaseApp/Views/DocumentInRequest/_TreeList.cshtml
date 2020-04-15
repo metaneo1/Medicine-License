@@ -1,0 +1,245 @@
+﻿@using System.Web.UI.WebControls
+@using DataModel
+@using DataModel.Const
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model List<GetDocumentAndRequestElements_Result>
+@{
+    var imageWidth = 20;
+    var imageHeight = 20;
+}
+@Html.DevExpress().TreeList(settings =>
+{
+    settings.Name = "treeList";
+    settings.CallbackRouteValues = new { Controller = "DocumentInRequest", Action = "DataBindingPartial", Id_Request = ViewBag.DocumentInRequest_Id_Request };
+    settings.Width = Unit.Percentage(100);
+
+    settings.AutoGenerateColumns = false;
+    settings.KeyFieldName = "Id_RequestElement";
+    settings.ParentFieldName = "Id_ParentRequestElement";
+    settings.ClientSideEvents.NodeClick = "OnNodeClickHandlerDocument";
+    settings.ClientSideEvents.FocusedNodeChanged = "OnFocusedNodeChangedDocument";
+    settings.SettingsSelection.AllowSelectAll = true;
+    settings.SettingsBehavior.AllowFocusedNode = true;
+    settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.Button;
+    settings.SettingsSelection.Enabled = false;
+    settings.SettingsSelection.Recursive = false;
+    settings.Columns.Add(x =>
+    {
+        x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+        x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        //x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        //x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+        x.Width = 35;
+        x.Caption = Labels.DocumentInRequest_RequestElement;
+        x.CellStyle.Wrap = DefaultBoolean.True;
+        x.SetDataCellTemplateContent(c =>
+        {
+            var id_str = DataBinder.Eval(c.DataItem, "RequestElementStructureTypeId");
+            int id = 0;
+            var name = DataBinder.Eval(c.DataItem, "RequestElementTypeName");
+
+            var img = "";
+            if (id_str != null && int.TryParse(id_str.ToString().Split('_')[0], out id))
+            {
+                var url = "";
+                if (id == Const.RequestElementStructureTypeId.Element)
+                    url = "Content/icons/add_32x32.png";
+                if (id == Const.RequestElementStructureTypeId.Group)
+                    url = "Content/icons/delete_32x32.png";
+                if (id == Const.RequestElementStructureTypeId.SubGroup)
+                    url = "Content/icons/customer_32x32.png";
+
+                if (url != "")
+                    img = "<img style='vertical-align: left;' src='" + url + "' width=" + imageWidth + " height=" + imageHeight +"/> ";
+                //Html.DevExpress().Image(i =>
+                //{
+                //    i.ImageUrl = url;
+                //}).Render();
+            }
+            ViewContext.Writer.Write(img + name);
+
+        });
+
+    });
+
+    //if (Html.HasRoleView(Session, "DocumentInRequest_Document.Name"))
+    //{
+    //    settings.Columns.Add(x =>
+    //    {
+    //        x.Name = "RequestElementTypeName";
+    //        x.FieldName = "RequestElementTypeName";
+    //        x.Caption = "Элемент заявки";//Labels.ResourceManager.GetString("DocumentInRequest_Document");
+    //        x.CellStyle.Wrap = DefaultBoolean.True;
+    //        x.HeaderStyle.Wrap = DefaultBoolean.True;
+    //    });
+    //}
+
+    settings.Columns.Add(x =>
+    {
+        x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+        x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+        x.Name = "RequestElementDescription";
+        x.Caption = Labels.ResourceManager.GetString("DocumentInRequest_RequestElementDescription");
+        x.DataCellTemplate = new TemplateBuilder();
+        x.SetDataCellTemplateContent(c =>
+        {
+            ViewContext.Writer.Write("<button onclick=\"ShowRequestElementTypeDescription('" + DataBinder.Eval(c.DataItem, "RequestElementTypeDescription") + "')\">" + Labels.ResourceManager.GetString("DocumentInRequest_RequestElementDescription") + "</button>");
+        });
+    });
+
+    settings.Columns.Add(x =>
+    {
+        x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+        x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+        x.Name = "RequestElementActions";
+        x.Caption = Labels.ResourceManager.GetString("DocumentInRequest_RequestElementActions");
+        x.DataCellTemplate = new TemplateBuilder();
+        x.SetDataCellTemplateContent(c =>
+        {
+            var id_str = DataBinder.Eval(c.DataItem, "RequestElementStructureTypeId");
+            int idRequestElemenеSctructureType = 0;
+            if (id_str != null && int.TryParse(id_str.ToString().Split('_')[0], out idRequestElemenеSctructureType))
+            {
+                if (idRequestElemenеSctructureType != Const.RequestElementStructureTypeId.Element) return;
+            }
+
+            var id = DataBinder.Eval(c.DataItem, "Id");
+            var idRequestElement = DataBinder.Eval(c.DataItem, "Id_RequestElement");
+            var hasDocument = DataBinder.Eval(c.DataItem, "HasDocument");
+            var isActive = DataBinder.Eval(c.DataItem, "IsActive");
+
+            ViewContext.Writer.Write("<button title='" + Labels.btnAddData + "' onclick=\"btnAddClick('"
+                                     + id + "', '"
+                                     + idRequestElement + "', '"
+                                     + hasDocument + "', '"
+                                     + isActive + "')\"><img width="+ imageWidth+" height=" + imageHeight +" src='" + Url.Content("~/Content/icons/add_32x32.png") + "' /></button>");
+            ViewContext.Writer.Write("<button title='"+Labels.btnEditData+"' onclick=\"btnEditClick('"
+                                     + id + "', '"
+                                     + idRequestElement + "', '"
+                                     + hasDocument + "', '"
+                                     + isActive + "')\"><img width="+ imageWidth+" height=" + imageHeight +" src='" + Url.Content("~/Content/icons/edit_32x32.png") + "' /></button>");
+            ViewContext.Writer.Write("<button title='" + Labels.btnDeleteData + "' onclick=\"btnDeleteClick('"
+                                     + id + "', '"
+                                     + idRequestElement + "', '"
+                                     + hasDocument + "', '"
+                                     + isActive + "')\"><img width="+ imageWidth+" height=" + imageHeight +" src='" + Url.Content("~/Content/icons/delete_32x32.png") + "' /></button>");
+            ViewContext.Writer.Write("<button title='" + Labels.btnViewData + "' onclick=\"btnViewClick('"
+                                     + id + "', '"
+                                     + idRequestElement + "', '"
+                                     + hasDocument + "', '"
+                                     + isActive + "')\"><img width="+ imageWidth+" height=" + imageHeight +" src='" + Url.Content("~/Content/icons/show_32x32.png") + "' /></button>");
+
+            ViewContext.Writer.Write("<button title='" + Labels.Message + "' onclick=\"btnMessageClick('"
+                                     + id + "', '"
+                                     + idRequestElement + "', '"
+                                     + hasDocument + "', '"
+                                     + isActive + "')\"><img width="+ imageWidth+" height=" + imageHeight +" src='" + Url.Content("~/Content/icons/PhoneNumberType_32x32.png") + "' /></button>");
+
+        });
+    });
+    if (Html.HasRoleView(Session, "DocumentInRequest_Description"))
+    {
+        settings.Columns.Add(x =>
+        {
+            x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+            x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+            x.Name = "Description";
+            x.FieldName = "Description";
+            x.Caption = Labels.ResourceManager.GetString("DocumentInRequest_Description");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+    }
+    if (Html.HasRoleView(Session, "DocumentInRequest_HasDocument"))
+    {
+        settings.Columns.Add(x =>
+        {
+            x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+            x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+            x.Name = "HasDocument";
+            x.FieldName = "HasDocument";
+            x.Caption = "Прикреплен";
+            x.CellStyle.Wrap = DefaultBoolean.True;
+            x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+    }
+    if (Html.HasRoleView(Session, "DocumentInRequest_DocumentState"))
+    {
+        settings.Columns.Add(x =>
+        {
+            x.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
+            x.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.CellStyle.VerticalAlign = VerticalAlign.Middle;
+            x.Name = "DocumentStateIdName";
+            //x.FieldName = "DocumentStateId";
+            x.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            x.Caption = Labels.ResourceManager.GetString("DocumentInRequest_DocumentState");
+            x.SetDataCellTemplateContent(c =>
+            {
+                string icon = "";
+                var id = (int?)DataBinder.Eval(c.DataItem, "RequestElementStructureTypeId");
+                if (id == Const.DocumentStateId.Accepted)
+                    icon = "Content/icons/add_32x32.png";
+                if (id == Const.DocumentStateId.Backlog)
+                    icon = "Content/icons/delete_32x32.png";
+                if (id == Const.DocumentStateId.InProgress)
+                    icon = "Content/icons/Статус документа. Документ в работе.png";
+                if (id == Const.DocumentStateId.Reopened)
+                    icon = "Content/icons/Faculty_32x32.png";
+                if (icon!="")
+                    ViewContext.Writer.Write("<span>" + DataBinder.Eval(c.DataItem, "DocumentStateName") + " <img style='vertical-align: middle;' src='"+icon+"' width="+ imageWidth+" height=" + imageHeight +"/> </span>");
+            });
+        });
+    }
+
+
+
+    settings.Columns.Add(x =>
+    {
+        x.FieldName = "OrderNumber";
+        x.Visible = false;
+        x.SortIndex = 1;
+        x.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+    });
+
+    settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
+    settings.SettingsCookies.StoreExpandedNodes = true;
+    settings.HtmlDataCellPrepared = (s, e) =>
+    {
+        if (e.Column.FieldName == "HasDocument")
+        {
+            e.Cell.Text = ((bool)e.CellValue) ? "Да" : "Нет";
+        }
+        if (e.Column.FieldName == "DocumentStateId")
+        {
+            e.Cell.HorizontalAlign = HorizontalAlign.Center;
+        }
+    };
+    settings.ClientLayout = (s, e) =>
+    {
+        if (e.LayoutMode == ClientLayoutMode.Loading)
+        {
+            if (Session["TreeListState"] != null)
+                e.LayoutData = (string)Session["TreeListState"];
+        }
+        else
+            Session["TreeListState"] = e.LayoutData;
+    };
+
+    //settings.PreRender = (sender, e) => {
+    //    if(Session["TreeListState"] == null)
+    //        ((MVCxTreeList)sender).ExpandToLevel(2);
+    //};
+}
+).Bind(Model).GetHtml()

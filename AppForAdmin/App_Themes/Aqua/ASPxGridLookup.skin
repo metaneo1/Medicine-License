@@ -1,0 +1,13 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+<dx:ASPxGridLookup runat="server" SpriteCssFilePath="~/App_Themes/Aqua/{0}/sprite.css" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua">
+    <GridViewImages SpriteCssFilePath="~/App_Themes/Aqua/{0}/sprite.css">
+        <LoadingPanelOnStatusBar Url="~/App_Themes/Aqua/GridView/gvLoadingOnStatusBar.gif"></LoadingPanelOnStatusBar>
+    </GridViewImages>
+    <GridViewProperties>
+        <SettingsLoadingPanel ImagePosition="Top" />
+        <SettingsPager CurrentPageNumberFormat="{0}" />
+    </GridViewProperties>
+</dx:ASPxGridLookup>
+

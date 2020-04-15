@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MvcBaseApp.Controllers.HomeIndexModel
+
+
+@*<script>
+    var currentRequestStateId = 0;
+    function RequestStateGridChange(s, e) {
+        currentRequestStateId = e.tab.name.split('_')[2];
+        //alert(currentRequestStateId);
+        if (!pnl_LicensePreviewPanel.InCallback())
+            pnl_LicensePreviewPanel.PerformCallback({ Id_Request: currentRequestStateId });
+    }
+
+    function OnGridClick(s, e) {
+        //TODO Разобраться с событием клика
+        s.GetRowValues(e.visibleIndex, 'Id', OnGetRowValues);
+    }
+
+    function OnGetRowValues(values) {
+        //alert(values);
+        if (!pnl_LicenseFullView.InCallback())
+            pnl_LicenseFullView.PerformCallback({ licenseId: 5 });
+
+    }
+</script>*@
+@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        Html.RenderAction("Login", "InPageAutorize");
+    }
+    @*else
+    {
+        <div class="col-md-3">
+            <div class="row">
+                <h3 style="float: left;">
+                    Заявки
+                </h3>
+                <button>
+                    Новая заявка
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.DevExpress().TabControl(s =>
+                    {
+                        s.Name = "navigationLeftTab";
+                        s.ClientSideEvents.TabClick = "RequestStateGridChange";
+                        s.TabPosition = TabPosition.Left;
+                        s.SkinID = "LeftTab";
+
+                        foreach (var state in Model.RequestStates)
+                        {
+                            var tab = s.Tabs.Add(state.Name_kg, "request_state_" + state.Id);
+                        }
+                    }).GetHtml()
+                </div>
+                <div class="col-md-8">
+                    @Html.Action("pnl_LicensePreviewPanel", "LicenseRequest")
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            @Html.Action("pnl_LicenseFullView", "LicenseRequest")
+        </div>
+
+    }*@
+}

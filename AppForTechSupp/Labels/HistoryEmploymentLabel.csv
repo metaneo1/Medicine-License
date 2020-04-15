@@ -1,0 +1,7 @@
+Labels.HistoryEmployment_DateStart,Дата начало
+Labels.HistoryEmployment_DateFinish,Дата окончания
+Labels.HistoryEmployment_StateItem,Id_Штатная единица
+Labels.HistoryEmployment_Document,Id Документа
+Labels.HistoryEmployment_WorkerStatus,Id_WorkerStatus
+Labels.HistoryEmployment_WorkingType,Id_WorkingType
+Labels.HistoryEmployment_TypeWorkingHiring,Id_HiringType

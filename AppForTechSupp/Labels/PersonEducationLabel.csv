@@ -1,0 +1,19 @@
+Labels.PersonEducation_DateFinished,Дата окончания
+
+
+              
+Labels.PersonEducation_Profession,Id Профессии
+Labels.PersonEducation_StartDate,Дата поступления
+
+
+              
+Labels.PersonEducation_LastCourseNumber,Ушёл с курса
+
+
+              
+Labels.PersonEducation_University,Id Учебного заведения
+Labels.PersonEducation_Faculty,Id Факультета
+Labels.PersonEducation_DocumentNumber,Номер диплома
+Labels.PersonEducation_StudyType,Id Вида обучения
+Labels.PersonEducation_Quality,Id Квалификации
+Labels.PersonEducation_Document,Id Документа

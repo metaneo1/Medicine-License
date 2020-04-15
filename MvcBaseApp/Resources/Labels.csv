@@ -1,0 +1,468 @@
+AbroadTrips, Выезды за границу
+AbroadTrips_AbroadTripReason_Name, Цель визита
+AbroadTrips_ArrivalDate, Дата возвращения
+AbroadTrips_btnAddAbroadTrip, Добавить выезд
+AbroadTrips_btnCloseAbroadTrip, Закрыть
+AbroadTrips_btnDeleteAbroadTrip, Удалить выезд
+AbroadTrips_btnEditAbroadTrip, Редактировать выезд
+AbroadTrips_Country_Name, Страна
+AbroadTrips_DepartureDate, Дата выезда
+WorkerList_btnAddWorker, Добавить сотрудника
+btnCancel, Отмена
+WorkerList_btnCloseWorker, Выход из формы
+WorkerList_btnDeleteWorker, Удалить данные
+WorkerList_btnEditWorker, Редактировать данные
+btnSave, Сохранить
+EditWorker, Редактирование данных
+EditWorker_AbroadTrips, Поездки
+EditWorker_AdditionalData, Дополнительно
+EditWorker_Address, Адрес
+EditWorker_Citizenship, Гражданство
+EditWorker_DateBirth, Дата рождения
+EditWorker_FamilyState, Семейное положение
+EditWorker_LastChanged, Последнее заполнение
+EditWorker_MainInfo, Общая информация
+EditWorker_Name, ФИО
+EditWorker_Nationality, Национальность
+EditWorker_PassportMaker, Орган, выдавший паспорт
+EditWorker_Sex, Пол
+EdtiWorker_GosLanguageLevel, Знание гос языка
+WorkerGridColumnName, Имя/Название
+WorkerList, Сотрудники
+AbroadTrip, Поездка №
+AbroadTripReason, Цель пребывания за границей
+AbroadTripReasons_btnAddAbroadTripReason, Добавить цель визита
+AbroadTripReasons_btnCloseAbroadTripReason, Закрыть
+AbroadTripReasons_btnDeleteAbroadTripReason, Удалить цель поездки
+AbroadTripReasons_btnEditAbroadTripReason, Редактировать цель визита
+AbroadTripReasons_Description, Описание
+AbroadTripReasons_Name, Название
+AbroadTripReason_Code, Код
+AbroadTripReason_Description, Описание
+AbroadTripReason_MainInfo, Общая информация
+AbroadTripReason_Name, Название
+AbroadTrip_AbroadTripReason, Цель пребывания
+AbroadTrip_Add, Добавить поездку
+AbroadTrip_ArrivalDate, Дата возвращения
+AbroadTrip_Country, Страна
+AbroadTrip_DepartureDate, Дата выезда
+AbroadTrip_MainInfo, Общая информация
+Country_Code, Код
+Country_Description, Описание
+Country_MainInfo, Общая информация
+Country_Name, Название
+CountyList, Страны
+CountyList_btnAddCountry, Добавить страну
+CountyList_btnCloseCountry, Закрыть
+CountyList_btnDeleteCountry, Удалить страну
+CountyList_btnEditCountry, Редактировать страну
+Ribbon_HRM, Управление человеческими ресурсами
+Ribbon_HRM_Charts, Графики
+Ribbon_HRM_Database, База данных
+Ribbon_HRM_Organizations, Организация и Штатные единицы
+Ribbon_HRM_Pivots, Сводные таблицы
+Ribbon_HRM_Posts, Должности
+Ribbon_HRM_Workers, Сотрудники
+Ribbon_USERS, Пользователи
+Ribbon_USERS_Overseers, Курирование
+Ribbon_USERS_Roles, Роли
+Ribbon_USERS_Users, Пользователи
+Ribbon_USERS_UsersAndRoles, Пользователи и роли
+WorkerDocumentList, Документы содтудника
+WorkerDocumentList_btnAddWorkerDocument, Добавить документ
+WorkerDocumentList_btnCloseWorkerDocument, Закрыть
+WorkerDocumentList_btnDeleteWorkerDocument, Удалить документ
+WorkerDocumentList_btnEditWorkerDocument, Редактировать документ
+WorkerDocumentList_DataDocument, Дата
+WorkerDocumentList_DocumentName, Название
+WorkerDocumentList_TypeDocumentName, Тип документа
+ShureForRemoveEntry, Удалить выбранную запись?
+AbroadTrip_btnDelete, Удалить поездку
+ErrorNoItemSelected, Не выбрана запись
+Document, Документ
+Document_body, Файл
+Document_Description, Описание
+Document_Id_DocumentType, Типа документа
+Document_Name, Название документа
+Penalty_DateEndPenalty, Дата снятия Взыскания
+Penalty_DatePenalty, Дата взыскания
+Penalty_Description, Описание
+Penalty_Id_TypePenalty, Тип взыскания
+Penalty_MainInfo, Общая информация
+ErrorNoDb, Проблемы с доступом к базе данных
+ErrorWrondPassword, Неверный логин или пароль
+EditWorker_Group_PersonLanguageLevel, Владение языком
+EditWorker_Group_PersonPhone, Телефон сотрудника
+EditWorker_Group_Relative, Родственник
+EditWorker_Group_AbroadTrip, Выезд за границу
+EditWorker_Group_illness, Больничные
+EditWorker_Group_Penalty, Взыскания
+EditWorker_Group_PersonEducation, Образование сотрудника
+EditWorker_Group_PersonInParty, Участие в партии
+EditWorker_Group_PersonQualityUpper, Повышение квалификации
+EditWorker_Group_PersonRank, Звания сотрудника
+EditWorker_Group_PersonRewards, Награды сотрудника
+EditWorker_Group_PersonVacation, Отпуск сотрудника
+EditWorker_Group_ScienceThing, Научный труд
+EditWorker_Group_WorkExperience, Выполняемая работа и учёба
+EditWorker_Education, Образование
+EditWorker_Vacation, Отпуск и командировки
+AbroadTrip_Document, Документ
+Disability_Name, Название
+Disability_Description, Описание
+Disability_Code, Код
+FamilyState_Name, Название
+FamilyState_Description, Описание
+FamilyState_Code, Код
+FamilyType_Name, Название
+FamilyType_Description, Описание
+FamilyType_Code, Код
+Illness_DateStart, Дата начало
+Illness_DateFinish, Дата конец
+Illness_Document, Документ
+Language_Name, Название
+Language_Description, Описание
+Language_Code, Код
+LanguageLevel_Name, Название
+LanguageLevel_Description, Описание
+LanguageLevel_Code, Код
+Nationality_Name, Название
+Nationality_Description, Описание
+Nationality_Code, Код
+Nationality_Name_F, Имя_Женское
+Nationality_Name_M, Имя_Мужское
+OrganizationForExperience_Name, Название
+OrganizationForExperience_Description, Описание
+OrganizationForExperience_Code, Код
+OrganizationForExperience_Place, Местонахождение
+PassportMaker_Name, Название
+PassportMaker_Description, Описание
+PassportMaker_Code, Код
+Penalty_TypePenalty, Тип взыскания
+Penalty_Document, Документ
+PersonEducation_DateFinished, Дата окончания
+PersonEducation_Profession, Профессия
+PersonEducation_StartDate, Дата поступления
+PersonEducation_LastCourseNumber, Ушёл с курса
+PersonEducation_University, Учебное заведения
+PersonEducation_Faculty, Факультет
+PersonEducation_DocumentNumber, Номер диплома
+PersonEducation_StudyType, Вид обучения
+PersonEducation_Quality, Квалификация
+PersonEducation_Document, Документ
+PersonLanguageLevel_Language, Язык
+PersonLanguageLevel_LanguageLevel, Уровень владения языком
+PersonPhone_PhoneNumber, Номер телефона
+PersonPhone_PhoneNumberType, Тип номера телефона
+PersonQualityUpper_StartDate, Дата начала
+PersonQualityUpper_DateFinished, Дата окончания
+PersonQualityUpper_Place, Место повышения квалификации
+PersonQualityUpper_QualityUpperTyle, Вид повышения квалификации
+PersonQualityUpper_DocumentNumber, Номер свидетельства
+PersonQualityUpper_Document, Документ
+PersonRank_SpecialRank, Звание
+PersonRank_Document, Документ
+PersonRank_DateAcceptance, Дата присвоения
+PersonRewards_Reward, Государственная награда
+PersonRewards_AcceptedDate, Дата награждения
+PersonRewards_Document, Документ
+PersonVacation_DateStart, Дата начала
+PersonVacation_DateFinished, Дата окончания
+PersonVacation_VacationType, Вид отпуска
+PersonVacation_PeriodInMonth, За период в месяцах
+PersonVacation_Reason, Основание
+PersonVacation_Document, Документ
+PhoneNumberType_Name, Название
+PhoneNumberType_Description, Описание
+PhoneNumberType_Code, Код
+PostOutOfOrganization_Name, Название
+PostOutOfOrganization_Description, Описание
+PostOutOfOrganization_Code, Код
+Profession_Name, Название
+Profession_Description, Описание
+Profession_Code, Код
+Quality_Name, Название
+Quality_Description, Описание
+Quality_Code, Код
+Quality_Place, Местоположение
+QualityUpperTyle_Name, Название
+QualityUpperTyle_Description, Описание
+QualityUpperTyle_Code, Код
+Relative_Surname, ФИО
+Relative_DateBirth, Дата рождения
+Relative_FamilyType, Степень родства
+Relative_Contacts, Контакты
+Relative_RelativeStatus, Статус Родственика
+RelativeStatus_Name, Наименование
+RelativeStatus_Description, Описание
+RelativeStatus_Code, Код
+Reward_Name, Название
+Reward_Description, Описание
+Reward_Code, Код
+ScienceDegree_Name, Название
+ScienceDegree_Description, Описание
+ScienceDegree_Code, Код
+ScienceThing_Name, Название
+ScienceThing_Description, Описание
+ScienceThing_Code, Код
+ScienceThing_ScienceThingType, Тип научного труда
+ScienceThing_Document, Документ
+ScienceThingType_Name, Название
+ScienceThingType_Description, Описание
+ScienceThingType_Code, Код
+Sex_Name, Название
+Sex_Description, Описание
+Sex_Code, Код
+SpecialRank_Name, Название
+SpecialRank_Description, Описание
+SpecialRank_Code, Код
+StudyType_Name, Название
+StudyType_Description, Описание
+StudyType_Code, Код
+StudyType_Place, Местоположение
+TypePenalty_Name, Наименование
+TypePenalty_Description, Описание
+TypePenalty_Code, Код
+UniversityDegree_Name, Название
+UniversityDegree_Description, Описание
+UniversityDegree_Code, Код
+University_Name, Название
+University_Description, Описание
+University_Code, Код
+University_Place, Местоположение
+VacationType_Name, Название
+VacationType_Description, Описание
+VacationType_Code, Код
+WarriorCategory_Name, Название
+WarriorCategory_Description, Описание
+WarriorCategory_Code, Код
+WarriorDegree_Name, Название
+WarriorDegree_Description, Описание
+WarriorDegree_Code, Код
+WarriorGroup_Name, Название
+WarriorGroup_Description, Описание
+WarriorGroup_Code, Код
+WarriorReadyType_Name, Название
+WarriorReadyType_Description, Описание
+WarriorReadyType_Code, Код
+WarriorSpeciality_Name, Название
+WarriorSpeciality_Description, Описание
+WarriorSpeciality_Code, Код
+Disability_MainInfo, Общая информация
+FamilyState_MainInfo, Общая информация
+FamilyType_MainInfo, Общая информация
+Illness_MainInfo, Общая информация
+Language_MainInfo, Общая информация
+LanguageLevel_MainInfo, Общая информация
+Nationality_MainInfo, Общая информация
+OrganizationForExperience_MainInfo, Общая информация
+PassportMaker_MainInfo, Общая информация
+PersonEducation_MainInfo, Общая информация
+PersonLanguageLevel_MainInfo, Общая информация
+PersonPhone_MainInfo, Общая информация
+PersonQualityUpper_MainInfo, Общая информация
+PersonRank_MainInfo, Общая информация
+PersonRewards_MainInfo, Общая информация
+PersonVacation_MainInfo, Общая информация
+PhoneNumberType_MainInfo, Общая информация
+PostOutOfOrganization_MainInfo, Общая информация
+Profession_MainInfo, Общая информация
+Quality_MainInfo, Общая информация
+QualityUpperTyle_MainInfo, Общая информация
+Relative_MainInfo, Общая информация
+RelativeStatus_MainInfo, Общая информация
+Reward_MainInfo, Общая информация
+ScienceDegree_MainInfo, Общая информация
+ScienceThing_MainInfo, Общая информация
+ScienceThingType_MainInfo, Общая информация
+Sex_MainInfo, Общая информация
+SpecialRank_MainInfo, Общая информация
+StudyType_MainInfo, Общая информация
+TypePenalty_MainInfo, Общая информация
+UniversityDegree_MainInfo, Общая информация
+University_MainInfo, Общая информация
+VacationType_MainInfo, Общая информация
+WarriorCategory_MainInfo, Общая информация
+WarriorDegree_MainInfo, Общая информация
+WarriorGroup_MainInfo, Общая информация
+WarriorReadyType_MainInfo, Общая информация
+WarriorSpeciality_MainInfo, Общая информация
+AnnualDeclaration_MainInfo, Общая информация
+AnnualEstimate_MainInfo, Общая информация
+Evaluation_MainInfo, Общая информация
+HistoryEmployment_MainInfo, Общая информация
+MentoringHistory_MainInfo, Общая информация
+Mentoring_MainInfo, Общая информация
+Recomendation_MainInfo, Общая информация
+Subject_MainInfo, Общая информация
+TypeWorkingHiring_MainInfo, Общая информация
+WorkerStatus_MainInfo, Общая информация
+WorkingType_MainInfo, Общая информация
+Illnesss, Больничные листы
+Illnesss_btnAddIllness, Добавить больничный лист
+Illnesss_btnCloseIllness, Закрыть
+Illnesss_btnDeleteIllness, Удалить больничный лист
+Illnesss_btnEditIllness, Редактировать больничный лист
+PersonEducations_btnAddPersonEducation, Добавить образование сотрудника
+PersonEducations_btnClosePersonEducation, Закрыть
+PersonEducations_btnDeletePersonEducation, Удалить образование сотрудника
+PersonEducations_btnEditPersonEducation, Редактировать образование сотрудника
+PersonLanguageLevels, Владение языками
+PersonLanguageLevels_btnAddPersonLanguageLevel, Добавить владение языком
+PersonLanguageLevels_btnClosePersonLanguageLevel, Закрыть
+PersonLanguageLevels_btnDeletePersonLanguageLevel, Удалить владение языком
+PersonLanguageLevels_btnEditPersonLanguageLevel, Редактировать владение языком
+PersonPhones, Контакты сотрудника
+PersonPhones_btnAddPersonPhone, Добавить контакт сотрудника
+PersonPhones_btnClosePersonPhone, Закрыть
+PersonPhones_btnDeletePersonPhone, Удалить контакт сотрудника
+PersonPhones_btnEditPersonPhone, Редактировать контакт сотрудника
+PersonQualityUppers, Повышения квалификации
+PersonQualityUppers_btnAddPersonQualityUpper, Добавить повышение квалификации
+PersonQualityUppers_btnClosePersonQualityUpper, Закрыть
+PersonQualityUppers_btnDeletePersonQualityUpper, Удалить повышение квалификации
+PersonQualityUppers_btnEditPersonQualityUpper, Редактировать повышение квалификации
+PersonRanks, Звания сотрудника
+PersonRanks_btnAddPersonRank, Добавить звание сотрудника
+PersonRanks_btnClosePersonRank, Закрыть
+PersonRanks_btnDeletePersonRank, Удалить звание сотрудника
+PersonRewardss, Награды сотрудника
+PersonRewardss_btnAddPersonRewards, Добавить награду сотрудника
+PersonRewardss_btnClosePersonRewards, Закрыть
+PersonRewardss_btnDeletePersonRewards, Удалить награду сотрудника
+PersonRewardss_btnEditPersonRewards, Редактировать награду сотрудника
+PersonVacations, Отпуски сотрудника
+PersonVacations_btnAddPersonVacation, Добаить отпуск сотрудника
+PersonVacations_btnClosePersonVacation, Закрыть
+PersonVacations_btnDeletePersonVacation, Удалить отпуск сотрудника
+PersonVacations_btnEditPersonVacation, Редактировать отпуск сотрудника
+Relatives, Родственники
+Relatives_btnAddRelative, Добавить родственника
+Relatives_btnCloseRelative, Закрыть
+Relatives_btnDeleteRelative, Удалить родственника
+Relatives_btnEditRelative, Редактировать родственника
+TypeDocument_Name, Тип документа
+AnnualDeclaration_Year, Год
+AnnualEstimate_grade, Оценка
+AnnualEstimate_Year, Год
+Evaluation_Name, Оценка
+Evaluation_Description, Описание
+HistoryEmployment_DateStart, Дата начало
+HistoryEmployment_DateFinish, Дата окончания
+HistoryEmployment_StateItem, IШтатная единица
+HistoryEmployment_Document, Документ
+HistoryEmployment_WorkerStatus, Id_WorkerStatus
+HistoryEmployment_WorkingType, Id_WorkingType
+HistoryEmployment_TypeWorkingHiring, Id_HiringType
+MentoringHistory_Date, Дата
+MentoringHistory_Description, Описание работ
+MentoringHistory_Notes, Дополнение
+MentoringHistory_Subject, Id_Subject
+MentoringHistory_Evaluation, Id_Evaluation
+MentoringHistory_Recomendation, Id_Recomendation
+Mentoring_DateStart, Дата Начало
+Mentoring_DateFinish, Дата окончания
+Mentoring_Workers, Id_Mentor
+Recomendation_Name, Рекомендации
+Subject_Name, Тема
+TypeWorkingHiring_Name, Название
+TypeWorkingHiring_Description, Описание
+TypeWorkingHiring_Code, Код
+WorkerStatus_Name, Название
+WorkerStatus_Description, Описание
+WorkerStatus_Code, Код
+WorkingType_Name, Название
+WorkingType_Description, Описание
+WorkingType_Code, Код
+AnnualDeclaration, Годовая декларация
+AnnualDeclarations, Годоые декларации
+AnnualDeclarations_btnAddAnnualDeclaration, Добавить годовую декларацию
+AnnualDeclarations_btnCloseAnnualDeclaration, Закрыть
+AnnualDeclarations_btnDeleteAnnualDeclaration, Удалить годовую декларацию
+AnnualDeclarations_btnEditAnnualDeclaration, Редактировать годовую декларацию
+AnnualDeclaration_Add, Добавить годовую декларацию
+AnnualEstimate, Годовая оценка
+AnnualEstimates, Годовые оценки
+AnnualEstimates_btnAddAnnualEstimate, Добавить годовую оценку
+AnnualEstimates_btnCloseAnnualEstimate, Закрыть
+AnnualEstimates_btnDeleteAnnualEstimate, Удалить годовую оценку
+AnnualEstimates_btnEditAnnualEstimate, Редактировать годовую оценку
+AnnualEstimate_Add, Добавить годовую оценку
+HistoryEmployments, Истории занятости
+HistoryEmployments_btnAddHistoryEmployment, Добавить историю занятости
+HistoryEmployments_btnCloseHistoryEmployment, Закрыть
+HistoryEmployments_btnDeleteHistoryEmployment, Удалить историю занятости
+HistoryEmployments_btnEditHistoryEmployment, Редактировать историю занятости
+MentoringHistory, История наставнчества
+MentoringHistorys, Истории наставничества
+MentoringHistorys_btnAddMentoringHistory, Добавить историю наставничества
+MentoringHistorys_btnCloseMentoringHistory, Закрыть
+MentoringHistorys_btnDeleteMentoringHistory, Удалить историю наставничества
+MentoringHistorys_btnEditMentoringHistory, Редактировать историю наставничества
+MentoringHistory_Add, Добавить историю наставничества
+Mentorings, Наставничества
+Mentorings_btnAddMentoring, Добавить наставничество
+Mentorings_btnCloseMentoring, Закрыть
+Mentorings_btnDeleteMentoring, Удалить наставничество
+Mentorings_btnEditMentoring, Редактировать наставничество
+Penaltys, Взыскания
+Penaltys_btnAddPenalty, Добавить взыскание
+Penaltys_btnClosePenalty, Закрыть
+Penaltys_btnDeletePenalty, Удалить взыскание
+Penaltys_btnEditPenalty, Редактировать взыскание
+PersonLanguageLevel, Владение языком
+PersonLanguageLevel_Add, Добавить владение языком
+PersonPhone, Контакт сотрудника
+PersonPhone_Add, Добавить контакт сотрудника
+PersonRank_AcceptedDate, Дата получения
+Relative, Родственник
+Relative_Add, Добавить родственника
+ScienceThings, Научные труды
+ScienceThings_btnAddScienceThing, Добавить научный труд
+ScienceThings_btnCloseScienceThing, Закрыть
+ScienceThings_btnDeleteScienceThing, Удалить научный труд
+ScienceThings_btnEditScienceThing, Редактировать научный труд
+WorkExperience, Выполняемая работа и учеба
+WorkExperiences, Выполняемые работы и учеба
+WorkExperiences_btnAddWorkExperience, Добавить выполняемую работу и учебу
+WorkExperiences_btnCloseWorkExperience, Закрыть
+WorkExperiences_btnDeleteWorkExperience, Удалить выполняемую работу и учебу
+WorkExperiences_btnEditWorkExperience, Редактировать выполняемую работу и учебу
+WorkExperience_Add, Добавить выполняемую работу и учебу
+WorkExperience_DateStart, Дата начала
+WorkExperience_DateFinished, Дата окончания
+WorkExperience_PostOutOfOrganization, Должность
+WorkExperience_OrganizationForExperience, Организация
+WorkExperience_IsMainWork, Основное место работы
+WorkExperience_IsGovermentWork, Является Госслужбой
+WorkExperience_IsSpeciality, По специальности
+WorkExperience_MainInfo, Общая информация
+Year_MainInfo, Общая информация
+Mentoring, Наставничество
+Mentoring_Add, Добавить наставничество
+PersonEducations, Образования сотрудника
+PersonRanks_btnEditPersonRank, Редактировать звание
+Edit_RewardsAndPenalty, Награды и Взыскания
+ErrorNullFields, Заполните обязательные поля
+EditWorker_PassporDate, Дата выдачи паспорта
+EditWorker_PassporNumber, Номер паспорта
+EditWorker_PassportSeries, Серия паспорта
+ErrorLookUpNoValue, Не выбрано значение
+Language, Язык
+LanguageLevel, Уровень владения языком
+btnAddData, Добавить данные
+btnClose, Выход из формы
+btnDeleteData, Удалить данные
+btnEditData, Изменить данные
+btnPrintData, Печать данных
+btnRefreshData, Обновление данных
+btnViewData, Просмотр данных
+AbroadTrip_AbroadTripReasonName, Цель поездки
+AbroadTrip_CountryName, Страна
+AbroadTrip_DocumentName, Документ
+String1, 
+No, Нет
+Yes, Да
+PersonQualityUpper_QualityUpperTyleName, Вид повышения квалификации
+PersonVacation_DateFinishTo, PersonVacation_DateFinishTo
+PersonVacation_DateStartFrom, PersonVacation_DateStartFrom

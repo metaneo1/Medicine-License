@@ -1,0 +1,117 @@
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Models
+@using MvcBaseApp.Resources
+@model MvcBaseApp.Models.IndexGridModel
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvRequestElementDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = Model.EntityName, Action = "IndexPartial" };
+        settings.KeyFieldName = "Id";
+        settings.Width = Unit.Percentage(100);
+        settings.EnableRowsCache = true;
+
+        settings.Settings.ShowFilterRow = true;
+		
+if (Html.HasRoleView(Session, Model.EntityName + "_Id_Parent"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "Id_Parent";
+            x.FieldName = "Id_Parent";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_Id_Parent");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_IsActive"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "IsActive";
+            x.FieldName = "IsActive";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_IsActive");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_OrderNumber"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "OrderNumber";
+            x.FieldName = "OrderNumber";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_OrderNumber");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_RequestElementType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "RequestElementType.Name";
+            x.FieldName = "RequestElementType.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestElementType.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_DocTemplForReqElemType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "DocTemplForReqElemType.Name";
+            x.FieldName = "DocTemplForReqElemType.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_DocTemplForReqElemType.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_RequestType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "RequestType.Name";
+            x.FieldName = "RequestType.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestType.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_RequestElemStructureType.Name"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "RequestElemStructureType.Name";
+            x.FieldName = "RequestElemStructureType.Name";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_RequestElemStructureType.Name");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+if (Html.HasRoleView(Session, Model.EntityName + "_IsRequired"))
+        {
+	settings.Columns.Add(x =>
+        {
+            x.Name = "IsRequired";
+            x.FieldName = "IsRequired";
+            x.Caption = Labels.ResourceManager.GetString(Model.EntityName + "_IsRequired");
+            x.CellStyle.Wrap = DefaultBoolean.True;
+			x.HeaderStyle.Wrap = DefaultBoolean.True;
+        });
+        }
+
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.ClientSideEvents.FocusedRowChanged = "On" + Model.EntityName + "GridFocusedRowChanged";
+		settings.ClientSideEvents.Init = "resizeGrid";
+
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        e.QueryableSource = DatabaseProvider.DB.RequestElement;
+    }).GetHtml()

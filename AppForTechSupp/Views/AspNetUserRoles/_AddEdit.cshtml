@@ -1,0 +1,59 @@
+@using System.Drawing
+@using System.Web.UI.WebControls
+@using MvcBaseApp.Controllers
+@using MvcBaseApp.DataTypeConverters
+@using MvcBaseApp.Resources
+
+@model AspNetUserRoles
+
+@{
+    var datamodel = (AspNetUserRolesAddEditModel)ViewBag.MODEL;
+}
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AddAspNetUserRolesFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = Labels.AbroadTrip_MainInfo;
+        g.ColCount = 1;
+ g.Items.Add(m => m.RoleId, i =>
+        {
+            //i.ClientVisible = Html.HasRoleView(Session, "AspNetUserRoles_RoleId");
+            i.SetNestedContent(Html.Action("GetLookUp", "AspNetRoles", new { JsElementName = "RoleId_AddAspNetUserRoles", CallerConrtoller = "AddAspNetUserRoles", CurrentValue = Model.RoleId }).ToString());
+        }).Caption = Labels.Ribbon_USERS_Roles;
+    });
+    settings.Items.AddGroupItem(g =>
+    {
+        g.Caption = "";
+        g.ColCount = 2;
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "saveAspNetUserRolesButton";
+                s.Text = Labels.btnSave;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/apply_32x32.png");
+                s.ClientSideEvents.Click = "OnSaveAspNetUserRolesClick";
+            });
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Right;
+        });
+        g.Items.Add(i =>
+        {
+            i.ShowCaption = DefaultBoolean.False;
+            i.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+            i.NestedExtension().Button(s =>
+            {
+                s.Name = "cancelAspNetUserRolesButton";
+                s.Text = Labels.btnCancel;
+                s.UseSubmitBehavior = false;
+                s.Images.Image.Url = Url.Content("~/Content/icons/cancel_32x32.png");
+                s.ClientSideEvents.Click = "OnCancelAspNetUserRolesClick";
+            });
+        });
+    });
+
+}).GetHtml()
