@@ -6,4 +6,5 @@ Team:
 
 Venera Kanybekova - Project Manager - metaneo1  
 Aidar Abakir - software developer - aidarabd  
-Meerim Bazarbaeva - front-end/testing - meerim  
+Meerim Bazarbaeva - front-end/testing - meerim
+Ali Murteza Yesil - System Administrator - murtezayesil
