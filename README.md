@@ -1,8 +1,4 @@
-<a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a>
-
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
-
-***INSERT GRAPHIC HERE (include hyperlink in image)***
+<a href="#"><img src="https://image.flaticon.com/icons/png/512/2927/2927060.png"></a>
 
 # MedLicense
 
@@ -42,13 +38,6 @@
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger) [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls) [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
 - For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
-
-***INSERT ANOTHER GRAPHIC HERE***
-
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
-
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
 
 > Tips
 
@@ -91,10 +80,6 @@ let generateProject = project => {
 - All the `code` required to get started
 - Images of what it should look like
 
-### Clone
-
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
 ### Setup
 
 - If you want more syntax highlighting, format your code like this:
@@ -127,37 +112,15 @@ $ bower install
 
 ---
 
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using <a href="https://github.com/joanaz/HireDot2/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
-
----
-
 ## Team
 
-| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="" target="_blank">**Meerim, Q&A Tester**</a> |
+| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">**Ali Murteza, System Administrator**</a> |
 | :---: |:---:| :---:|
 | [![FVCproductions](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
 
 
-| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="http://fvcproductions.com" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">**Ali Murteza, System Administrator**</a> |
+| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="http://fvcproductions.com" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">****</a> |
 | :---: |:---:| :---:|
 | [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  | | [![Ali](https://avatars0.githubusercontent.com/u/24689015?s=460&u=a10bed6d4984caaa79da911a4f7e4d6dea70bb3e&v=4?s=25)](http://fvcproductions.com)    |
 | <a href="https://github.com/metaneo1" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
@@ -168,32 +131,6 @@ $ bower install
 - Ali Murteza Yesil - System Administrator - murtezayesil
 
 - You should probably resize their picture using `?s=200` at the end of the image URL.
-
----
-
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
-
----
-
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
-- Insert more social links here.
-
----
-
-## Donations (Optional)
-
-- You could include a <a href="https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png" target="_blank">Gratipay</a> link as well.
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/fvcproductions/)
-
 
 ---
 
