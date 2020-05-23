@@ -74,5 +74,5 @@ let generateProject = project => {
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- **[MIT license](https://github.com/metaneo1/Medicine-License/blob/master/LICENSE)**
 - Copyright 2020 © <a href="#" target="_blank">Medicine License</a>.
