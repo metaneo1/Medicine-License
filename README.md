@@ -151,6 +151,11 @@ $ bower install
 
 ## Team
 
+| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="" target="_blank">**Meerim, Q&A Tester**</a> |
+| :---: |:---:| :---:|
+| [![FVCproductions](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  |
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+
 
 | <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="http://fvcproductions.com" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">**Ali Murteza, System Administrator**</a> |
 | :---: |:---:| :---:|
