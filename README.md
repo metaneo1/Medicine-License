@@ -48,8 +48,8 @@ let generateProject = project => {
 
 ## Installation
 
-- The project was built on `ASP.NET MVC` framework using `C#` as programming language. For interface it used `DevExpress` with `AJAX`. 
-Database is served with `MS SQL`. Developing process was made on the `Visual Studio Enterprise 2015` edition  
+- The project was built on `ASP.NET MVC` framework using `C#` as a programming language. For interface it used `DevExpress` with `AJAX`. 
+Database is served with `MS SQL`. Developing process was made on the `Visual Studio Enterprise 2015` edition.
 
 ### Step 1  
 - install <a href="https://visualstudio.microsoft.com/ru/vs/older-downloads/?rr=https%3A%2F%2Fwww.google.com%2F">Visual Studio Enterprise</a>
