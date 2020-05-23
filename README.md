@@ -2,11 +2,11 @@
 
 # MedLicense
 
-> Online service for Ministry of Health Department. With the help of this website medical facility owners all over Kyrgyzstan are able to submit documents for registration online.
+> Online service for the Ministry of Health Department. With the help of this website medical facility owners all over Kyrgyzstan are able to submit documents for registration online.
 
 ---
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Installation](#installation)
 - [Features](#features)
@@ -50,6 +50,7 @@ let generateProject = project => {
 
 ## Installation
 
+- The project was build using `Aspnet mvc, Devexpress, Ajax, Ms sql`
 - All the `code` required to get started
 - Images of what it should look like
 
