@@ -1,4 +1,4 @@
-<a href="#"><img src="https://image.flaticon.com/icons/png/512/2927/2927060.png width="40px, height="40px"></a>
+<a href="#"><img src="https://image.flaticon.com/icons/png/512/2927/2927060.png width="40px", height="40px"></a>
 
 # MedLicense
 
