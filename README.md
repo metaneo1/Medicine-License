@@ -50,7 +50,7 @@ let generateProject = project => {
 
 ## Installation
 
-- The project was build using `Aspnet mvc, Devexpress, Ajax, Ms sql`
+- The project was build using `ASP.NET MVC, DevExpress, AJAX, MS SQL`
 - All the `code` required to get started
 - Images of what it should look like
 
