@@ -152,10 +152,10 @@ $ bower install
 ## Team
 
 
-| <a href="http://fvcproductions.com" target="_blank">**Venera Kanybekova**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
+| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="http://fvcproductions.com" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">**Ali Murteza, System Administrator**</a> |
 | :---: |:---:| :---:|
-| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=50)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  | | [![Ali](https://avatars0.githubusercontent.com/u/24689015?s=460&u=a10bed6d4984caaa79da911a4f7e4d6dea70bb3e&v=4?s=25)](http://fvcproductions.com)    |
+| <a href="https://github.com/metaneo1" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
 
 - Venera Kanybekova - Project Manager - metaneo1  
 - Aidar Abakir - software developer - aidarabd  
