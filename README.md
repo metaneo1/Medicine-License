@@ -1,10 +1,6 @@
   
 
 
-Venera Kanybekova - Project Manager - metaneo1  
-Aidar Abakir - software developer - aidarabd  
-Meerim Bazarbaeva - front-end/testing - meerim  
-Ali Murteza Yesil - System Administrator - murtezayesil
 
 <a href="http://fvcproductions.com"><img src="https://avatars1.githubusercontent.com/u/4284691?v=3&s=200" title="FVCproductions" alt="FVCproductions"></a>
 
@@ -14,7 +10,25 @@ Ali Murteza Yesil - System Administrator - murtezayesil
 
 # MedLicense
 
-> Online service for Ministry of Health Department. With the help of this website medical facility owners in all over Kyrgyzstan are able to submit documents for registration online.  
+> Online service for Ministry of Health Department. With the help of this website medical facility owners in all over Kyrgyzstan are able to submit documents for registration online.
+
+---
+
+## Table of Contents (Optional)
+
+> If your `README` has a lot of info, section headers might be nice.
+
+- [Installation](#installation)
+- [Features](#features)
+- [Contributing](#contributing)
+- [Team](#team)
+- [FAQ](#faq)
+- [Support](#support)
+- [License](#license)
+
+
+---
+
 
 **Badges will go here**
 
@@ -58,21 +72,6 @@ Ali Murteza Yesil - System Administrator - murtezayesil
 **ttystudio**
 
 ![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)
-
----
-
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
 
 ---
 
@@ -159,10 +158,14 @@ $ bower install
 
 | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
 | :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
+| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
 | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
 
-- You can just grab their GitHub profile image URL
+- Venera Kanybekova - Project Manager - metaneo1  
+- Aidar Abakir - software developer - aidarabd  
+- Meerim Bazarbaeva - front-end/testing - meerim  
+- Ali Murteza Yesil - System Administrator - murtezayesil
+
 - You should probably resize their picture using `?s=200` at the end of the image URL.
 
 ---
