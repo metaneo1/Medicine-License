@@ -48,7 +48,8 @@ let generateProject = project => {
 
 ## Installation
 
-- The project was build using `ASP.NET MVC, DevExpress, AJAX, MS SQL`
+- The project was built on `ASP.NET MVC` framework using `C#` as programming language. For interface it used `DevExpress` with `AJAX`. 
+Database is served with `MS SQL`.
 - All the `code` required to get started
 - Images of what it should look like
 
