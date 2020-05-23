@@ -2,7 +2,7 @@
 
 # MedLicense
 
-> Online service for Ministry of Health Department. With the help of this website medical facility owners in all over Kyrgyzstan are able to submit documents for registration online.
+> Online service for Ministry of Health Department. With the help of this website medical facility owners all over Kyrgyzstan are able to submit documents for registration online.
 
 ---
 
@@ -57,6 +57,11 @@ let generateProject = project => {
 
 ## Features
 ## Documentation
+- <a href="https://github.com/metaneo1/Medicine-License/wiki" target="_blank">SRS</a>
+- Backlog<a href="https://github.com/metaneo1/Medicine-License/projects/2" target="_blank">Backlog</a>
+
+---
+
 ## Tests
 
 - Going into more detail on code and technologies used
