@@ -63,8 +63,8 @@ let generateProject = project => {
 ## Team
 
 - Venera Kanybekova - Project Manager - <a href="https://github.com/metaneo1" target="_blank">`metaneo1`</a>  
-- Aidar Abakir - software developer - <a href="https://github.com/aidarabd">`aidarabd`</a>  
-- Meerim Bazarbaeva - front-end/testing -  <a href="https://github.com/b-meerim" target="_blank">`meerim`</a>  
+- Aidar Abakir - Full Stack Developer - <a href="https://github.com/aidarabd">`aidarabd`</a>  
+- Meerim Bazarbaeva - Q&A Tester -  <a href="https://github.com/b-meerim" target="_blank">`meerim`</a>  
 - Ali Murteza Yesil - System Administrator - <a href="https://github.com/murtezayesil" target="_blank">`murtezayesil`</a>
 
 
