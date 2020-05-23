@@ -9,7 +9,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
-- [Installation_Steps](#installationsteps)
+- [Installation_Steps](#installation_steps)
 - [Documentation](#Documentation)
 - [Team](#team)
 - [License](#license)
@@ -58,7 +58,7 @@ Database is served with `MS SQL`. Developing process was made on the `Visual Stu
 - install Visual Studio Enterprise
 - install Devexpress Tool
 - install Ms SQL
-- run the database <a href="https://github.com/metaneo1/Medicine-License/Scripts" target="_blank">query</a> 
+- run the database <a href="https://github.com/metaneo1/Medicine-License/Script" target="_blank">query</a> 
 ---
 
 ## Documentation
