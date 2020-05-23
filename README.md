@@ -9,9 +9,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
-- [Features](#features)
 - [Documentation](#Documentation)
-- [Tests](#Tests)
 - [Team](#team)
 - [License](#license)
 
@@ -56,18 +54,9 @@ let generateProject = project => {
 
 ---
 
-## Features
-
 ## Documentation
 - <a href="https://github.com/metaneo1/Medicine-License/wiki" target="_blank">SRS</a>
 - <a href="https://github.com/metaneo1/Medicine-License/projects/2" target="_blank">Backlog</a>
-
----
-
-## Tests
-
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
 
 ---
 
