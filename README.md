@@ -154,7 +154,7 @@ $ bower install
 
 | <a href="http://fvcproductions.com" target="_blank">**Venera Kanybekova**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
 | :---: |:---:| :---:|
-| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true ?s=50)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
+| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=50)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
 | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
 
 - Venera Kanybekova - Project Manager - metaneo1  
