@@ -1,4 +1,4 @@
-<a href="#"><img src="https://image.flaticon.com/icons/png/512/2927/2927060.png"></a>
+<a href="#"><img src="https://image.flaticon.com/icons/png/512/2927/2927060.png width="40px, height="40px"></a>
 
 # MedLicense
 
@@ -114,23 +114,11 @@ $ bower install
 
 ## Team
 
-| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">**Ali Murteza, System Administrator**</a> |
-| :---: |:---:| :---:|
-| [![FVCproductions](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
+- Venera Kanybekova - Project Manager - <a href="https://github.com/metaneo1" target="_blank">`metaneo1`</a>  
+- Aidar Abakir - software developer - <a href="https://github.com/aidarabd">`aidarabd`</a>  
+- Meerim Bazarbaeva - front-end/testing -  <a href="https://github.com/b-meerim" target="_blank">`meerim`</a>  
+- Ali Murteza Yesil - System Administrator - <a href="https://github.com/murtezayesil" target="_blank">`murtezayesil`</a>
 
-
-| <a href="http://fvcproductions.com" target="_blank">**Venera, Project Manager**</a> | <a href="http://fvcproductions.com" target="_blank">**Aidar, Full Stack Developer**</a> | <a href="http://fvcproductions.com" target="_blank">**Meerim, Q&A Tester**</a> | <a href="http://fvcproductions.com" target="_blank">****</a> |
-| :---: |:---:| :---:|
-| [![Venera Kanybekova](https://github.com/venera-k/twitter-clone.github.io/blob/master/images/DSC_0176.JPG?raw=true?s=25)](http://fvcproductions.com)    | [![FVCproductions](https://avatars2.githubusercontent.com/u/35764402?s=460&v=4?s=25)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/33866829?s=460&u=396d0dcde7373dedfbf9e18881a8408626855b47&v=4?s=25)](http://fvcproductions.com)  | | [![Ali](https://avatars0.githubusercontent.com/u/24689015?s=460&u=a10bed6d4984caaa79da911a4f7e4d6dea70bb3e&v=4?s=25)](http://fvcproductions.com)    |
-| <a href="https://github.com/metaneo1" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
-
-- Venera Kanybekova - Project Manager - metaneo1  
-- Aidar Abakir - software developer - aidarabd  
-- Meerim Bazarbaeva - front-end/testing - meerim  
-- Ali Murteza Yesil - System Administrator - murtezayesil
-
-- You should probably resize their picture using `?s=200` at the end of the image URL.
 
 ---
 
@@ -139,4 +127,4 @@ $ bower install
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+- Copyright 2020 © <a href="#" target="_blank">Medicine License</a>.
