@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [Installation_Steps](#installationsteps)
 - [Documentation](#Documentation)
 - [Team](#team)
 - [License](#license)
@@ -49,10 +50,15 @@ let generateProject = project => {
 ## Installation
 
 - The project was built on `ASP.NET MVC` framework using `C#` as programming language. For interface it used `DevExpress` with `AJAX`. 
-Database is served with `MS SQL`.
+Database is served with `MS SQL`. Developing process was made on the `Visual Studio Enterprise 2015` edition
 - All the `code` required to get started
 - Images of what it should look like
 
+## Installation_Steps
+- install Visual Studio Enterprise
+- install Devexpress Tool
+- install Ms SQL
+- run the database <a href="https://github.com/metaneo1/Medicine-License/Scripts" target="_blank">query</a> 
 ---
 
 ## Documentation
