@@ -1,8 +1,5 @@
-# MedLicense
+  
 
-Service for Ministry of Health in Kyrgyzstan. The purpose of this project is to create a website for owners of medical facility and government employees. A service will digitalize a bureaucratic process of submitting documents for registration.  
-
-Team:  
 
 Venera Kanybekova - Project Manager - metaneo1  
 Aidar Abakir - software developer - aidarabd  
@@ -15,13 +12,9 @@ Ali Murteza Yesil - System Administrator - murtezayesil
 
 ***INSERT GRAPHIC HERE (include hyperlink in image)***
 
-# Repository Title Goes Here
+# MedLicense
 
-> Subtitle or Short Description Goes Here
-
-> ideally one sentence
-
-> include terms/tags that can be searched
+> Online service for Ministry of Health Department. With the help of this website medical facility owners in all over Kyrgyzstan are able to submit documents for registration online.  
 
 **Badges will go here**
 
@@ -163,7 +156,6 @@ $ bower install
 
 ## Team
 
-> Or Contributors/People
 
 | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
 | :---: |:---:| :---:|
