@@ -2,7 +2,9 @@
 
 # MedLicense
 
-> Online service for the Ministry of Health Department. With the help of this website medical facility owners all over Kyrgyzstan are able to submit documents for registration online.
+> Online service for the Ministry of Health Department. With the help of this website medical facility owners all over Kyrgyzstan are 
+> able to submit documents for registration online. Access admin page by this link: http://admin.murtezayesil.me/ 
+> Acess user side by this link: http://user.murtezayesil.me/
 
 ---
 
